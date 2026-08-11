@@ -52,7 +52,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
   );
 }
 
-function SpecialtiesMegaMenu() {
+function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
   const location = useLocation();
   const isActive = location.pathname.startsWith("/specialties");
   const [isOpen, setIsOpen] = useState(false);
@@ -134,8 +134,9 @@ function SpecialtiesMegaMenu() {
         aria-label="Specialties Menu"
         onMouseLeave={() => setIsOpen(false)}
         className={cn(
-          "absolute left-0 right-0 top-[calc(100%-10px)] z-50 flex justify-center transition-all duration-500 ease-out",
-          isOpen ? "visible top-full opacity-100" : "invisible opacity-0"
+          "fixed left-0 right-0 top-[90px] z-50 flex justify-center transition-all duration-500 ease-out",
+          isScrolled && "top-[75px]",
+          isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-4 opacity-0"
         )}
       >
         <div className="mx-auto w-[1200px] overflow-hidden rounded-[2.5rem] border border-[#EAF4FF] bg-white p-10 shadow-[0_40px_100px_rgba(0,0,0,0.12)]">
@@ -324,7 +325,7 @@ export function Header() {
           <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
             <NavLink to="/about">ABOUT US</NavLink>
-            <SpecialtiesMegaMenu />
+            <SpecialtiesMegaMenu isScrolled={isScrolled} />
             <NavDropdown label="SERVICES" activePaths={["/book-appointment", "/health-packages", "/patient-services", "/contact"]}>
               <DropdownLink to="/book-appointment">Plan Your Visit</DropdownLink>
               <DropdownLink to="/health-packages">Checkup Packages</DropdownLink>
