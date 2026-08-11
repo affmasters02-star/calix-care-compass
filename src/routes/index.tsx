@@ -173,7 +173,6 @@ function Home() {
           </div>
         )}
       </Section>
-      </Section>
 
       {/* About */}
       <Section>
