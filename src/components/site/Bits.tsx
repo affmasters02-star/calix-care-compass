@@ -73,12 +73,14 @@ export function SectionHeading({
 export function Section({
   children,
   tone = "default",
-  className = "",
-}: {
-  children: ReactNode;
-  tone?: "default" | "soft" | "muted";
-  className?: string;
-}) {
+   className = "",
+   id,
+ }: {
+   children: ReactNode;
+   tone?: "default" | "soft" | "muted";
+   className?: string;
+   id?: string;
+ }) {
   const bg =
     tone === "soft" ? "bg-gradient-soft" : tone === "muted" ? "bg-secondary/60" : "bg-background";
   return (
