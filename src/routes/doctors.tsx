@@ -93,38 +93,41 @@ function Doctors() {
           {filteredDoctors.map((d) => (
             <div
               key={d.name}
-              className="group flex flex-col rounded-3xl border border-border bg-card p-8 shadow-card transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-lift"
+              className="group relative flex flex-col rounded-3xl border border-slate-100 bg-white p-7 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] sm:p-8"
             >
-              <div className="flex items-center gap-5">
-                <span className="grid size-20 shrink-0 place-items-center rounded-2xl bg-gradient-brand font-display text-2xl font-extrabold text-primary-foreground shadow-lg group-hover:scale-105 transition-transform">
-                  {initials(d.name)}
-                </span>
+              {/* Decorative Glow */}
+              <div className="absolute right-0 top-0 size-24 translate-x-8 -translate-y-8 rounded-full bg-primary/5 blur-2xl transition-transform duration-500 group-hover:scale-150" aria-hidden="true" />
+              
+              <div className="relative z-10 flex items-center gap-5">
+                <div className="grid size-20 shrink-0 place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#001F5B] via-[#003A8C] to-[#E83E8C] font-display text-2xl font-black text-white shadow-lg transition-transform duration-500 group-hover:scale-105 group-hover:rounded-[1.5rem]">
+                  <span className="drop-shadow-lg">{initials(d.name)}</span>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10" />
+                </div>
                 <div>
-                  <h2 className="font-display text-xl font-[800] text-primary leading-tight">{d.name}</h2>
-                  <div className="mt-1.5">
-                    <span className="inline-flex items-center rounded-full bg-accent-soft px-3 py-1 text-xs font-bold text-accent">
-                      {d.specialty}
-                    </span>
+                  <h3 className="font-display text-xl font-[800] leading-tight text-primary transition-colors group-hover:text-primary-deep">{d.name}</h3>
+                  <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-slate-50 px-3 py-1 text-[0.7rem] font-bold text-slate-600 ring-1 ring-inset ring-slate-200/50">
+                    <div className="size-1.5 rounded-full bg-[#00857A]" />
+                    {d.specialty} Specialist
                   </div>
                 </div>
               </div>
               
-              <div className="mt-6 flex-1">
-                <p className="text-sm font-bold text-slate-800">{d.qualification}</p>
+              <div className="relative z-10 mt-6 flex-1">
+                <p className="text-[0.85rem] font-bold uppercase tracking-widest text-[#E83E8C]">{d.qualification}</p>
                 <p className="mt-3 text-sm font-medium leading-relaxed text-slate-600 line-clamp-3">
                   {d.description}
                 </p>
-                <div className="mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/70">
-                  <div className="size-1.5 rounded-full bg-accent" />
+                <div className="mt-4 flex items-center gap-2 text-[0.65rem] font-black uppercase tracking-widest text-primary/60 lg:text-[0.7rem]">
+                  <div className="size-1.5 rounded-full bg-accent animate-pulse" />
                   {d.experience} Experience
                 </div>
               </div>
 
-              <div className="mt-8 grid grid-cols-2 gap-3">
-                <Button asChild variant="outlineBrand" className="h-11 rounded-xl font-bold">
-                  <Link to="/doctors/$slug" params={{ slug: d.slug }}>Details</Link>
+              <div className="relative z-10 mt-8 grid grid-cols-2 gap-3">
+                <Button asChild variant="outline" className="h-11 rounded-full border-slate-200 bg-white text-xs font-extrabold text-[#0f172a] shadow-sm transition-all hover:bg-slate-50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                  <Link to="/doctors/$slug" params={{ slug: d.slug }}>View Profile</Link>
                 </Button>
-                <Button asChild variant="brand" className="h-11 rounded-xl font-bold shadow-sm">
+                <Button asChild className="h-11 rounded-full bg-[#003A8C] text-xs font-extrabold text-white shadow-lg shadow-[#003A8C]/20 transition-all hover:bg-[#001F5B] hover:shadow-xl hover:shadow-[#003A8C]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                   <Link
                     to="/book-appointment"
                     search={{
@@ -132,7 +135,7 @@ function Doctors() {
                       doctor: d.slug,
                     }}
                   >
-                    Book
+                    Book Appointment
                   </Link>
                 </Button>
               </div>
