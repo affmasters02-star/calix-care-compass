@@ -21,6 +21,7 @@ import { z } from "zod";
 const searchSchema = z.object({
   specialty: z.string().optional(),
   doctor: z.string().optional(),
+  slot: z.string().optional(),
 });
 
 export const Route = createFileRoute("/book-appointment")({
@@ -44,9 +45,12 @@ export const Route = createFileRoute("/book-appointment")({
 });
 
 function BookAppointment() {
-  const { specialty: initialSpecialty, doctor: initialDoctor } = Route.useSearch();
+  const { specialty: initialSpecialty, doctor: initialDoctor, slot: initialSlot } = Route.useSearch();
   const [specialty, setSpecialty] = useState(initialSpecialty || "");
   const [doctor, setDoctor] = useState(initialDoctor || "");
+  const [slot, setSlot] = useState(initialSlot || "");
+  const selectedDoctor = doctors.find((d) => d.slug === doctor);
+  const slotOptions = selectedDoctor?.availability.slots ?? ["09:30 AM", "11:00 AM", "01:00 PM", "03:00 PM", "05:00 PM"];
 
   const filteredDoctors = doctors.filter((d) => 
     !specialty || d.specialty.toLowerCase().replace('&', 'and').replace(/\s+/g, '-') === specialty
@@ -71,6 +75,7 @@ function BookAppointment() {
               });
               (e.currentTarget as HTMLFormElement).reset();
               setSpecialty("");
+              setSlot("");
             }}
           >
             <div className="grid gap-5 sm:grid-cols-2">
@@ -118,6 +123,21 @@ function BookAppointment() {
                     {filteredDoctors.map((d) => (
                       <SelectItem key={d.slug} value={d.slug}>
                         {d.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label htmlFor="slot">Preferred time</Label>
+                <Select value={slot} onValueChange={setSlot}>
+                  <SelectTrigger id="slot" className="mt-2">
+                    <SelectValue placeholder="Choose a time slot" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {slotOptions.map((s) => (
+                      <SelectItem key={s} value={s}>
+                        {s}
                       </SelectItem>
                     ))}
                   </SelectContent>

@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useState } from "react";
 import { Award, BookOpen, Calendar, GraduationCap, Mail, MapPin, Phone, Star, Quote } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -37,6 +38,7 @@ function initials(name: string) {
 
 function DoctorProfile() {
   const { doctor } = Route.useLoaderData();
+  const [slot, setSlot] = useState(doctor.availability.slots[0] ?? "");
 
   return (
     <>
@@ -142,14 +144,14 @@ function DoctorProfile() {
           <div className="space-y-6">
             <div className="sticky top-28 rounded-3xl border-2 border-primary/10 bg-card p-8 shadow-lift">
               <h3 className="font-display text-xl font-bold text-foreground">Book a Consultation</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Available Monday – Saturday</p>
+              <p className="mt-2 text-sm text-muted-foreground">Available {doctor.availability.days}</p>
               
               <div className="mt-8 space-y-4">
                 <div className="flex items-center gap-4 rounded-2xl bg-muted/50 p-4">
                   <Calendar className="size-5 text-primary" />
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Availability</p>
-                    <p className="text-sm font-bold">10:00 AM – 4:00 PM</p>
+                    <p className="text-sm font-bold">{doctor.availability.timings}</p>
                   </div>
                 </div>
 
@@ -173,13 +175,36 @@ function DoctorProfile() {
               </div>
 
 
+              <div className="mt-8">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Available appointment times</p>
+                <div className="mt-3 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Available appointment times">
+                  {doctor.availability.slots.map((s: string) => (
+                    <button
+                      key={s}
+                      type="button"
+                      role="radio"
+                      aria-checked={slot === s}
+                      onClick={() => setSlot(s)}
+                      className={`rounded-2xl border px-3 py-2.5 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
+                        slot === s
+                          ? "border-primary bg-primary text-primary-foreground shadow-card"
+                          : "border-border bg-muted/40 text-foreground hover:border-primary/40 hover:text-primary"
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div className="mt-8 flex flex-col gap-3">
                 <Button asChild variant="brand" size="xl" className="w-full">
                   <Link 
                     to="/book-appointment" 
                     search={{ 
                       specialty: doctor.specialty.toLowerCase().replace(/\s+/g, '-').replace('&', 'and'),
-                      doctor: doctor.slug 
+                      doctor: doctor.slug,
+                      slot: slot || undefined
                     }}
                   >
                     Confirm Appointment
