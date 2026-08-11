@@ -215,7 +215,7 @@ export function Header() {
           <Logo className="shrink-0" />
 
           {/* CENTER: NAVIGATION */}
-          <div className="hidden items-center gap-4 2xl:gap-8 xl:flex">
+          <div className="hidden items-center gap-2 lg:flex xl:gap-4 2xl:gap-8">
             <NavLink to="/">Home</NavLink>
             <NavDropdown label="About Us">
               <DropdownLink to="/about">Our Story</DropdownLink>
@@ -236,8 +236,8 @@ export function Header() {
             <NavLink to="/contact">Reach Us</NavLink>
           </div>
 
-          {/* RIGHT: SOCIAL + BUTTONS */}
-          <div className="hidden items-center gap-4 lg:flex shrink-0">
+          {/* RIGHT: BUTTONS */}
+          <div className="hidden items-center gap-3 lg:flex shrink-0">
             <div className="flex items-center gap-3">
               <Button asChild className="h-10 rounded-full bg-[#E83E8C] px-6 text-sm text-white shadow-md hover:bg-[#D81B60] transition-all hover:-translate-y-0.5">
                 <Link to="/book-appointment">Book Appointment</Link>
