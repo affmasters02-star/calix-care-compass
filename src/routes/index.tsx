@@ -160,9 +160,9 @@ function Home() {
               loading="lazy"
               width={1408}
               height={1008}
-              className="rounded-3xl object-cover shadow-lift"
+              className="rounded-[2rem] object-cover shadow-lift"
             />
-            <div className="absolute -bottom-8 right-4 hidden rounded-2xl bg-gradient-brand p-6 text-primary-foreground shadow-lift sm:block">
+            <div className="absolute -bottom-8 right-4 hidden rounded-3xl bg-primary-deep p-6 text-primary-foreground shadow-lift sm:block">
               <p className="font-display text-3xl font-extrabold">24×7</p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground/80">
                 Emergency care
@@ -232,7 +232,7 @@ function Home() {
         </div>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {doctors.slice(0, 4).map((d) => (
-            <div key={d.name} className="rounded-2xl border border-border bg-card p-6 shadow-card">
+            <div key={d.name} className="rounded-3xl border border-border bg-card p-6 shadow-card">
               <span className="grid size-14 place-items-center rounded-full bg-primary-soft font-display text-lg font-bold text-primary">
                 {d.name.split(" ")[1]?.[0] ?? "C"}
                 {d.name.split(" ")[2]?.[0] ?? ""}
@@ -323,7 +323,7 @@ function Home() {
       </Section>
 
       {/* CTA */}
-      <section className="bg-gradient-brand py-16 text-primary-foreground lg:py-20">
+      <section className="bg-primary py-16 text-primary-foreground lg:py-20">
         <div className="container-page flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
           <div>
             <h2 className="text-2xl font-bold sm:text-3xl">
