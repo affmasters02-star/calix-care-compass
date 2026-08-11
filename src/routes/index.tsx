@@ -86,9 +86,8 @@ function Home() {
         <div className="container-page relative z-10 py-20 text-white lg:py-32">
           <div className="max-w-4xl">
             {/* Premium Trust Badge */}
-            <div className="mb-8 inline-flex items-center gap-3 rounded-full premium-glass-glow bg-white/10 px-5 py-2.5 text-xs font-black tracking-[0.2em] text-white shadow-2xl animate-in fade-in slide-in-from-left duration-700 ring-1 ring-white/30 backdrop-blur-md">
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full premium-glass-glow bg-white/10 px-5 py-2.5 text-xs font-black tracking-[0.2em] text-white shadow-2xl ring-1 ring-white/30 backdrop-blur-md">
               <span className="relative flex size-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
                 <span className="relative inline-flex size-2.5 rounded-full bg-accent"></span>
               </span>
               24/7 EMERGENCY & CRITICAL CARE
@@ -132,7 +131,6 @@ function Home() {
                 )}>
                   <div className="flex items-baseline gap-1">
                     <span className="font-display text-3xl font-[900] text-white lg:text-4xl">{s.value}</span>
-                    <span className="text-accent font-black">+</span>
                   </div>
                   <span className="mt-1 text-[0.7rem] font-black uppercase tracking-[0.2em] text-white/50">{s.label}</span>
                 </div>
