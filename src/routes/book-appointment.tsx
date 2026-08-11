@@ -49,7 +49,7 @@ function BookAppointment() {
   const [doctor, setDoctor] = useState(initialDoctor || "");
 
   const filteredDoctors = doctors.filter((d) => 
-    !specialty || d.specialty.toLowerCase() === specialties.find(s => s.slug === specialty)?.name.toLowerCase()
+    !specialty || d.specialty.toLowerCase().replace('&', 'and').replace(/\s+/g, '-') === specialty
   );
 
   return (
@@ -103,6 +103,21 @@ function BookAppointment() {
                     {specialties.map((s) => (
                       <SelectItem key={s.slug} value={s.slug}>
                         {s.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label htmlFor="doctor">Doctor (optional)</Label>
+                <Select value={doctor} onValueChange={setDoctor}>
+                  <SelectTrigger id="doctor" className="mt-2">
+                    <SelectValue placeholder="Choose a specialist" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {filteredDoctors.map((d) => (
+                      <SelectItem key={d.slug} value={d.slug}>
+                        {d.name}
                       </SelectItem>
                     ))}
                   </SelectContent>
