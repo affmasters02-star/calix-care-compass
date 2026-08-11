@@ -151,7 +151,7 @@ function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
                   onClick={() => setIsOpen(false)}
                   className="flex items-center gap-2 text-sm font-black text-[#E83E8C] hover:translate-x-1 transition-transform uppercase tracking-widest"
                 >
-                  View All Departments <ArrowRight className="size-4" />
+                  View All Specialties <ArrowRight className="size-4" />
                 </Link>
               </div>
               <div className="grid grid-cols-3 gap-x-10 gap-y-2">
