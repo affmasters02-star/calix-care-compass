@@ -67,7 +67,7 @@ export function SectionHeading({
       <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] text-balance">
         {title}
       </h2>
-      {subtitle ? <p className="mt-4 text-base font-medium text-slate-600">{subtitle}</p> : null}
+      {subtitle ? <p className="mt-4 text-base font-medium text-muted-foreground">{subtitle}</p> : null}
     </div>
   );
 }

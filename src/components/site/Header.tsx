@@ -111,9 +111,9 @@ function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
         aria-controls="specialties-mega-menu"
         onMouseEnter={() => setIsOpen(true)}
         className={cn(
-          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
-          isActive && "text-[#003A8C] after:scale-x-100",
-          isOpen && "text-[#003A8C] after:scale-x-100"
+          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
+          isActive && "text-brand-blue after:scale-x-100",
+          isOpen && "text-brand-blue after:scale-x-100"
         )}
       >
         SPECIALTIES
@@ -145,11 +145,11 @@ function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
             {/* Left Column: Menu Items */}
             <div className="col-span-9">
               <div className="flex items-center justify-between mb-8 border-b border-[#EAF4FF] pb-4">
-                <h3 className="font-display text-2xl font-[900] text-[#003A8C] tracking-tight">Medical Specialties</h3>
+                <h3 className="font-display text-2xl font-[900] text-brand-blue tracking-tight">Medical Specialties</h3>
                 <Link 
                   to="/specialties" 
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-2 text-sm font-black text-[#E83E8C] hover:translate-x-1 transition-transform uppercase tracking-widest"
+                  className="flex items-center gap-2 text-sm font-black text-accent hover:translate-x-1 transition-transform uppercase tracking-widest"
                 >
                   View All Specialties <ArrowRight className="size-4" />
                 </Link>
@@ -195,7 +195,7 @@ function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
                     ))}
                   </ul>
                   <div className="mt-auto pt-8">
-                    <Button asChild size="lg" className="w-full rounded-full bg-white text-[#003A8C] font-black uppercase tracking-widest text-[0.7rem] hover:bg-[#EAF4FF] hover:shadow-xl transition-all active:scale-[0.98]">
+                    <Button asChild size="lg" className="w-full rounded-full bg-white text-brand-blue font-black uppercase tracking-widest text-[0.7rem] hover:bg-[#EAF4FF] hover:shadow-xl transition-all active:scale-[0.98]">
                       <Link to="/book-appointment" onClick={() => setIsOpen(false)}>Book Appointment</Link>
                     </Button>
                   </div>
@@ -219,17 +219,17 @@ function SpecialtyItem({ specialty, onSelect }: { specialty: (typeof specialties
       className="group/item flex items-center justify-between gap-3 rounded-xl px-3 py-2 transition-all hover:bg-[#EAF4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C]"
     >
       <div className="flex items-center gap-4">
-        <div className="size-11 rounded-xl bg-[#EAF4FF] group-hover/item:bg-white group-hover/item:shadow-sm transition-all flex items-center justify-center text-[#003A8C] ring-1 ring-primary/5">
+        <div className="size-11 rounded-xl bg-[#EAF4FF] group-hover/item:bg-white group-hover/item:shadow-sm transition-all flex items-center justify-center text-brand-blue ring-1 ring-primary/5">
           <specialty.icon className="size-5 transition-transform group-hover/item:scale-110" />
         </div>
         <div>
-          <span className="block text-[0.9375rem] font-[800] text-[#0f172a] transition-colors group-hover/item:text-[#003A8C]">{specialty.name}</span>
+          <span className="block text-[0.9375rem] font-[800] text-foreground transition-colors group-hover/item:text-brand-blue">{specialty.name}</span>
           <span className="block text-[0.7rem] font-bold text-muted-foreground uppercase tracking-widest mt-0.5">
             {specialty.tagline}
           </span>
         </div>
       </div>
-      <ArrowRight className="size-4 -translate-x-2 opacity-0 transition-all group-hover/item:translate-x-0 group-hover/item:opacity-100 text-[#E83E8C]" />
+      <ArrowRight className="size-4 -translate-x-2 opacity-0 transition-all group-hover/item:translate-x-0 group-hover/item:opacity-100 text-accent" />
     </Link>
   );
 }
@@ -366,7 +366,7 @@ export function Header() {
           {/* MOBILE TOGGLE */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild className="xl:hidden">
-              <Button variant="ghost" size="icon" className="size-10 rounded-xl text-[#001F5B]">
+              <Button variant="ghost" size="icon" className="size-10 rounded-xl text-primary">
                 <Menu className="size-7" />
               </Button>
             </SheetTrigger>
@@ -464,10 +464,10 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
         }
       }}
       activeOptions={{ exact: to === "/" }}
-      activeProps={{ className: "text-[#003A8C] after:scale-x-100" }}
+      activeProps={{ className: "text-brand-blue after:scale-x-100" }}
       className={cn(
-        "relative py-2 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 uppercase whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
-        isActiveSection && "text-[#003A8C] after:scale-x-100"
+        "relative py-2 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 uppercase whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
+        isActiveSection && "text-brand-blue after:scale-x-100"
       )}
     >
       {children}
@@ -533,9 +533,9 @@ function NavDropdown({ label, children, activePaths }: { label: string; children
         onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsOpen(true)}
         className={cn(
-          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
-          isActive && "text-[#003A8C] after:scale-x-100",
-          isOpen && "text-[#003A8C] after:scale-x-100"
+          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
+          isActive && "text-brand-blue after:scale-x-100",
+          isOpen && "text-brand-blue after:scale-x-100"
         )}
       >
         {label}
@@ -562,8 +562,8 @@ function DropdownLink({ to, children, onClick }: { to: string; children: React.R
     <Link
       to={to}
       onClick={onClick}
-      activeProps={{ className: "bg-[#EAF4FF] text-[#003A8C]" }}
-      className="block px-6 py-2.5 text-sm font-semibold text-[#0f172a] transition-colors hover:bg-[#EAF4FF] hover:text-[#003A8C] focus-visible:outline-none focus-visible:bg-[#EAF4FF] focus-visible:text-[#003A8C]"
+      activeProps={{ className: "bg-[#EAF4FF] text-brand-blue" }}
+      className="block px-6 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-[#EAF4FF] hover:text-brand-blue focus-visible:outline-none focus-visible:bg-[#EAF4FF] focus-visible:text-brand-blue"
     >
       {children}
     </Link>
@@ -582,7 +582,7 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
             <Link 
               to="/specialties" 
               onClick={closeMenu}
-              className="flex items-center gap-3 px-4 py-3 text-sm font-black text-[#E83E8C] uppercase tracking-widest border-b border-[#EAF4FF] mb-2"
+              className="flex items-center gap-3 px-4 py-3 text-sm font-black text-accent uppercase tracking-widest border-b border-[#EAF4FF] mb-2"
             >
               All Specialties <ArrowRight className="size-4" />
             </Link>
@@ -593,10 +593,10 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
                   to="/specialties/$slug"
                   params={{ slug: s.slug }}
                   onClick={closeMenu}
-                  activeProps={{ className: "bg-[#EAF4FF] text-[#003A8C] border-l-4 border-[#003A8C]" }}
-                  className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-[#0f172a] transition-all hover:bg-[#EAF4FF] hover:text-[#003A8C] active:scale-[0.98]"
+                  activeProps={{ className: "bg-[#EAF4FF] text-brand-blue border-l-4 border-[#003A8C]" }}
+                  className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-foreground transition-all hover:bg-[#EAF4FF] hover:text-brand-blue active:scale-[0.98]"
                 >
-                  <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#EAF4FF] group-hover:bg-white text-[#003A8C]">
+                  <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#EAF4FF] group-hover:bg-white text-brand-blue">
                     <s.icon className="size-4" />
                   </div>
                   <span>{s.name}</span>
@@ -615,7 +615,7 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
          <Button asChild className="rounded-full bg-[#E83E8C] text-white">
             <Link to="/book-appointment" onClick={closeMenu}>Book Appointment</Link>
          </Button>
-         <Button asChild variant="outline" className="rounded-full border-[#DC2626] text-[#DC2626] hover:bg-red-50">
+         <Button asChild variant="outline" className="rounded-full border-[#DC2626] text-destructive hover:bg-red-50">
             <Link to="/contact" onClick={closeMenu}>Emergency Care</Link>
          </Button>
       </div>

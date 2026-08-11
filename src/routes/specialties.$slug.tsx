@@ -92,7 +92,7 @@ function SpecialtyDetail() {
           <div className="space-y-16">
             <div>
               <SectionHeading align="left" eyebrow="Department Overview" title={`Advanced ${specialty.name} Care`} />
-              <div className="mt-8 space-y-6 text-lg leading-relaxed text-slate-600 font-medium">
+              <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground font-medium">
                 <p>{specialty.description}</p>
                 <p>
                   At Calix Multispeciality Hospital, our {specialty.name.toLowerCase()} department is equipped with 
@@ -113,7 +113,7 @@ function SpecialtyDetail() {
                 </div>
                 <ul className="space-y-4">
                   {specialty.conditions.map((item: string) => (
-                    <li key={item} className="flex items-start gap-3 text-[0.9375rem] font-semibold text-slate-700">
+                    <li key={item} className="flex items-start gap-3 text-[0.9375rem] font-semibold text-foreground">
                       <div className="mt-1 size-1.5 shrink-0 rounded-full bg-accent" />
                       {item}
                     </li>
@@ -130,7 +130,7 @@ function SpecialtyDetail() {
                 </div>
                 <ul className="space-y-4">
                   {specialty.diagnostics.map((item: string) => (
-                    <li key={item} className="flex items-start gap-3 text-[0.9375rem] font-semibold text-slate-700">
+                    <li key={item} className="flex items-start gap-3 text-[0.9375rem] font-semibold text-foreground">
                       <div className="mt-1 size-1.5 shrink-0 rounded-full bg-healthcare-teal" />
                       {item}
                     </li>
@@ -154,7 +154,7 @@ function SpecialtyDetail() {
                     <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                       <Check className="size-5" />
                     </div>
-                    <span className="text-[0.9375rem] font-bold text-slate-700">{h}</span>
+                    <span className="text-[0.9375rem] font-bold text-foreground">{h}</span>
                   </div>
                 ))}
               </div>
@@ -178,7 +178,7 @@ function SpecialtyDetail() {
                       </div>
                       <div>
                         <h4 className="font-display text-lg font-[800] text-primary group-hover:text-accent transition-colors">{d.name}</h4>
-                        <p className="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wider">{d.qualification}</p>
+                        <p className="text-xs font-bold text-muted-foreground mt-1 uppercase tracking-wider">{d.qualification}</p>
                         <div className="mt-3 flex items-center gap-2">
                           <span className="px-2 py-0.5 rounded-full bg-primary/5 text-[10px] font-black text-primary uppercase tracking-tighter">
                             {d.experience} Exp
@@ -227,10 +227,10 @@ function SpecialtyDetail() {
                     <Link
                       to="/specialties/$slug"
                       params={{ slug: s.slug }}
-                      className="group flex items-center justify-between rounded-2xl bg-white border border-border p-4 text-[0.9375rem] font-bold text-slate-600 shadow-sm transition-all hover:border-primary/20 hover:text-primary hover:shadow-md"
+                      className="group flex items-center justify-between rounded-2xl bg-white border border-border p-4 text-[0.9375rem] font-bold text-muted-foreground shadow-sm transition-all hover:border-primary/20 hover:text-primary hover:shadow-md"
                     >
                       {s.name}
-                      <ArrowRight className="size-4 text-slate-300 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                      <ArrowRight className="size-4 text-muted-foreground/60 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
                     </Link>
                   </li>
                 ))}

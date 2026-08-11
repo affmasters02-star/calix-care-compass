@@ -106,7 +106,7 @@ function Doctors() {
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-display text-lg font-[800] leading-tight text-primary transition-colors group-hover:text-primary-deep sm:text-xl">{d.name}</h3>
-                  <div className="mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-slate-50 px-2.5 py-1 text-[0.65rem] font-bold text-slate-600 ring-1 ring-inset ring-slate-200/50 sm:mt-2 sm:gap-2 sm:px-3 sm:text-[0.7rem]">
+                  <div className="mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-slate-50 px-2.5 py-1 text-[0.65rem] font-bold text-muted-foreground ring-1 ring-inset ring-slate-200/50 sm:mt-2 sm:gap-2 sm:px-3 sm:text-[0.7rem]">
                     <div className="size-1 rounded-full bg-[#00857A] sm:size-1.5" />
                     <span className="truncate">{d.specialty} Specialist</span>
                   </div>
@@ -114,8 +114,8 @@ function Doctors() {
               </div>
               
               <div className="relative z-10 mt-6 flex-1">
-                <p className="text-[0.85rem] font-bold uppercase tracking-widest text-[#E83E8C]">{d.qualification}</p>
-                <p className="mt-3 text-sm font-medium leading-relaxed text-slate-600 line-clamp-3">
+                <p className="text-[0.85rem] font-bold uppercase tracking-widest text-accent">{d.qualification}</p>
+                <p className="mt-3 text-sm font-medium leading-relaxed text-muted-foreground line-clamp-3">
                   {d.description}
                 </p>
                 <div className="mt-4 flex items-center gap-2 text-[0.65rem] font-black uppercase tracking-widest text-primary/60 lg:text-[0.7rem]">
@@ -136,7 +136,7 @@ function Doctors() {
                     Book Appointment
                   </Link>
                 </Button>
-                <Button asChild variant="outline" className="h-10 rounded-full border-slate-200 bg-white px-3 text-[0.65rem] font-black uppercase tracking-wider text-[#0f172a] shadow-sm transition-all hover:bg-slate-50 hover:text-primary sm:h-11 sm:px-4 sm:text-[0.7rem]">
+                <Button asChild variant="outline" className="h-10 rounded-full border-slate-200 bg-white px-3 text-[0.65rem] font-black uppercase tracking-wider text-foreground shadow-sm transition-all hover:bg-slate-50 hover:text-primary sm:h-11 sm:px-4 sm:text-[0.7rem]">
                   <Link to="/doctors/$slug" params={{ slug: d.slug }}>View Profile</Link>
                 </Button>
               </div>
