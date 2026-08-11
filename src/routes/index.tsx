@@ -76,10 +76,10 @@ function Home() {
               <span className="flex size-2 rounded-full bg-accent animate-pulse" />
               24/7 EMERGENCY & CRITICAL CARE
             </div>
-            <h1 className="text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-8xl">
-              World-Class Multispeciality Healthcare <span className="text-accent drop-shadow-sm">Under One Roof</span>
+            <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-md sm:text-7xl lg:text-8xl">
+              World-Class Multispeciality <br className="hidden lg:block" /> Healthcare <span className="text-accent">Under One Roof</span>
             </h1>
-            <p className="mt-4 text-base font-medium leading-relaxed text-primary-foreground/90 sm:mt-8 sm:text-xl lg:text-2xl">
+            <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/95 sm:mt-8 sm:text-xl lg:text-2xl">
               Combining expert specialists, advanced diagnostics, and compassionate family care to provide you with a seamless healthcare experience.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 sm:mt-12 sm:gap-5">
