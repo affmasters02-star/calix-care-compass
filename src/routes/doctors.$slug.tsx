@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Award, BookOpen, Calendar, GraduationCap, MapPin, Phone, Star } from "lucide-react";
+import { Award, BookOpen, Calendar, GraduationCap, Mail, MapPin, Phone, Star } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { PageHero, Section } from "@/components/site/Bits";
@@ -57,11 +57,30 @@ function DoctorProfile() {
                   {initials(doctor.name)}
                 </span>
                 <div>
-                  <h2 className="font-display text-2xl font-extrabold text-foreground">About the Specialist</h2>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-bold text-primary">
+                      {doctor.specialty}
+                    </span>
+                    <span className="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-bold text-accent">
+                      {doctor.experience} Experience
+                    </span>
+                  </div>
+                  <h2 className="mt-4 font-display text-2xl font-extrabold text-foreground">About the Specialist</h2>
                   <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{doctor.description}</p>
+                  <dl className="mt-8 grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-2xl bg-muted/50 p-4">
+                      <dt className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Qualifications</dt>
+                      <dd className="mt-1 text-sm font-bold text-foreground">{doctor.qualification}</dd>
+                    </div>
+                    <div className="rounded-2xl bg-muted/50 p-4">
+                      <dt className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Department</dt>
+                      <dd className="mt-1 text-sm font-bold text-foreground">{doctor.specialty}</dd>
+                    </div>
+                  </dl>
                 </div>
               </div>
             </div>
+
 
             {/* Expertise & Education */}
             <div className="grid gap-6 sm:grid-cols-2">
@@ -119,7 +138,18 @@ function DoctorProfile() {
                     <p className="text-sm font-bold">Calix Hospital Main Tower</p>
                   </div>
                 </div>
+
+                <div className="flex items-center gap-4 rounded-2xl bg-muted/50 p-4">
+                  <Mail className="size-5 text-primary" />
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email</p>
+                    <a href={`mailto:${HOSPITAL.email}`} className="block truncate text-sm font-bold hover:text-primary">
+                      {HOSPITAL.email}
+                    </a>
+                  </div>
+                </div>
               </div>
+
 
               <div className="mt-8 flex flex-col gap-3">
                 <Button asChild variant="brand" size="xl" className="w-full">

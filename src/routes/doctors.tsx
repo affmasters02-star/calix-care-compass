@@ -3,7 +3,7 @@ import { Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { PageHero, Section, SectionHeading } from "@/components/site/Bits";
-import { doctors, specialties, HOSPITAL } from "@/lib/site-data";
+import { doctors, HOSPITAL } from "@/lib/site-data";
 
 export const Route = createFileRoute("/doctors")({
   head: () => ({
