@@ -45,54 +45,59 @@ function SpecialtiesIndex() {
               key={specialty.slug}
               to="/specialties/$slug"
               params={{ slug: specialty.slug }}
-              className="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-border bg-card p-6 sm:p-10 shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-lift"
+              className="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-border bg-card p-7 sm:p-10 shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-premium focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
             >
-              {/* Decorative Glow */}
-              <div className="absolute -right-10 -top-10 size-32 rounded-full bg-primary/5 blur-3xl transition-opacity group-hover:opacity-100 opacity-0" />
+              {/* Decorative Glows */}
+              <div className="absolute -right-20 -top-20 size-64 rounded-full bg-primary/5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:bg-primary/10 group-hover:opacity-100 opacity-0" aria-hidden="true" />
+              <div className="absolute -bottom-20 -left-20 size-64 rounded-full bg-accent/5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:bg-accent/10 group-hover:opacity-100 opacity-0" aria-hidden="true" />
               
+              {/* Subtle pattern overlay */}
+              <div className="absolute inset-0 opacity-[0.03] mix-blend-multiply pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #003A8C 1px, transparent 0)', backgroundSize: '24px 24px' }} />
+
               <div className="flex items-start justify-between relative z-10">
-                <div className="grid size-24 place-items-center rounded-[2.5rem] bg-primary/5 ring-1 ring-primary/10 transition-all duration-500 group-hover:bg-gradient-brand group-hover:ring-0 group-hover:shadow-premium group-hover:shadow-primary/30">
-                  <SpecialtyIcon slug={specialty.slug} className="size-11 text-primary group-hover:text-white transition-all duration-500 group-hover:scale-110" />
-                  {/* Glass stroke effect */}
+                <div className="relative grid size-28 place-items-center rounded-[2.5rem] bg-primary/5 ring-1 ring-primary/10 transition-all duration-500 group-hover:bg-gradient-brand group-hover:ring-0 group-hover:shadow-premium group-hover:shadow-primary/40 group-hover:-translate-y-1">
+                  <SpecialtyIcon slug={specialty.slug} className="size-12 text-primary group-hover:text-white transition-all duration-500 group-hover:scale-110" />
+                  {/* Dual Glass stroke effect */}
                   <div className="absolute inset-0 rounded-[2.5rem] border border-white/0 transition-colors duration-500 group-hover:border-white/20" />
+                  <div className="absolute inset-[2px] rounded-[calc(2.5rem-2px)] border border-white/0 transition-colors duration-700 group-hover:border-white/10" />
                 </div>
-                <div className="rounded-full bg-slate-50 p-3.5 text-slate-300 transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:shadow-premium group-hover:shadow-accent/40 group-hover:scale-110">
-                  <ArrowRight className="size-5" />
+                <div className="rounded-full bg-slate-50 p-4 text-slate-300 transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:shadow-premium group-hover:shadow-accent/40 group-hover:scale-110 group-hover:rotate-12">
+                  <ArrowRight className="size-5.5" />
                 </div>
               </div>
-
-              <div className="mt-8 relative z-10">
-                <h3 className="font-display text-2xl font-[900] text-primary transition-colors group-hover:text-primary-deep">
+ 
+              <div className="mt-10 relative z-10">
+                <h3 className="font-display text-3xl font-[900] tracking-tight text-primary transition-all duration-500 group-hover:text-primary-deep group-hover:scale-[1.01]">
                   {specialty.name}
                 </h3>
-                <div className="mt-2.5 flex items-center gap-3">
-                  <span className="h-1 w-8 rounded-full bg-accent/20 transition-all duration-500 group-hover:w-16 group-hover:bg-accent" />
-                  <p className="text-[0.7rem] font-black text-accent uppercase tracking-[0.25em]">
+                <div className="mt-3 flex items-center gap-3">
+                  <div className="h-1 w-10 rounded-full bg-accent/20 transition-all duration-500 group-hover:w-20 group-hover:bg-accent" />
+                  <p className="text-[0.75rem] font-black text-accent uppercase tracking-[0.3em]">
                     {specialty.tagline}
                   </p>
                 </div>
-                <p className="mt-5 line-clamp-3 text-[0.9375rem] leading-relaxed text-slate-500 font-medium transition-colors group-hover:text-slate-700">
+                <p className="mt-6 line-clamp-3 text-[1rem] leading-relaxed text-slate-500 font-semibold transition-colors duration-500 group-hover:text-slate-700">
                   {specialty.description}
                 </p>
               </div>
-
-              <div className="mt-8 grid gap-3.5 relative z-10">
+ 
+              <div className="mt-10 grid gap-4 relative z-10">
                 {specialty.highlights.slice(0, 3).map((highlight) => (
-                  <div key={highlight} className="flex items-center gap-3.5 text-sm font-semibold text-slate-600 transition-colors group-hover:text-slate-800">
-                    <div className="flex size-5.5 shrink-0 items-center justify-center rounded-full bg-healthcare-teal/10 transition-colors group-hover:bg-healthcare-teal/20">
-                      <Check className="size-3.5 text-healthcare-teal stroke-[3]" />
+                  <div key={highlight} className="flex items-center gap-4 text-[0.9375rem] font-bold text-slate-600 transition-colors duration-500 group-hover:text-slate-800">
+                    <div className="flex size-6.5 shrink-0 items-center justify-center rounded-full bg-healthcare-teal/10 shadow-sm transition-all duration-500 group-hover:bg-healthcare-teal group-hover:text-white group-hover:scale-110">
+                      <Check className="size-4 stroke-[3.5]" />
                     </div>
                     {highlight}
                   </div>
                 ))}
               </div>
-
-              <div className="mt-auto pt-10 relative z-10">
+ 
+              <div className="mt-auto pt-12 relative z-10">
                 <Button
                   variant="ghost"
-                  className="h-auto p-0 text-[0.7rem] font-black uppercase tracking-[0.3em] text-primary/60 group-hover:text-accent group-hover:translate-x-2 transition-all duration-500"
+                  className="h-auto p-0 text-[0.75rem] font-black uppercase tracking-[0.4em] text-primary/60 group-hover:text-accent group-hover:translate-x-3 transition-all duration-500"
                 >
-                  Explore Department <ArrowRight className="ml-3 size-4" />
+                  Explore Department <ArrowRight className="ml-4 size-5 transition-transform duration-500 group-hover:translate-x-1" />
                 </Button>
               </div>
             </Link>
