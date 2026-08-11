@@ -1,9 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Award, BookOpen, Calendar, GraduationCap, Mail, MapPin, Phone, Star } from "lucide-react";
+import { Award, BookOpen, Calendar, GraduationCap, Mail, MapPin, Phone, Star, Quote } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { PageHero, Section } from "@/components/site/Bits";
-import { doctors, HOSPITAL } from "@/lib/site-data";
+import { doctors, HOSPITAL, testimonials } from "@/lib/site-data";
 
 export const Route = createFileRoute("/doctors/$slug")({
   loader: ({ params }) => {
@@ -112,6 +112,28 @@ function DoctorProfile() {
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+            
+            {/* Testimonials */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 text-primary">
+                <Quote className="size-6" />
+                <h3 className="font-display text-xl font-bold">Patient Testimonials</h3>
+              </div>
+              <div className="grid gap-6 sm:grid-cols-2">
+                {testimonials.filter(t => t.context.includes(doctor.specialty) || t.context === "Family Care").slice(0, 2).map((t) => (
+                  <div key={t.name} className="relative rounded-3xl border border-slate-100 bg-white p-6 shadow-sm italic text-slate-600 text-sm leading-relaxed">
+                    <Quote className="absolute -right-2 -top-2 size-8 text-primary/5 -rotate-12" />
+                    "{t.quote}"
+                    <div className="mt-4 not-italic font-bold text-primary flex items-center gap-2">
+                      <div className="size-6 rounded-full bg-primary-soft grid place-items-center text-[10px]">
+                        {t.name[0]}
+                      </div>
+                      {t.name}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
