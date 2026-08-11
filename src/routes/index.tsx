@@ -64,7 +64,7 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate overflow-hidden">
+      <section id="home" className="relative isolate overflow-hidden">
         <img
           src={heroImageAsset.url}
           alt="Calix Multispeciality Hospital entrance at sunrise"
