@@ -84,7 +84,7 @@ export function Section({
   const bg =
     tone === "soft" ? "bg-gradient-soft" : tone === "muted" ? "bg-secondary/60" : "bg-background";
   return (
-    <section className={`py-12 lg:py-16 ${bg} ${className}`}>
+    <section id={id} className={`py-12 lg:py-16 ${bg} ${className}`}>
       <div className="container-page">{children}</div>
     </section>
   );
