@@ -59,7 +59,7 @@ export function Logo({ inverted = false }: { inverted?: boolean }) {
 function SpecialtiesMegaMenu() {
   return (
     <div className="group relative">
-      <button className="flex items-center gap-1 py-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-primary">
+      <button className="flex items-center gap-1 whitespace-nowrap py-2 text-[0.9rem] font-semibold text-foreground/80 transition-colors hover:text-primary">
         Specialties
         <ChevronDown className="size-4 transition-transform group-hover:rotate-180" />
       </button>
@@ -122,14 +122,14 @@ export function Header() {
         <div className="container-page flex h-18 items-center justify-between gap-6 py-3">
           <Logo />
 
-          <nav className="hidden items-center gap-6 xl:flex">
+          <nav className="hidden items-center gap-5 xl:flex">
             {navLinks.slice(0, 2).map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 activeOptions={{ exact: l.to === "/" }}
                 activeProps={{ className: "text-primary" }}
-                className="text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
+                className="whitespace-nowrap text-[0.9rem] font-semibold text-foreground/80 transition-colors hover:text-primary"
               >
                 {l.label}
               </Link>
@@ -140,7 +140,7 @@ export function Header() {
                 key={l.to}
                 to={l.to}
                 activeProps={{ className: "text-primary" }}
-                className="text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
+                className="whitespace-nowrap text-[0.9rem] font-semibold text-foreground/80 transition-colors hover:text-primary"
               >
                 {l.label}
               </Link>
