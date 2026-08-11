@@ -460,53 +460,61 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
         className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2"
       >
         {filteredDoctors.map((d) => (
-          <div key={d.name} className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-md sm:p-6 md:p-8">
-            <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-start">
-              {/* Image section */}
-              <div className="relative shrink-0 self-center md:self-start">
-                <div className="grid size-32 place-items-center overflow-hidden rounded-lg bg-slate-100 font-display text-3xl font-black text-slate-300 sm:size-40 md:size-48 lg:size-56">
-                  <span className="opacity-50">
+          <div key={d.name} className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-6 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-[0_30px_70px_-20px_rgba(0,58,140,0.15)] sm:rounded-[2.5rem] sm:p-8 md:p-10">
+            {/* Top decorative element */}
+            <div className="absolute right-0 top-0 size-32 translate-x-12 -translate-y-12 rounded-full bg-primary/5 blur-3xl transition-transform duration-700 group-hover:scale-150" aria-hidden="true" />
+            <div className="absolute -bottom-16 -left-16 size-48 rounded-full bg-accent/5 blur-3xl transition-transform duration-700 group-hover:scale-125" aria-hidden="true" />
+            
+            <div className="relative z-10 flex flex-col items-center gap-6 sm:gap-8 md:flex-row md:items-start lg:gap-10">
+              {/* Avatar section */}
+              <div className="relative shrink-0">
+                <div className="relative grid size-28 place-items-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-[#001F5B] via-[#003A8C] to-[#E83E8C] font-display text-3xl font-black text-white shadow-xl transition-all duration-500 group-hover:scale-105 group-hover:rounded-[2rem] sm:size-36 sm:text-4xl md:size-44 md:rounded-[1.8rem] lg:size-52 lg:text-5xl">
+                  <span className="drop-shadow-lg">
                     {d.name.split(" ")[1]?.[0] ?? "C"}
                     {d.name.split(" ")[2]?.[0] ?? ""}
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent" />
+                  
+                  {/* Glass highlight */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/30 opacity-60" />
+                  
+                  {/* Internal stroke */}
+                  <div className="absolute inset-0 rounded-inherit border border-white/20" />
+                </div>
+                
+                {/* Experience Badge */}
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-3 py-1.5 text-[0.65rem] font-black uppercase tracking-widest text-[#003A8C] shadow-lg ring-1 ring-slate-100 transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-[#003A8C] group-hover:text-white sm:-bottom-3 sm:px-4 sm:text-[0.7rem] md:bottom-3 md:left-auto md:right-[-8%] md:translate-x-0">
+                  {d.experience} Exp.
                 </div>
               </div>
               
-              {/* Content section */}
+              {/* Info section */}
               <div className="flex-1 text-center md:text-left">
                 <div className="space-y-1">
-                  <h3 className="font-display text-lg font-bold tracking-tight text-[#2d1b14] sm:text-xl lg:text-2xl uppercase">
+                  <h3 className="font-display text-xl font-[900] tracking-tight text-[#0f172a] transition-colors group-hover:text-primary sm:text-2xl lg:text-3xl">
                     {d.name}
                   </h3>
-                  <p className="text-sm font-medium text-[#b5986d] sm:text-base">
+                  <p className="text-[0.7rem] font-bold uppercase tracking-wider text-[#E83E8C] sm:text-sm">
                     {d.qualification}
                   </p>
                 </div>
                 
-                <ul className="mt-4 space-y-2 text-sm text-[#4a4a4a] md:mt-6">
-                  <li className="flex items-start justify-center gap-2 md:justify-start">
-                    <span className="mt-1.5 size-1.5 shrink-0 bg-black" />
-                    <span className="font-bold">Sr. Consultant</span>
-                  </li>
-                  <li className="flex items-start justify-center gap-2 md:justify-start">
-                    <span className="mt-1.5 size-1.5 shrink-0 bg-black" />
-                    <span>{d.specialty}</span>
-                  </li>
-                </ul>
-                
-                <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-start">
-                  <Button asChild className="h-10 w-full rounded-none bg-[#7a3e3e] px-6 text-[0.7rem] font-bold text-white transition-all hover:bg-[#5a2e2e] sm:w-auto sm:text-xs">
-                    <Link to="/book-appointment" search={{ doctor: d.slug }}>
-                      Book An Appointment
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" className="h-10 w-full rounded-none border-[#b5986d] bg-white px-6 text-[0.7rem] font-bold text-[#b5986d] transition-all hover:bg-slate-50 sm:w-auto sm:text-xs">
-                    <Link to="/doctors/$slug" params={{ slug: d.slug }}>
-                      View Profile
-                    </Link>
-                  </Button>
+                <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-600 ring-1 ring-inset ring-slate-200/50 sm:mt-6 sm:px-4 sm:py-2 sm:text-sm">
+                  <div className="size-2 rounded-full bg-[#00857A]" />
+                  {d.specialty} Specialist
                 </div>
+                
+                  <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row md:justify-start">
+                    <Button asChild size="lg" className="h-12 flex-1 rounded-full bg-primary px-8 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-primary/20 transition-all hover:-translate-y-1 hover:bg-primary-deep hover:shadow-xl sm:flex-none">
+                      <Link to="/book-appointment" search={{ doctor: d.slug }}>
+                        Book Appointment
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" size="lg" className="h-12 flex-1 rounded-full border-slate-200 bg-white px-8 text-xs font-black uppercase tracking-widest text-primary transition-all hover:-translate-y-1 hover:bg-slate-50 sm:flex-none">
+                      <Link to="/doctors/$slug" params={{ slug: d.slug }}>
+                        View Profile
+                      </Link>
+                    </Button>
+                  </div>
               </div>
             </div>
           </div>
