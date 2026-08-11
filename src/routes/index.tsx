@@ -68,8 +68,8 @@ function Home() {
           height={1104}
           className="absolute inset-0 size-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B]/95 via-[#001F5B]/75 to-[#003A8C]/40" />
-        <div className="absolute inset-0 bg-gradient-hero/25 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B]/95 via-[#001F5B]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/40 via-transparent to-transparent" />
         <div className="container-page relative py-20 text-primary-foreground lg:py-32">
           <div className="max-w-3xl">
             <h1 className="text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-7xl">
