@@ -145,10 +145,10 @@
     color: var(--color-primary);
   }
 
-  h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
-  h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
-  h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
-  h4 { font-size: clamp(1.25rem, 2vw, 1.75rem); }
+  h1 { font-size: clamp(2rem, 4.5vw, 3.75rem); }
+  h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); }
+  h3 { font-size: clamp(1.25rem, 2.5vw, 2rem); }
+  h4 { font-size: clamp(1.125rem, 2vw, 1.5rem); }
 
   p {
     margin-bottom: 1rem;
