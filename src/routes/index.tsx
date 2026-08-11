@@ -24,7 +24,7 @@ import {
   testimonials,
   HOSPITAL,
 } from "@/lib/site-data";
-import heroImage from "@/assets/hero-hospital.jpg";
+import heroImageAsset from "@/assets/hero-hospital.avif.asset.json";
 import teamImage from "@/assets/care-team.jpg";
 
 export const Route = createFileRoute("/")({
@@ -62,13 +62,14 @@ function Home() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden">
         <img
-          src={heroImage}
+          src={heroImageAsset.url}
           alt="Calix Multispeciality Hospital entrance at sunrise"
           width={1600}
           height={1104}
           className="absolute inset-0 size-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-hero/90 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B] via-[#001F5B]/85 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/60 via-transparent to-transparent" />
         <div className="container-page relative py-20 text-primary-foreground lg:py-32">
           <div className="max-w-3xl">
             <h1 className="text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-7xl">
