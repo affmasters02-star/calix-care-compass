@@ -123,10 +123,7 @@ function Doctors() {
                 </div>
               </div>
 
-              <div className="relative z-10 mt-8 grid grid-cols-2 gap-3">
-                <Button asChild variant="outline" className="h-10 rounded-full border-slate-200 bg-white px-3 text-[0.65rem] font-black uppercase tracking-wider text-[#0f172a] shadow-sm transition-all hover:bg-slate-50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:h-11 sm:px-4 sm:text-[0.7rem]">
-                  <Link to="/doctors/$slug" params={{ slug: d.slug }}>View Profile</Link>
-                </Button>
+              <div className="relative z-10 mt-8 grid grid-cols-2 gap-3 sm:mt-10">
                 <Button asChild className="h-10 rounded-full bg-[#003A8C] px-3 text-[0.65rem] font-black uppercase tracking-wider text-white shadow-lg shadow-[#003A8C]/20 transition-all hover:bg-[#001F5B] hover:shadow-xl sm:h-11 sm:px-4 sm:text-[0.7rem]">
                   <Link
                     to="/book-appointment"
@@ -135,8 +132,11 @@ function Doctors() {
                       doctor: d.slug,
                     }}
                   >
-                    Book Now
+                    Book Appointment
                   </Link>
+                </Button>
+                <Button asChild variant="outline" className="h-10 rounded-full border-slate-200 bg-white px-3 text-[0.65rem] font-black uppercase tracking-wider text-[#0f172a] shadow-sm transition-all hover:bg-slate-50 hover:text-primary sm:h-11 sm:px-4 sm:text-[0.7rem]">
+                  <Link to="/doctors/$slug" params={{ slug: d.slug }}>View Profile</Link>
                 </Button>
               </div>
             </div>

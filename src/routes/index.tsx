@@ -486,7 +486,7 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
               {/* Info section */}
               <div className="flex-1 text-center md:text-left">
                 <div className="space-y-1">
-                  <h3 className="font-display text-lg font-[900] tracking-tight text-[#0f172a] transition-colors group-hover:text-primary sm:text-2xl lg:text-3xl">
+                  <h3 className="font-display text-xl font-[900] tracking-tight text-[#0f172a] transition-colors group-hover:text-primary sm:text-2xl lg:text-3xl">
                     {d.name}
                   </h3>
                   <p className="text-[0.7rem] font-bold uppercase tracking-wider text-[#E83E8C] sm:text-sm">
