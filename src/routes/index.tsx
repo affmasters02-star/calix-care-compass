@@ -123,7 +123,7 @@ function Home() {
       </div>
 
       {/* Specialties */}
-      <Section tone="soft">
+      <Section tone="soft" className="bg-slate-50">
         <SectionHeading
           eyebrow="Our Specialties"
           title="Expert Care Across Every Specialty"
@@ -135,9 +135,9 @@ function Home() {
               key={s.slug}
               to="/specialties/$slug"
               params={{ slug: s.slug }}
-              className="group rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-lift"
+              className="group rounded-3xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-2 hover:border-primary/30 hover:shadow-lift"
             >
-              <span className="grid size-12 place-items-center rounded-xl bg-primary-soft text-primary transition-colors group-hover:bg-gradient-brand group-hover:text-primary-foreground">
+              <span className="grid size-12 place-items-center rounded-2xl bg-primary-soft text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                 <SpecialtyIcon slug={s.slug} className="size-6" />
               </span>
               <h3 className="mt-5 font-display text-base font-bold text-foreground">{s.name}</h3>

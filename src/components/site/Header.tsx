@@ -38,7 +38,7 @@ export function Logo({ inverted = false }: { inverted?: boolean }) {
       </span>
       <span className="leading-tight">
         <span
-          className={`block font-display text-lg font-bold tracking-tight ${
+          className={`block font-display text-lg font-extrabold tracking-tight ${
             inverted ? "text-primary-foreground" : "text-primary-deep"
           }`}
         >
@@ -102,7 +102,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      <div className="hidden bg-primary-deep py-2 text-primary-foreground lg:block">
+      <div className="hidden bg-primary-deep py-2.5 text-primary-foreground lg:block">
         <div className="container-page flex items-center justify-between gap-6 text-xs">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2">
