@@ -378,7 +378,7 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
             className={cn(
               "h-11 shrink-0 whitespace-nowrap rounded-full px-8 text-sm font-bold transition-all",
               activeTab === "all"
-                ? "bg-primary text-primary-foreground shadow-md"
+                ? "bg-primary text-primary-foreground shadow-md ring-4 ring-primary/20"
                 : "bg-primary-soft text-primary hover:bg-primary/10"
             )}
           >
@@ -391,7 +391,7 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
               className={cn(
                 "h-11 shrink-0 whitespace-nowrap rounded-full px-8 text-sm font-bold transition-all",
                 activeTab === s.name
-                  ? "bg-primary text-primary-foreground shadow-md"
+                  ? "bg-primary text-primary-foreground shadow-md ring-4 ring-primary/20"
                   : "bg-primary-soft text-primary hover:bg-primary/10"
               )}
             >
