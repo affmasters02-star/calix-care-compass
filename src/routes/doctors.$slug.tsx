@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Award, BookOpen, Calendar, GraduationCap, MapPin, Phone, Star } from "lucide-react";
+import { Award, BookOpen, Calendar, GraduationCap, Mail, MapPin, Phone, Star } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { PageHero, Section } from "@/components/site/Bits";
