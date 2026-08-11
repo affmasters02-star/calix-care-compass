@@ -425,14 +425,14 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
         className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2"
       >
         {filteredDoctors.map((d) => (
-          <div key={d.name} className="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] md:p-10">
+          <div key={d.name} className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-6 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] sm:rounded-[2.5rem] sm:p-8 md:p-10">
             {/* Top decorative element */}
             <div className="absolute right-0 top-0 size-32 translate-x-12 -translate-y-12 rounded-full bg-primary/5 blur-3xl transition-transform duration-700 group-hover:scale-150" aria-hidden="true" />
             
-            <div className="relative z-10 flex flex-col items-center gap-8 md:flex-row md:items-start lg:gap-10">
+            <div className="relative z-10 flex flex-col items-center gap-6 sm:gap-8 md:flex-row md:items-start lg:gap-10">
               {/* Avatar section */}
               <div className="relative shrink-0">
-                <div className="grid size-40 place-items-center overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#001F5B] via-[#003A8C] to-[#E83E8C] font-display text-4xl font-black text-white shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:rounded-[2.5rem] md:size-48 lg:size-52">
+                <div className="grid size-32 place-items-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-[#001F5B] via-[#003A8C] to-[#E83E8C] font-display text-3xl font-black text-white shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:rounded-[2rem] sm:size-40 sm:text-4xl md:size-48 lg:size-52">
                   <span className="drop-shadow-lg">
                     {d.name.split(" ")[1]?.[0] ?? "C"}
                     {d.name.split(" ")[2]?.[0] ?? ""}
@@ -443,7 +443,7 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
                 </div>
                 
                 {/* Experience Badge */}
-                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-4 py-1.5 text-[0.7rem] font-black uppercase tracking-widest text-[#003A8C] shadow-lg ring-1 ring-slate-100 md:bottom-2 md:left-auto md:right-[-10%] md:translate-x-0">
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-3 py-1 text-[0.65rem] font-black uppercase tracking-widest text-[#003A8C] shadow-lg ring-1 ring-slate-100 sm:-bottom-4 sm:px-4 sm:py-1.5 sm:text-[0.7rem] md:bottom-2 md:left-auto md:right-[-10%] md:translate-x-0">
                   {d.experience} Exp.
                 </div>
               </div>
@@ -451,26 +451,26 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
               {/* Info section */}
               <div className="flex-1 text-center md:text-left">
                 <div className="space-y-1">
-                  <h3 className="font-display text-2xl font-[900] tracking-tight text-[#0f172a] transition-colors group-hover:text-primary sm:text-3xl">
+                  <h3 className="font-display text-xl font-[900] tracking-tight text-[#0f172a] transition-colors group-hover:text-primary sm:text-2xl lg:text-3xl">
                     {d.name}
                   </h3>
-                  <p className="text-sm font-bold uppercase tracking-widest text-[#E83E8C]">
+                  <p className="text-[0.8rem] font-bold uppercase tracking-widest text-[#E83E8C] sm:text-sm">
                     {d.qualification}
                   </p>
                 </div>
                 
-                <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-slate-50 px-4 py-2 text-sm font-bold text-slate-600 ring-1 ring-inset ring-slate-200/50">
+                <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-600 ring-1 ring-inset ring-slate-200/50 sm:mt-6 sm:px-4 sm:py-2 sm:text-sm">
                   <div className="size-2 rounded-full bg-[#00857A]" />
                   {d.specialty} Specialist
                 </div>
                 
-                <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row md:justify-start">
-                  <Button asChild size="lg" className="h-12 flex-1 rounded-full bg-[#003A8C] text-sm font-extrabold text-white shadow-lg shadow-[#003A8C]/20 transition-all hover:bg-[#001F5B] hover:shadow-xl hover:shadow-[#003A8C]/30 sm:flex-none sm:px-8">
+                <div className="mt-6 flex flex-col items-stretch gap-2.5 sm:mt-8 sm:flex-row sm:gap-3 md:justify-start">
+                  <Button asChild size="lg" className="h-11 flex-1 rounded-full bg-[#003A8C] text-xs font-extrabold text-white shadow-lg shadow-[#003A8C]/20 transition-all hover:bg-[#001F5B] hover:shadow-xl hover:shadow-[#003A8C]/30 sm:h-12 sm:flex-none sm:px-6 sm:text-sm md:px-8">
                     <Link to="/book-appointment" search={{ doctor: d.slug }}>
                       Book Appointment
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="h-12 flex-1 rounded-full border-slate-200 bg-white text-sm font-extrabold text-[#0f172a] transition-all hover:bg-slate-50 hover:text-primary sm:flex-none sm:px-8">
+                  <Button asChild variant="outline" size="lg" className="h-11 flex-1 rounded-full border-slate-200 bg-white text-xs font-extrabold text-[#0f172a] transition-all hover:bg-slate-50 hover:text-primary sm:h-12 sm:flex-none sm:px-6 sm:text-sm md:px-8">
                     <Link to="/doctors/$slug" params={{ slug: d.slug }}>
                       View Profile
                     </Link>
