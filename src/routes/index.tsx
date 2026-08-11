@@ -115,29 +115,57 @@ function Home() {
       </section>
 
       {/* Quick actions */}
-      <div className="border-b border-border bg-background">
+      <div className="relative z-20 border-b border-border bg-background shadow-sm">
         <div className="container-page grid divide-border sm:grid-cols-2 lg:grid-cols-4 lg:divide-x">
           {[
-            { icon: CalendarCheck, title: "Book an Appointment", body: "Same-week slots across specialties", to: "/book-appointment" as const },
-            { icon: UserRound, title: "Find a Doctor", body: "Senior consultants in every department", to: "/doctors" as const },
-            { icon: Microscope, title: "Health Packages", body: "Preventive checks from ₹1,499", to: "/health-packages" as const },
-            { icon: ShieldCheck, title: "Patient Services", body: "Insurance, records and support", to: "/patient-services" as const },
+            { 
+              icon: CalendarCheck, 
+              title: "Book an Appointment", 
+              body: "Same-week slots across specialties", 
+              to: "/book-appointment" as const,
+              color: "text-accent",
+              bg: "bg-accent/10"
+            },
+            { 
+              icon: UserRound, 
+              title: "Find a Doctor", 
+              body: "Senior consultants in every department", 
+              to: "/doctors" as const,
+              color: "text-primary",
+              bg: "bg-primary/10"
+            },
+            { 
+              icon: Microscope, 
+              title: "Health Packages", 
+              body: "Preventive checks from ₹1,499", 
+              to: "/health-packages" as const,
+              color: "text-teal-600",
+              bg: "bg-teal-50"
+            },
+            { 
+              icon: ShieldCheck, 
+              title: "Patient Services", 
+              body: "Insurance, records and support", 
+              to: "/patient-services" as const,
+              color: "text-blue-600",
+              bg: "bg-blue-50"
+            },
           ].map((a) => (
             <Link
               key={a.title}
               to={a.to}
-              className="group flex items-start gap-4 px-2 py-7 transition-colors hover:bg-primary-soft/60 lg:px-8"
+              className="group relative flex items-center gap-5 px-6 py-8 transition-all hover:bg-slate-50 lg:flex-col lg:items-start lg:px-8 lg:py-10"
             >
-              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary">
-                <a.icon className="size-5" />
+              <span className={`grid size-14 shrink-0 place-items-center rounded-2xl ${a.bg} ${a.color} transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+                <a.icon className="size-7" />
               </span>
-              <span>
-                <span className="flex items-center gap-1.5 font-display text-sm font-bold text-foreground">
+              <div>
+                <span className="flex items-center gap-1.5 font-display text-lg font-bold text-slate-900 lg:text-xl">
                   {a.title}
-                  <ArrowRight className="size-3.5 text-primary transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="size-4 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
                 </span>
-                <span className="mt-1 block text-sm text-muted-foreground">{a.body}</span>
-              </span>
+                <span className="mt-1.5 block text-sm font-medium text-slate-500 lg:text-base">{a.body}</span>
+              </div>
             </Link>
           ))}
         </div>
