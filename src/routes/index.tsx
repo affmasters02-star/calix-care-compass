@@ -63,7 +63,11 @@ const stats = [
 function Home() {
   return (
     <>
-      <section id="home" className="relative isolate min-h-[85vh] overflow-hidden flex flex-col justify-center">
+      <section
+        id="home"
+        className="relative isolate flex min-h-[560px] flex-col justify-center overflow-hidden md:min-h-[620px] lg:min-h-[680px]"
+        style={{ minHeight: "min(760px, calc(100svh - var(--header-height, 136px)))" }}
+      >
         {/* Background Layer */}
         <div className="absolute inset-0 z-0">
           <img
