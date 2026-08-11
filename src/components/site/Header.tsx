@@ -55,7 +55,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
 function SpecialtiesMegaMenu() {
   return (
     <div className="group/mega">
-      <button className="flex items-center gap-1.5 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase">
+      <button className="flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap">
         SPECIALTIES
         <ChevronDown className="size-4 transition-transform duration-300 group-hover/mega:rotate-180" />
       </button>
@@ -210,12 +210,12 @@ export function Header() {
             : "h-[90px]"
         )}
       >
-        <div className="container-page flex h-full items-center justify-between gap-4">
+        <div className="container-page flex h-full items-center justify-between gap-2 lg:gap-4">
           {/* LEFT: LOGO */}
           <Logo className="shrink-0" />
 
           {/* CENTER: NAVIGATION */}
-          <div className="hidden items-center gap-4 2xl:gap-8 xl:flex">
+          <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
             <NavDropdown label="ABOUT US">
               <DropdownLink to="/about">Our Story</DropdownLink>
@@ -236,13 +236,11 @@ export function Header() {
             <NavLink to="/contact">CONTACT</NavLink>
           </div>
 
-          {/* RIGHT: SOCIAL + BUTTONS */}
-          <div className="hidden items-center gap-4 lg:flex shrink-0">
-            <div className="flex items-center gap-3">
-              <Button asChild className="h-10 rounded-full bg-[#E83E8C] px-6 text-sm text-white shadow-md hover:bg-[#D81B60] transition-all hover:-translate-y-0.5">
-                <Link to="/book-appointment">Book Appointment</Link>
-              </Button>
-            </div>
+          {/* RIGHT: BUTTONS */}
+          <div className="hidden items-center gap-2 lg:flex shrink-0">
+            <Button asChild className="h-9 2xl:h-10 rounded-full bg-[#E83E8C] px-4 2xl:px-6 text-[0.75rem] 2xl:text-sm text-white shadow-md hover:bg-[#D81B60] transition-all hover:-translate-y-0.5 whitespace-nowrap">
+              <Link to="/book-appointment">Book Appointment</Link>
+            </Button>
           </div>
 
           {/* MOBILE TOGGLE */}
@@ -282,7 +280,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
       onClick={onClick}
       activeOptions={{ exact: to === "/" }}
       activeProps={{ className: "text-[#003A8C] after:scale-x-100" }}
-      className="relative py-2 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 uppercase"
+      className="relative py-2 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 uppercase whitespace-nowrap"
     >
       {children}
     </Link>
@@ -292,7 +290,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
 function NavDropdown({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="group relative">
-      <button className="flex items-center gap-1 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase">
+      <button className="flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap">
         {label}
         <ChevronDown className="size-4 transition-transform duration-300 group-hover:rotate-180" />
       </button>
