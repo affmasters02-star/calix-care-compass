@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import {
   Menu,
   Phone,
@@ -53,9 +53,17 @@ export function Logo({ className, inverted = false }: { className?: string; inve
 }
 
 function SpecialtiesMegaMenu() {
+  const location = useLocation();
+  const isActive = location.pathname.startsWith("/specialties");
+
   return (
     <div className="group/mega">
-      <button className="flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap">
+      <button 
+        className={cn(
+          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100",
+          isActive && "text-[#003A8C] after:scale-x-100"
+        )}
+      >
         SPECIALTIES
         <ChevronDown className="size-4 transition-transform duration-300 group-hover/mega:rotate-180" />
       </button>
@@ -108,6 +116,7 @@ function SpecialtyItem({ specialty }: { specialty: (typeof specialties)[0] }) {
     <Link
       to="/specialties/$slug"
       params={{ slug: specialty.slug }}
+      activeProps={{ className: "bg-[#EAF4FF]" }}
       className="group/item flex items-center justify-between gap-3 rounded-xl px-3 py-2 transition-all hover:bg-[#EAF4FF]"
     >
       <div className="flex items-center gap-4">
@@ -287,10 +296,18 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
   );
 }
 
-function NavDropdown({ label, children }: { label: string; children: React.ReactNode }) {
+function NavDropdown({ label, children, activePaths }: { label: string; children: React.ReactNode; activePaths?: string[] }) {
+  const location = useLocation();
+  const isActive = activePaths?.some(path => location.pathname === path);
+
   return (
     <div className="group relative">
-      <button className="flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap">
+      <button 
+        className={cn(
+          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100",
+          isActive && "text-[#003A8C] after:scale-x-100"
+        )}
+      >
         {label}
         <ChevronDown className="size-4 transition-transform duration-300 group-hover:rotate-180" />
       </button>
@@ -308,6 +325,7 @@ function DropdownLink({ to, children, onClick }: { to: string; children: React.R
     <Link
       to={to}
       onClick={onClick}
+      activeProps={{ className: "bg-[#EAF4FF] text-[#003A8C]" }}
       className="block px-6 py-2.5 text-sm font-semibold text-[#0f172a] transition-colors hover:bg-[#EAF4FF] hover:text-[#003A8C]"
     >
       {children}
@@ -323,10 +341,10 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
         <AccordionItem value="about" className="border-none">
           <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">ABOUT US</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Our Story</Link>
-             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Mission & Values</Link>
-             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Why Choose Us</Link>
-             <Link to="/facilities" onClick={closeMenu} className="py-2 font-medium text-sm">Our Facilities</Link>
+             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Our Story</Link>
+             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Mission & Values</Link>
+             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Why Choose Us</Link>
+             <Link to="/facilities" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Our Facilities</Link>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="specialties" className="border-none">
@@ -342,10 +360,10 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
         <AccordionItem value="services" className="border-none">
           <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">SERVICES</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/book-appointment" onClick={closeMenu} className="py-2 font-medium text-sm">Plan Your Visit</Link>
-             <Link to="/health-packages" onClick={closeMenu} className="py-2 font-medium text-sm">Checkup Packages</Link>
-             <Link to="/patient-services" onClick={closeMenu} className="py-2 font-medium text-sm">Insurance & TPA</Link>
-             <Link to="/contact" onClick={closeMenu} className="py-2 font-medium text-sm">Tele-Consultation</Link>
+             <Link to="/book-appointment" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Plan Your Visit</Link>
+             <Link to="/health-packages" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Checkup Packages</Link>
+             <Link to="/patient-services" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Insurance & TPA</Link>
+             <Link to="/contact" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Tele-Consultation</Link>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
