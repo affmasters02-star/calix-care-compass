@@ -58,19 +58,48 @@ function SpecialtiesMegaMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLAnchorElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const escapedRef = useRef(false);
+
+
+  const cancelClose = useCallback(() => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }, []);
+
+  const open = useCallback(() => {
+    cancelClose();
+    setIsOpen(true);
+  }, [cancelClose]);
+
+  const scheduleClose = useCallback(() => {
+    cancelClose();
+    closeTimer.current = setTimeout(() => setIsOpen(false), 160);
+  }, [cancelClose]);
+
+  const closeNow = useCallback(() => {
+    cancelClose();
+    setIsOpen(false);
+  }, [cancelClose]);
+
+  useEffect(() => () => cancelClose(), [cancelClose]);
+
+  // Close whenever the route changes (link inside the panel, browser nav, etc.)
+  useEffect(() => {
+    cancelClose();
+    setIsOpen(false);
+  }, [location.pathname, cancelClose]);
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === "Escape") {
-      setIsOpen(false);
-      triggerRef.current?.focus();
-    }
-    
     if (e.key === "Tab" && isOpen && containerRef.current) {
       const focusableElements = containerRef.current.querySelectorAll(
         'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
       );
-      const firstElement = focusableElements[0] as HTMLElement;
-      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+      const firstElement = focusableElements[0] as HTMLElement | undefined;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement | undefined;
+      if (!firstElement || !lastElement) return;
 
       if (e.shiftKey) {
         if (document.activeElement === firstElement) {
@@ -87,19 +116,42 @@ function SpecialtiesMegaMenu() {
   }, [isOpen]);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node) && 
-          triggerRef.current && !triggerRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
+    if (!isOpen) return;
+
+    const isInside = (target: Node | null) =>
+      (!!target && !!containerRef.current && containerRef.current.contains(target)) ||
+      (!!target && !!triggerRef.current && triggerRef.current.contains(target));
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      if (!isInside(event.target as Node)) closeNow();
+    };
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        escapedRef.current = true;
+        closeNow();
+        triggerRef.current?.focus();
       }
     };
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+
+    const handleFocusIn = (event: FocusEvent) => {
+      if (!isInside(event.target as Node)) closeNow();
     };
-  }, [isOpen]);
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    document.addEventListener("keydown", handleKey);
+    document.addEventListener("focusin", handleFocusIn);
+    window.addEventListener("blur", closeNow);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("keydown", handleKey);
+      document.removeEventListener("focusin", handleFocusIn);
+      window.removeEventListener("blur", closeNow);
+    };
+  }, [isOpen, closeNow]);
+
 
   return (
     <div className="group/mega relative" onKeyDown={handleKeyDown}>
@@ -109,7 +161,15 @@ function SpecialtiesMegaMenu() {
         aria-expanded={isOpen}
         aria-haspopup="true"
         aria-controls="specialties-mega-menu"
-        onMouseEnter={() => setIsOpen(true)}
+        onMouseEnter={open}
+        onMouseLeave={scheduleClose}
+        onFocus={(e) => {
+          // Only open on keyboard focus, and never when focus is restored after Escape
+          if (!escapedRef.current && e.currentTarget.matches(":focus-visible")) open();
+          escapedRef.current = false;
+        }}
+
+        onClick={closeNow}
         className={cn(
           "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#003A8C] after:transition-[width] after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
           isActive && "text-brand-blue after:w-full",
@@ -122,7 +182,8 @@ function SpecialtiesMegaMenu() {
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
-            setIsOpen(!isOpen);
+            if (isOpen) closeNow();
+            else open();
           }}
         />
       </Link>
@@ -132,7 +193,9 @@ function SpecialtiesMegaMenu() {
         id="specialties-mega-menu"
         role="region"
         aria-label="Specialties Menu"
-        onMouseLeave={() => setIsOpen(false)}
+        onMouseEnter={open}
+        onMouseLeave={scheduleClose}
+
         className={cn(
           "fixed left-0 right-0 z-40 flex justify-center transition-all duration-500 ease-out pointer-events-none",
           // Always sits exactly below the live header bottom edge
