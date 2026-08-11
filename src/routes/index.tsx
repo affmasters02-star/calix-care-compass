@@ -68,31 +68,24 @@ function Home() {
           height={1104}
           className="absolute inset-0 size-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-hero" />
+        <div className="absolute inset-0 bg-gradient-hero/90 mix-blend-multiply" />
         <div className="container-page relative py-20 text-primary-foreground lg:py-32">
           <div className="max-w-3xl">
-            <p className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] backdrop-blur">
-              Complete multispeciality healthcare for the entire family
-            </p>
-            <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-7xl">
               Comprehensive Multispeciality Healthcare You Can Trust
             </h1>
-            <p className="mt-4 text-lg font-semibold text-primary-foreground/90">
-              Advanced Healthcare. Trusted Specialists. Compassionate Care.
+            <p className="mt-6 text-xl font-medium text-primary-foreground/90">
+              Expert doctors, advanced technology, and compassionate care—all under one roof.
             </p>
-            <p className="mt-5 max-w-2xl text-base text-primary-foreground/80 lg:text-lg">
-              Providing expert medical care across multiple specialties with modern technology,
-              experienced doctors, and a patient-first approach.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button asChild variant="brand" size="xl">
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Button asChild variant="accent" size="xl" className="bg-gradient-cta hover:brightness-110">
                 <Link to="/book-appointment">
-                  Book Appointment <ArrowRight className="size-4" />
+                  Book Appointment <ArrowRight className="size-5" />
                 </Link>
               </Button>
-              <Button asChild variant="onDark" size="xl">
+              <Button asChild variant="brand" size="xl" className="bg-primary-deep hover:brightness-110">
                 <a href={`tel:${HOSPITAL.emergency}`}>
-                  <Phone className="size-4" /> Emergency {HOSPITAL.emergency}
+                  <Phone className="size-5" /> Emergency Care
                 </a>
               </Button>
             </div>
@@ -130,7 +123,7 @@ function Home() {
       </div>
 
       {/* Specialties */}
-      <Section tone="soft">
+      <Section tone="soft" className="bg-slate-50">
         <SectionHeading
           eyebrow="Our Specialties"
           title="Expert Care Across Every Specialty"
@@ -142,9 +135,9 @@ function Home() {
               key={s.slug}
               to="/specialties/$slug"
               params={{ slug: s.slug }}
-              className="group rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-lift"
+              className="group rounded-3xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-2 hover:border-primary/30 hover:shadow-lift"
             >
-              <span className="grid size-12 place-items-center rounded-xl bg-primary-soft text-primary transition-colors group-hover:bg-gradient-brand group-hover:text-primary-foreground">
+              <span className="grid size-12 place-items-center rounded-2xl bg-primary-soft text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                 <SpecialtyIcon slug={s.slug} className="size-6" />
               </span>
               <h3 className="mt-5 font-display text-base font-bold text-foreground">{s.name}</h3>
@@ -167,9 +160,9 @@ function Home() {
               loading="lazy"
               width={1408}
               height={1008}
-              className="rounded-3xl object-cover shadow-lift"
+              className="rounded-[2rem] object-cover shadow-lift"
             />
-            <div className="absolute -bottom-8 right-4 hidden rounded-2xl bg-gradient-brand p-6 text-primary-foreground shadow-lift sm:block">
+            <div className="absolute -bottom-8 right-4 hidden rounded-3xl bg-primary-deep p-6 text-primary-foreground shadow-lift sm:block">
               <p className="font-display text-3xl font-extrabold">24×7</p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground/80">
                 Emergency care
@@ -239,7 +232,7 @@ function Home() {
         </div>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {doctors.slice(0, 4).map((d) => (
-            <div key={d.name} className="rounded-2xl border border-border bg-card p-6 shadow-card">
+            <div key={d.name} className="rounded-3xl border border-border bg-card p-6 shadow-card">
               <span className="grid size-14 place-items-center rounded-full bg-primary-soft font-display text-lg font-bold text-primary">
                 {d.name.split(" ")[1]?.[0] ?? "C"}
                 {d.name.split(" ")[2]?.[0] ?? ""}
@@ -308,7 +301,7 @@ function Home() {
         />
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {testimonials.slice(0, 3).map((t) => (
-            <figure key={t.name} className="rounded-2xl border border-border bg-card p-8 shadow-card">
+            <figure key={t.name} className="rounded-3xl border border-border bg-card p-8 shadow-card">
               <Quote className="size-7 text-accent" />
               <blockquote className="mt-5 text-sm leading-relaxed text-foreground/80">
                 {t.quote}
@@ -330,7 +323,7 @@ function Home() {
       </Section>
 
       {/* CTA */}
-      <section className="bg-gradient-brand py-16 text-primary-foreground lg:py-20">
+      <section className="bg-primary py-16 text-primary-foreground lg:py-20">
         <div className="container-page flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
           <div>
             <h2 className="text-2xl font-bold sm:text-3xl">
