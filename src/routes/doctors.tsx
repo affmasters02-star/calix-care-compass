@@ -51,30 +51,38 @@ function Doctors() {
               className="flex flex-col rounded-2xl border border-border bg-card p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-lift"
             >
               <div className="flex items-center gap-4">
-                <span className="grid size-14 shrink-0 place-items-center rounded-full bg-gradient-brand font-display text-lg font-bold text-primary-foreground">
+                <span className="grid size-16 shrink-0 place-items-center rounded-full bg-gradient-brand font-display text-xl font-bold text-primary-foreground shadow-sm">
                   {initials(d.name)}
                 </span>
                 <div>
-                  <h2 className="font-display text-base font-bold text-foreground">{d.name}</h2>
-                  <p className="text-sm font-semibold text-primary">{d.specialty}</p>
+                  <h2 className="font-display text-lg font-bold text-foreground">{d.name}</h2>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    <span className="inline-flex items-center rounded-full bg-primary/5 px-2.5 py-0.5 text-xs font-bold text-primary">
+                      {d.specialty}
+                    </span>
+                  </div>
                 </div>
               </div>
-              <p className="mt-5 text-sm text-muted-foreground">{d.qualification}</p>
-              <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                {d.experience} experience
+              <p className="mt-5 text-sm font-medium text-foreground/80">{d.qualification}</p>
+              <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                {d.description}
               </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                <Button asChild variant="brand" size="sm">
-                  <Link to="/doctors/$slug" params={{ slug: d.slug }}>View Profile</Link>
+              <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent">
+                {d.experience} Clinical Experience
+              </div>
+              <div className="mt-6 flex flex-col gap-3">
+                <Button asChild variant="brand" className="w-full shadow-sm">
+                  <Link to="/doctors/$slug" params={{ slug: d.slug }}>View Full Profile</Link>
                 </Button>
-                <Button asChild variant="outlineBrand" size="sm">
+                <Button asChild variant="outlineBrand" className="w-full">
                   <Link
-                    to="/specialties/$slug"
-                    params={{
-                      slug: specialties.find((s) => s.name === d.specialty)?.slug ?? "general-medicine",
+                    to="/book-appointment"
+                    search={{
+                      specialty: d.specialty.toLowerCase().replace(/\s+/g, '-').replace('&', 'and'),
+                      doctor: d.slug,
                     }}
                   >
-                    Department
+                    Quick Appointment
                   </Link>
                 </Button>
               </div>
