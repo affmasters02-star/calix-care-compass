@@ -251,7 +251,7 @@ export function Header() {
       >
         <div className="container-page flex h-full items-center justify-center relative">
           {isScrolled && (
-            <div className="absolute left-5 flex items-center">
+            <div className="hidden 2xl:flex absolute left-5 items-center">
                <img 
                 src={logoAsset.url} 
                 alt="Calix" 
