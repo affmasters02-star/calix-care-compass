@@ -242,9 +242,6 @@ export function Header() {
               <Button asChild className="h-10 rounded-full bg-[#E83E8C] px-6 text-sm text-white shadow-md hover:bg-[#D81B60] transition-all hover:-translate-y-0.5">
                 <Link to="/book-appointment">Book Appointment</Link>
               </Button>
-              <Button asChild className="h-10 rounded-full bg-[#DC2626] px-6 text-sm text-white shadow-md hover:bg-[#B91C1C] transition-all hover:-translate-y-0.5">
-                <Link to="/contact">Emergency Care</Link>
-              </Button>
             </div>
           </div>
 
