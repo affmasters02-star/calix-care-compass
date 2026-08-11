@@ -118,24 +118,27 @@ function Home() {
               key={s.slug}
               to="/specialties/$slug"
               params={{ slug: s.slug }}
-              className="group relative flex flex-col items-center overflow-hidden rounded-[2rem] border border-border bg-card p-8 text-center shadow-card transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-lift focus-visible:ring-4 focus-visible:ring-primary/20 focus-visible:outline-none"
+              className="group relative flex flex-col items-center overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white p-8 text-center shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
             >
               {/* Background Glow */}
-              <div className="absolute -right-12 -top-12 size-32 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-150" aria-hidden="true" />
+              <div className="absolute -right-12 -top-12 size-40 rounded-full bg-primary/5 blur-3xl transition-transform duration-700 group-hover:scale-150" aria-hidden="true" />
+              <div className="absolute -bottom-12 -left-12 size-40 rounded-full bg-accent/5 blur-3xl transition-transform duration-700 group-hover:scale-150" aria-hidden="true" />
               
-              <div className="relative z-10 grid size-20 place-items-center rounded-2xl bg-primary-soft text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/25">
-                <SpecialtyIcon slug={s.slug} className="size-10" />
+              <div className="relative z-10 grid size-24 place-items-center rounded-[2rem] bg-slate-50 text-primary shadow-inner transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#001F5B] group-hover:to-[#003A8C] group-hover:text-white group-hover:shadow-2xl group-hover:shadow-primary/30">
+                <SpecialtyIcon slug={s.slug} className="size-11 transition-transform duration-500 group-hover:scale-110" />
+                {/* Decorative overlay for icon box */}
+                <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-0 group-hover:opacity-100" />
               </div>
               
-              <h3 className="relative z-10 mt-8 font-display text-lg font-[800] text-primary">{s.name}</h3>
-              <p className="relative z-10 mt-3 text-sm font-medium leading-relaxed text-slate-600 line-clamp-2">
+              <h3 className="relative z-10 mt-8 font-display text-xl font-[900] tracking-tight text-primary transition-colors group-hover:text-[#001F5B]">{s.name}</h3>
+              <p className="relative z-10 mt-4 text-sm font-medium leading-relaxed text-slate-500 transition-colors group-hover:text-slate-600 line-clamp-2 px-2">
                 {s.tagline}
               </p>
               
-              <div className="relative z-10 mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary transition-all group-hover:gap-3">
-                <span>Learn More</span>
-                <div className="flex size-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary group-hover:text-primary-foreground" aria-hidden="true">
-                  <ArrowRight className="size-3.5" />
+              <div className="relative z-10 mt-8 flex items-center gap-2.5 text-[0.7rem] font-black uppercase tracking-[0.2em] text-primary transition-all group-hover:gap-4">
+                <span>Explore Department</span>
+                <div className="flex size-7 items-center justify-center rounded-full bg-primary/10 transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:shadow-lg group-hover:shadow-accent/30" aria-hidden="true">
+                  <ArrowRight className="size-4" />
                 </div>
               </div>
             </Link>
@@ -239,25 +242,45 @@ function Home() {
           {healthPackages.slice(0, 2).map((p) => (
             <div
               key={p.name}
-              className={`rounded-3xl border p-8 shadow-card ${
-                p.featured ? "border-primary/40 bg-gradient-soft" : "border-border bg-card"
-              }`}
+              className={cn(
+                "group relative overflow-hidden rounded-[2.5rem] border p-8 transition-all duration-500 hover:-translate-y-2 lg:p-10",
+                p.featured 
+                  ? "border-primary/20 bg-white shadow-[0_20px_50px_-20px_rgba(0,58,140,0.15)]" 
+                  : "border-slate-100 bg-white shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)]"
+              )}
             >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-display text-xl font-[800] text-primary">{p.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.for}</p>
+              {p.featured && (
+                <div className="absolute right-0 top-0 rounded-bl-2xl bg-gradient-cta px-4 py-1.5 text-[0.65rem] font-black uppercase tracking-[0.2em] text-white shadow-lg">
+                  Most Popular
                 </div>
-                <p className="font-display text-2xl font-extrabold text-primary">{p.price}</p>
+              )}
+              
+              <div className="relative z-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
+                <div>
+                  <h3 className="font-display text-2xl font-[900] tracking-tight text-primary">{p.name}</h3>
+                  <p className="mt-1.5 text-sm font-semibold text-slate-500">{p.for}</p>
+                </div>
+                <div className="text-left sm:text-right">
+                  <p className="text-[0.7rem] font-bold uppercase tracking-widest text-slate-400">Starting at</p>
+                  <p className="font-display text-3xl font-black text-primary">{p.price}</p>
+                </div>
               </div>
-              <ul className="mt-6 space-y-2.5">
-                {p.includes.map((i) => (
-                  <li key={i} className="flex gap-2.5 text-sm text-foreground/80">
-                    <Check className="mt-0.5 size-4 shrink-0 text-accent" /> {i}
-                  </li>
+
+              <div className="relative z-10 mt-8 space-y-3.5">
+                {p.includes.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <div className="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
+                      <Check className="size-3 stroke-[3]" />
+                    </div>
+                    <span className="text-sm font-medium leading-relaxed text-slate-600">{item}</span>
+                  </div>
                 ))}
-              </ul>
-              <Button asChild variant="brand" size="lg" className="mt-8 w-full">
+              </div>
+
+              <Button asChild variant={p.featured ? "accent" : "brand"} size="xl" className={cn(
+                "relative z-10 mt-10 h-14 w-full rounded-full text-base font-black shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]",
+                p.featured ? "bg-gradient-cta" : "bg-primary"
+              )}>
                 <Link to="/book-appointment">Book this package</Link>
               </Button>
             </div>
@@ -281,14 +304,26 @@ function Home() {
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {testimonials.slice(0, 3).map((t) => (
-            <figure key={t.name} className="rounded-3xl border border-border bg-card p-8 shadow-card">
-              <Quote className="size-7 text-accent" />
-              <blockquote className="mt-5 text-sm leading-relaxed text-foreground/80">
-                {t.quote}
+            <figure key={t.name} className="group relative flex flex-col rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] lg:p-10">
+              {/* Quote Mark Background */}
+              <Quote className="absolute -right-4 top-8 size-32 -rotate-12 text-slate-50 opacity-[0.03] transition-transform duration-700 group-hover:scale-110" aria-hidden="true" />
+              
+              <div className="relative z-10 flex size-12 items-center justify-center rounded-2xl bg-accent-soft text-accent shadow-sm">
+                <Quote className="size-6" />
+              </div>
+
+              <blockquote className="relative z-10 mt-6 text-base font-medium leading-relaxed text-slate-600 italic">
+                "{t.quote}"
               </blockquote>
-              <figcaption className="mt-6 border-t border-border pt-4">
-                <span className="block text-sm font-bold text-foreground">{t.name}</span>
-                <span className="block text-xs text-muted-foreground">{t.context}</span>
+
+              <figcaption className="relative z-10 mt-8 flex items-center gap-4 border-t border-slate-100 pt-6">
+                <div className="grid size-12 place-items-center rounded-full bg-primary-soft font-display text-sm font-black text-primary ring-2 ring-white shadow-md">
+                  {t.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <span className="block text-sm font-[900] tracking-tight text-primary">{t.name}</span>
+                  <span className="block text-[0.7rem] font-bold uppercase tracking-widest text-slate-400">{t.context}</span>
+                </div>
               </figcaption>
             </figure>
           ))}
