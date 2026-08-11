@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Phone } from "lucide-react";
+import { Phone, ChevronRight } from "lucide-react";
+import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { PageHero, Section, SectionHeading } from "@/components/site/Bits";
-import { doctors, HOSPITAL } from "@/lib/site-data";
+import { doctors, HOSPITAL, specialties } from "@/lib/site-data";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/doctors")({
   head: () => ({
@@ -30,6 +32,13 @@ function initials(name: string) {
 }
 
 function Doctors() {
+  const [activeTab, setActiveTab] = React.useState("all");
+
+  const filteredDoctors = React.useMemo(() => {
+    if (activeTab === "all") return doctors;
+    return doctors.filter(d => d.specialty.toLowerCase() === activeTab.toLowerCase());
+  }, [activeTab]);
+
   return (
     <>
       <PageHero
@@ -44,37 +53,78 @@ function Doctors() {
           title="Meet the specialists caring for your family"
           subtitle="Consultation timings vary by department — our care team will confirm the earliest available slot."
         />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {doctors.map((d) => (
+
+        {/* Filter Tabs */}
+        <div className="mt-10 flex flex-col items-center gap-6">
+          <div className="no-scrollbar flex w-full max-w-5xl justify-start gap-2 overflow-x-auto pb-4 md:flex-wrap md:justify-center">
+            <button
+              onClick={() => setActiveTab("all")}
+              className={cn(
+                "h-10 shrink-0 whitespace-nowrap rounded-full px-6 text-sm font-bold transition-all",
+                activeTab === "all"
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-primary-soft text-primary hover:bg-primary/10"
+              )}
+            >
+              All Specialties
+            </button>
+            {specialties.map((s) => (
+              <button
+                key={s.slug}
+                onClick={() => setActiveTab(s.name)}
+                className={cn(
+                  "h-10 shrink-0 whitespace-nowrap rounded-full px-6 text-sm font-bold transition-all",
+                  activeTab === s.name
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "bg-primary-soft text-primary hover:bg-primary/10"
+                )}
+              >
+                {s.name}
+              </button>
+            ))}
+          </div>
+          
+          <div className="text-sm font-medium text-muted-foreground">
+            Showing {filteredDoctors.length} {filteredDoctors.length === 1 ? 'specialist' : 'specialists'}
+          </div>
+        </div>
+
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredDoctors.map((d) => (
             <div
               key={d.name}
-              className="flex flex-col rounded-2xl border border-border bg-card p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-lift"
+              className="group flex flex-col rounded-3xl border border-border bg-card p-8 shadow-card transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-lift"
             >
-              <div className="flex items-center gap-4">
-                <span className="grid size-16 shrink-0 place-items-center rounded-full bg-gradient-brand font-display text-xl font-bold text-primary-foreground shadow-sm">
+              <div className="flex items-center gap-5">
+                <span className="grid size-20 shrink-0 place-items-center rounded-2xl bg-gradient-brand font-display text-2xl font-extrabold text-primary-foreground shadow-lg group-hover:scale-105 transition-transform">
                   {initials(d.name)}
                 </span>
                 <div>
-                  <h2 className="font-display text-lg font-bold text-foreground">{d.name}</h2>
-                  <div className="flex flex-wrap gap-2 mt-1">
-                    <span className="inline-flex items-center rounded-full bg-primary/5 px-2.5 py-0.5 text-xs font-bold text-primary">
+                  <h2 className="font-display text-xl font-[800] text-primary leading-tight">{d.name}</h2>
+                  <div className="mt-1.5">
+                    <span className="inline-flex items-center rounded-full bg-accent-soft px-3 py-1 text-xs font-bold text-accent">
                       {d.specialty}
                     </span>
                   </div>
                 </div>
               </div>
-              <p className="mt-5 text-sm font-medium text-foreground/80">{d.qualification}</p>
-              <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                {d.description}
-              </p>
-              <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent">
-                {d.experience} Clinical Experience
+              
+              <div className="mt-6 flex-1">
+                <p className="text-sm font-bold text-slate-800">{d.qualification}</p>
+                <p className="mt-3 text-sm font-medium leading-relaxed text-slate-600 line-clamp-3">
+                  {d.description}
+                </p>
+                <div className="mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/70">
+                  <div className="size-1.5 rounded-full bg-accent" />
+                  {d.experience} Experience
+                </div>
               </div>
-              <div className="mt-6 flex flex-col gap-3">
-                <Button asChild variant="brand" className="w-full shadow-sm">
-                  <Link to="/doctors/$slug" params={{ slug: d.slug }}>View Full Profile</Link>
+
+              <div className="mt-8 grid grid-cols-2 gap-3">
+                <Button asChild variant="outlineBrand" className="h-11 rounded-xl font-bold">
+                  <Link to="/doctors/$slug" params={{ slug: d.slug }}>Details</Link>
                 </Button>
-                <Button asChild variant="outlineBrand" className="w-full">
+                <Button asChild variant="brand" className="h-11 rounded-xl font-bold shadow-sm">
                   <Link
                     to="/book-appointment"
                     search={{
@@ -82,7 +132,7 @@ function Doctors() {
                       doctor: d.slug,
                     }}
                   >
-                    Quick Appointment
+                    Book
                   </Link>
                 </Button>
               </div>
