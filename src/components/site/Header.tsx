@@ -420,7 +420,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
     };
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
-    const sections = ["home", "about", "specialties", "doctors", "testimonials"];
+    const sections = ["home", "about", "doctors", "testimonials"];
     
     sections.forEach((id) => {
       const el = document.getElementById(id);
