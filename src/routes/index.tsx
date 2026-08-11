@@ -121,23 +121,27 @@ function Home() {
               className="group relative flex flex-col items-center overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white p-6 sm:p-8 text-center shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-premium focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
             >
               {/* Background Glow */}
-              <div className="absolute -right-12 -top-12 size-40 rounded-full bg-primary/5 blur-3xl transition-transform duration-700 group-hover:scale-150" aria-hidden="true" />
-              <div className="absolute -bottom-12 -left-12 size-40 rounded-full bg-accent/5 blur-3xl transition-transform duration-700 group-hover:scale-150" aria-hidden="true" />
+              <div className="absolute -right-16 -top-16 size-48 rounded-full bg-primary/5 blur-3xl transition-transform duration-700 group-hover:scale-150 group-hover:bg-primary/10" aria-hidden="true" />
+              <div className="absolute -bottom-16 -left-16 size-48 rounded-full bg-accent/5 blur-3xl transition-transform duration-700 group-hover:scale-150 group-hover:bg-accent/10" aria-hidden="true" />
               
-              <div className="relative z-10 grid size-24 place-items-center rounded-[2rem] bg-slate-50 text-primary shadow-inner transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#001F5B] group-hover:to-[#003A8C] group-hover:text-white group-hover:shadow-2xl group-hover:shadow-primary/30">
+              <div className="relative z-10 grid size-24 place-items-center rounded-[2.5rem] bg-slate-50 text-primary shadow-inner transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#001F5B] group-hover:to-[#003A8C] group-hover:text-white group-hover:shadow-premium group-hover:shadow-primary/30">
                 <SpecialtyIcon slug={s.slug} className="size-11 transition-transform duration-500 group-hover:scale-110" />
-                {/* Decorative overlay for icon box */}
-                <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-0 group-hover:opacity-100" />
+                {/* Glass stroke effect on hover */}
+                <div className="absolute inset-0 rounded-[2.5rem] border border-white/0 transition-colors duration-500 group-hover:border-white/20" />
               </div>
               
-              <h3 className="relative z-10 mt-8 font-display text-xl font-[900] tracking-tight text-primary transition-colors group-hover:text-[#001F5B]">{s.name}</h3>
-              <p className="relative z-10 mt-4 text-sm font-medium leading-relaxed text-slate-500 transition-colors group-hover:text-slate-600 line-clamp-2 px-2">
+              <div className="relative z-10 mt-8">
+                <h3 className="font-display text-xl font-[900] tracking-tight text-primary transition-colors group-hover:text-[#001F5B]">{s.name}</h3>
+                <div className="mx-auto mt-2 h-1 w-8 rounded-full bg-accent/20 transition-all duration-500 group-hover:w-16 group-hover:bg-accent" />
+              </div>
+              
+              <p className="relative z-10 mt-4 text-sm font-medium leading-relaxed text-slate-500 transition-colors group-hover:text-slate-700 line-clamp-2 px-2">
                 {s.tagline}
               </p>
               
-              <div className="relative z-10 mt-8 flex items-center gap-2.5 text-[0.7rem] font-black uppercase tracking-[0.2em] text-primary transition-all group-hover:gap-4">
-                <span>Explore Department</span>
-                <div className="flex size-7 items-center justify-center rounded-full bg-primary/10 transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:shadow-lg group-hover:shadow-accent/30" aria-hidden="true">
+              <div className="relative z-10 mt-auto pt-8 flex items-center gap-3 text-[0.7rem] font-black uppercase tracking-[0.25em] text-primary/60 transition-all group-hover:text-primary group-hover:gap-5">
+                <span>Explore</span>
+                <div className="flex size-8 items-center justify-center rounded-full bg-primary/5 transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:shadow-premium group-hover:shadow-accent/40" aria-hidden="true">
                   <ArrowRight className="size-4" />
                 </div>
               </div>
