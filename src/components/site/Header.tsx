@@ -52,7 +52,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
   );
 }
 
-function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
+function SpecialtiesMegaMenu() {
   const location = useLocation();
   const isActive = location.pathname.startsWith("/specialties");
   const [isOpen, setIsOpen] = useState(false);
