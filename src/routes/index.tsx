@@ -71,12 +71,12 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B] via-[#001F5B]/85 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/60 via-transparent to-transparent" />
         <div className="container-page relative py-20 text-primary-foreground lg:py-32">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl">
             <h1 className="text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-7xl">
-              Comprehensive Multispeciality Healthcare You Can Trust
+              World-Class Multispeciality Healthcare <span className="text-accent">Under One Roof</span>
             </h1>
-            <p className="mt-6 text-xl font-medium text-primary-foreground/90">
-              Expert doctors, advanced technology, and compassionate care—all under one roof.
+            <p className="mt-6 text-xl font-medium text-primary-foreground/90 lg:text-2xl">
+              Advanced Diagnostics • Expert Specialists • Compassionate Family Care
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Button asChild variant="accent" size="xl" className="bg-gradient-cta hover:brightness-110">
