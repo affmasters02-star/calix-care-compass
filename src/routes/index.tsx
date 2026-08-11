@@ -62,7 +62,7 @@ function Home() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden">
         <img
-          src={heroImage}
+          src={heroImageAsset.url}
           alt="Calix Multispeciality Hospital entrance at sunrise"
           width={1600}
           height={1104}
