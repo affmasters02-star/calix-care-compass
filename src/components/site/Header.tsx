@@ -55,7 +55,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
 function SpecialtiesMegaMenu() {
   return (
     <div className="group/mega">
-      <button className="flex items-center gap-1.5 py-5 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
+      <button className="flex items-center gap-1.5 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
         SPECIALTIES
         <ChevronDown className="size-4 transition-transform duration-300 group-hover/mega:rotate-180" />
       </button>
@@ -108,7 +108,7 @@ function SpecialtyItem({ specialty }: { specialty: (typeof specialties)[0] }) {
     <Link
       to="/specialties/$slug"
       params={{ slug: specialty.slug }}
-      className="group/item flex items-center justify-between gap-4 rounded-xl px-4 py-3 transition-all hover:bg-[#EAF4FF]"
+      className="group/item flex items-center justify-between gap-3 rounded-xl px-3 py-2 transition-all hover:bg-[#EAF4FF]"
     >
       <div className="flex items-center gap-4">
         <div className="size-10 rounded-full bg-[#EAF4FF] group-hover/item:bg-white transition-colors flex items-center justify-center text-[#003A8C]">
@@ -198,7 +198,7 @@ export function Header() {
       {/* ROW 2: BRAND HEADER */}
       <div
         className={cn(
-          "h-[100px] bg-white transition-all duration-300",
+          "h-[80px] bg-white transition-all duration-300",
           isScrolled && "h-[0px] overflow-hidden opacity-0"
         )}
       >
@@ -221,10 +221,10 @@ export function Header() {
           </div>
 
           <div className="hidden items-center gap-4 md:flex">
-            <Button asChild className="h-12 rounded-full bg-[#DC2626] px-8 text-white shadow-card hover:bg-[#B91C1C] transition-all hover:-translate-y-0.5">
+            <Button asChild className="h-10 rounded-full bg-[#DC2626] px-6 text-sm text-white shadow-card hover:bg-[#B91C1C] transition-all hover:-translate-y-0.5">
               <Link to="/contact">Emergency Care</Link>
             </Button>
-            <Button asChild className="h-12 rounded-full bg-[#E83E8C] px-8 text-white shadow-card hover:bg-[#D81B60] transition-all hover:-translate-y-0.5">
+            <Button asChild className="h-10 rounded-full bg-[#E83E8C] px-6 text-sm text-white shadow-card hover:bg-[#D81B60] transition-all hover:-translate-y-0.5">
               <Link to="/book-appointment">Book Appointment</Link>
             </Button>
           </div>
@@ -245,8 +245,8 @@ export function Header() {
       {/* ROW 3: NAVIGATION BAR */}
       <nav
         className={cn(
-          "h-[65px] border-t border-[#EAF4FF] bg-white transition-all duration-300 shadow-sm",
-          isScrolled && "fixed top-0 left-0 right-0 h-[65px] bg-white/95 backdrop-blur-xl shadow-md border-b border-[#EAF4FF]/50"
+          "h-[55px] border-t border-[#EAF4FF] bg-white transition-all duration-300 shadow-sm",
+          isScrolled && "fixed top-0 left-0 right-0 h-[55px] bg-white/95 backdrop-blur-xl shadow-md border-b border-[#EAF4FF]/50"
         )}
       >
         <div className="container-page flex h-full items-center justify-center relative">
@@ -324,7 +324,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
 function NavDropdown({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="group relative">
-      <button className="flex items-center gap-1 py-5 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
+      <button className="flex items-center gap-1 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
         {label}
         <ChevronDown className="size-4 transition-transform duration-300 group-hover:rotate-180" />
       </button>
