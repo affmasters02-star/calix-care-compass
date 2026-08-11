@@ -230,7 +230,7 @@ export function Header() {
           </div>
           
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild className="md:hidden">
+            <SheetTrigger asChild className="xl:hidden">
               <Button variant="ghost" size="icon" className="size-12 rounded-xl text-[#001F5B]">
                 <Menu className="size-8" />
               </Button>
@@ -246,7 +246,7 @@ export function Header() {
       <nav
         className={cn(
           "h-[65px] border-t border-[#EAF4FF] bg-white transition-all duration-300 shadow-sm",
-          isScrolled && "fixed top-0 left-0 right-0 h-[70px] bg-white/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.05)] border-b border-[#EAF4FF]/50"
+          isScrolled && "fixed top-0 left-0 right-0 h-[65px] bg-white/95 backdrop-blur-xl shadow-md border-b border-[#EAF4FF]/50"
         )}
       >
         <div className="container-page flex h-full items-center justify-center relative">
@@ -260,7 +260,7 @@ export function Header() {
             </div>
           )}
 
-          <div className="hidden items-center gap-10 xl:flex">
+          <div className="hidden items-center gap-6 2xl:gap-10 xl:flex">
             <NavLink to="/">HOME</NavLink>
             <NavDropdown label="ABOUT US">
               <DropdownLink to="/about">Overview</DropdownLink>
@@ -282,7 +282,7 @@ export function Header() {
           </div>
 
           {isScrolled && (
-             <div className="absolute right-5 hidden md:flex">
+             <div className="absolute right-5 hidden 2xl:flex">
                 <Button asChild size="sm" className="rounded-full bg-[#E83E8C] px-6 text-white hover:bg-[#D81B60]">
                    <Link to="/book-appointment">Book Appointment</Link>
                 </Button>
