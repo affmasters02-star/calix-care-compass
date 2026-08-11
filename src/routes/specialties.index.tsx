@@ -45,7 +45,7 @@ function SpecialtiesIndex() {
               key={specialty.slug}
               to="/specialties/$slug"
               params={{ slug: specialty.slug }}
-              className="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-border bg-card p-10 shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-lift"
+              className="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-border bg-card p-6 sm:p-10 shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-lift"
             >
               {/* Decorative Glow */}
               <div className="absolute -right-10 -top-10 size-32 rounded-full bg-primary/5 blur-3xl transition-opacity group-hover:opacity-100 opacity-0" />
