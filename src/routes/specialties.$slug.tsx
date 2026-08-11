@@ -53,7 +53,13 @@ function SpecialtyDetail() {
             <div>
               <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl">{specialty.name}</h1>
               <p className="mt-3 text-lg text-primary-foreground/80">{specialty.tagline}</p>
+              <Button asChild size="lg" className="mt-6">
+                <Link to="/book-appointment" search={{ specialty: specialty.name }}>
+                  Book for this specialty <ArrowRight className="size-4" />
+                </Link>
+              </Button>
             </div>
+
           </div>
         </div>
       </section>
