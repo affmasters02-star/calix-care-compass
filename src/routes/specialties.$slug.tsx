@@ -71,12 +71,41 @@ function SpecialtyDetail() {
               your treatment needs them.
             </p>
 
-            <h3 className="mt-10 font-display text-lg font-bold text-foreground">Key services</h3>
+            <div className="mt-12 grid gap-10 sm:grid-cols-2">
+              <div>
+                <h3 className="font-display text-lg font-bold text-foreground flex items-center gap-2">
+                  <span className="size-2 rounded-full bg-accent" />
+                  Common Conditions Treated
+                </h3>
+                <ul className="mt-5 space-y-3">
+                  {specialty.conditions.map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
+                      <Check className="size-4 text-primary" /> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-display text-lg font-bold text-foreground flex items-center gap-2">
+                  <span className="size-2 rounded-full bg-accent" />
+                  Diagnostics Offered
+                </h3>
+                <ul className="mt-5 space-y-3">
+                  {specialty.diagnostics.map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
+                      <Check className="size-4 text-primary" /> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <h3 className="mt-12 font-display text-lg font-bold text-foreground">Top Services & Procedures</h3>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
               {specialty.highlights.map((h: string) => (
                 <li
                   key={h}
-                  className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 text-sm font-medium text-foreground/85 shadow-card"
+                  className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 text-sm font-medium text-foreground/85 shadow-card transition-all hover:border-primary-soft hover:shadow-lg"
                 >
                   <Check className="mt-0.5 size-4 shrink-0 text-accent" /> {h}
                 </li>
