@@ -58,19 +58,46 @@ function SpecialtiesMegaMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLAnchorElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cancelClose = useCallback(() => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }, []);
+
+  const open = useCallback(() => {
+    cancelClose();
+    setIsOpen(true);
+  }, [cancelClose]);
+
+  const scheduleClose = useCallback(() => {
+    cancelClose();
+    closeTimer.current = setTimeout(() => setIsOpen(false), 160);
+  }, [cancelClose]);
+
+  const closeNow = useCallback(() => {
+    cancelClose();
+    setIsOpen(false);
+  }, [cancelClose]);
+
+  useEffect(() => () => cancelClose(), [cancelClose]);
+
+  // Close whenever the route changes (link inside the panel, browser nav, etc.)
+  useEffect(() => {
+    cancelClose();
+    setIsOpen(false);
+  }, [location.pathname, cancelClose]);
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === "Escape") {
-      setIsOpen(false);
-      triggerRef.current?.focus();
-    }
-    
     if (e.key === "Tab" && isOpen && containerRef.current) {
       const focusableElements = containerRef.current.querySelectorAll(
         'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
       );
-      const firstElement = focusableElements[0] as HTMLElement;
-      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+      const firstElement = focusableElements[0] as HTMLElement | undefined;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement | undefined;
+      if (!firstElement || !lastElement) return;
 
       if (e.shiftKey) {
         if (document.activeElement === firstElement) {
@@ -87,19 +114,40 @@ function SpecialtiesMegaMenu() {
   }, [isOpen]);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node) && 
-          triggerRef.current && !triggerRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
+    if (!isOpen) return;
+
+    const isInside = (target: Node | null) =>
+      (!!target && !!containerRef.current && containerRef.current.contains(target)) ||
+      (!!target && !!triggerRef.current && triggerRef.current.contains(target));
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      if (!isInside(event.target as Node)) closeNow();
+    };
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeNow();
+        triggerRef.current?.focus();
       }
     };
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    const handleFocusIn = (event: FocusEvent) => {
+      if (!isInside(event.target as Node)) closeNow();
     };
-  }, [isOpen]);
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    document.addEventListener("keydown", handleKey);
+    document.addEventListener("focusin", handleFocusIn);
+    window.addEventListener("blur", closeNow);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("keydown", handleKey);
+      document.removeEventListener("focusin", handleFocusIn);
+      window.removeEventListener("blur", closeNow);
+    };
+  }, [isOpen, closeNow]);
+
 
   return (
     <div className="group/mega relative" onKeyDown={handleKeyDown}>
