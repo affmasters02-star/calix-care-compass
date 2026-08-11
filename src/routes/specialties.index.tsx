@@ -39,50 +39,58 @@ function SpecialtiesIndex() {
           subtitle="We bring together leading specialists and advanced diagnostics to provide you with the best possible treatment outcomes."
         />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {specialties.map((specialty) => (
             <Link
               key={specialty.slug}
               to="/specialties/$slug"
               params={{ slug: specialty.slug }}
-              className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-border bg-card p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lift"
+              className="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-border bg-card p-10 shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-lift"
             >
-              <div className="flex items-start justify-between">
-                <div className="grid size-16 place-items-center rounded-2xl bg-primary/5 ring-1 ring-primary/10 transition-colors group-hover:bg-primary/10">
-                  <SpecialtyIcon slug={specialty.slug} className="size-8 text-primary" />
+              {/* Decorative Glow */}
+              <div className="absolute -right-10 -top-10 size-32 rounded-full bg-primary/5 blur-3xl transition-opacity group-hover:opacity-100 opacity-0" />
+              
+              <div className="flex items-start justify-between relative z-10">
+                <div className="grid size-20 place-items-center rounded-3xl bg-primary/5 ring-1 ring-primary/10 transition-all duration-500 group-hover:bg-gradient-brand group-hover:ring-0 group-hover:shadow-lg">
+                  <SpecialtyIcon slug={specialty.slug} className="size-10 text-primary group-hover:text-white transition-colors" />
                 </div>
-                <div className="rounded-full bg-slate-100 p-2 text-slate-400 transition-colors group-hover:bg-primary group-hover:text-white">
-                  <ArrowRight className="size-4" />
+                <div className="rounded-full bg-slate-50 p-3 text-slate-300 transition-all duration-300 group-hover:bg-accent group-hover:text-white group-hover:scale-110">
+                  <ArrowRight className="size-5" />
                 </div>
               </div>
 
-              <div className="mt-6">
-                <h3 className="font-display text-xl font-[800] text-primary transition-colors group-hover:text-primary-deep">
+              <div className="mt-8 relative z-10">
+                <h3 className="font-display text-2xl font-[900] text-primary transition-colors group-hover:text-primary-deep">
                   {specialty.name}
                 </h3>
-                <p className="mt-2 text-sm font-semibold text-accent uppercase tracking-wider">
-                  {specialty.tagline}
-                </p>
-                <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                <div className="mt-3 flex items-center gap-2">
+                  <span className="h-px w-6 bg-accent/30" />
+                  <p className="text-xs font-black text-accent uppercase tracking-[0.2em]">
+                    {specialty.tagline}
+                  </p>
+                </div>
+                <p className="mt-5 line-clamp-3 text-[0.9375rem] leading-relaxed text-slate-500 font-medium">
                   {specialty.description}
                 </p>
               </div>
 
-              <div className="mt-6 space-y-2">
+              <div className="mt-8 grid gap-3 relative z-10">
                 {specialty.highlights.slice(0, 3).map((highlight) => (
-                  <div key={highlight} className="flex items-center gap-2 text-xs font-medium text-slate-600">
-                    <Check className="size-3 text-healthcare-teal" />
+                  <div key={highlight} className="flex items-center gap-3 text-sm font-semibold text-slate-600">
+                    <div className="flex size-5 shrink-0 items-center justify-center rounded-full bg-healthcare-teal/10">
+                      <Check className="size-3 text-healthcare-teal" />
+                    </div>
                     {highlight}
                   </div>
                 ))}
               </div>
 
-              <div className="mt-8">
+              <div className="mt-10 pt-6 border-t border-slate-100 relative z-10">
                 <Button
                   variant="ghost"
-                  className="h-auto p-0 text-sm font-bold text-primary group-hover:translate-x-1 transition-transform"
+                  className="h-auto p-0 text-sm font-black uppercase tracking-widest text-primary group-hover:text-accent group-hover:translate-x-1 transition-all"
                 >
-                  Learn More <ArrowRight className="ml-2 size-3.5" />
+                  Explore Department <ArrowRight className="ml-2 size-4" />
                 </Button>
               </div>
             </Link>
