@@ -22,9 +22,12 @@ export function PageHero({
         className="absolute -bottom-32 left-1/4 size-96 rounded-full bg-primary/40 blur-3xl"
       />
       <div className="container-page relative">
-        <p className="text-xs font-black uppercase tracking-[0.2em] text-accent drop-shadow-sm">
-          {eyebrow}
-        </p>
+        <div className="flex items-center gap-3 mb-4">
+          <span className="h-px w-8 bg-accent" />
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-accent drop-shadow-sm leading-none">
+            {eyebrow}
+          </p>
+        </div>
         <h1 className="mt-4 max-w-3xl text-3xl font-[900] leading-[1.1] sm:text-4xl lg:text-5xl xl:text-6xl text-white">
           {title}
         </h1>
@@ -50,7 +53,15 @@ export function SectionHeading({
 }) {
   return (
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      {eyebrow ? <p className="eyebrow text-accent font-black">{eyebrow}</p> : null}
+      {eyebrow ? (
+        <div className="flex items-center gap-3 mb-3 justify-center">
+          <span className="h-px w-8 bg-accent/30" />
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-accent drop-shadow-sm leading-none">
+            {eyebrow}
+          </p>
+          <span className="h-px w-8 bg-accent/30" />
+        </div>
+      ) : null}
       <h2 className="mt-3 text-2xl font-[800] leading-tight text-primary sm:text-3xl lg:text-4xl">
         {title}
       </h2>
