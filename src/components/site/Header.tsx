@@ -135,10 +135,11 @@ function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
         onMouseLeave={() => setIsOpen(false)}
         className={cn(
           "fixed left-0 right-0 z-40 flex justify-center transition-all duration-500 ease-out pointer-events-none",
-          // Calculate top based on dynamic header height and scroll state
-          isScrolled ? "top-[var(--header-height-scrolled,75px)]" : "top-[var(--header-height,135px)]",
+          // Always sits exactly below the live header bottom edge
+          "top-[var(--header-bottom,135px)]",
           isOpen ? "visible translate-y-0 opacity-100 pointer-events-auto" : "invisible -translate-y-4 opacity-0"
         )}
+
       >
         <div className="mx-auto w-[1200px] overflow-hidden rounded-[2.5rem] border border-[#EAF4FF] bg-white p-10 shadow-[0_40px_100px_rgba(0,0,0,0.12)]">
           <div className="grid grid-cols-12 gap-12">
