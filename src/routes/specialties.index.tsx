@@ -104,7 +104,9 @@ function SpecialtiesIndex() {
                   Explore Department <ArrowRight className="ml-4 size-5 transition-transform duration-500 group-hover:translate-x-1" />
                 </Button>
               </div>
+              </div>
             </Link>
+
           ))}
         </div>
       </Section>
