@@ -13,7 +13,6 @@ import {
   ArrowRight,
   MessageCircle,
   Calendar,
-  Search,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import logoAsset from "@/assets/calix-logo.png.asset.json";
@@ -226,10 +225,6 @@ export function Header() {
                 </a>
               ))}
             </div>
-            <button className="flex items-center gap-2 text-[#64748B] hover:text-[#003A8C] transition-colors group">
-              <Search className="size-5 group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-medium">Search</span>
-            </button>
           </div>
 
           <div className="hidden items-center gap-4 md:flex">
