@@ -327,26 +327,35 @@ function Home() {
         </div>
       </Section>
 
-      {/* CTA */}
-      <section className="bg-primary py-12 text-primary-foreground lg:py-16">
-        <div className="container-page flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
-          <div>
-            <h2 className="text-2xl font-bold sm:text-3xl">
-              Complete Healthcare Under One Roof — Book Your Visit Today
-            </h2>
-            <p className="mt-3 max-w-2xl text-primary-foreground/80">
-              Speak to our care team for appointments, second opinions or emergency assistance.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Button asChild variant="onDark" size="xl">
-              <a href={`tel:${HOSPITAL.phone}`}>
-                <Phone className="size-4" /> {HOSPITAL.phone}
-              </a>
-            </Button>
-            <Button asChild size="xl" variant="secondary">
-              <Link to="/book-appointment">Book Appointment</Link>
-            </Button>
+      {/* Pre-Footer CTA */}
+      <section className="relative overflow-hidden bg-primary-deep py-16 text-primary-foreground lg:py-24">
+        {/* Background decorative elements */}
+        <div className="absolute -right-24 -top-24 size-96 rounded-full bg-accent/10 blur-3xl" aria-hidden="true" />
+        <div className="absolute -bottom-32 -left-24 size-96 rounded-full bg-primary/20 blur-3xl" aria-hidden="true" />
+        
+        <div className="container-page relative">
+          <div className="flex flex-col items-center justify-between gap-10 lg:flex-row">
+            <div className="max-w-3xl text-center lg:text-left">
+              <h2 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+                Complete Healthcare Under One Roof — <br className="hidden lg:block" />
+                <span className="text-accent">Book Your Visit Today</span>
+              </h2>
+              <p className="mt-6 text-lg font-medium text-primary-foreground/80 lg:text-xl">
+                Speak to our care team for appointments, second opinions or emergency assistance. 
+                Expert care is just a phone call away.
+              </p>
+            </div>
+            
+            <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row lg:shrink-0">
+              <Button asChild variant="outline" size="xl" className="h-16 border-white/20 bg-white/5 px-8 text-lg font-bold backdrop-blur-sm transition-all hover:bg-white/10 sm:h-20">
+                <a href={`tel:${HOSPITAL.phone}`}>
+                  <Phone className="mr-3 size-6" /> {HOSPITAL.phone}
+                </a>
+              </Button>
+              <Button asChild size="xl" variant="accent" className="h-16 bg-gradient-cta px-10 text-lg font-bold shadow-2xl transition-all hover:-translate-y-1 hover:brightness-110 sm:h-20">
+                <Link to="/book-appointment">Book Appointment</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
