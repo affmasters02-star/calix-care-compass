@@ -73,7 +73,7 @@ function SpecialtyDetail() {
 
             <h3 className="mt-10 font-display text-lg font-bold text-foreground">Key services</h3>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-              {specialty.highlights.map((h) => (
+              {specialty.highlights.map((h: string) => (
                 <li
                   key={h}
                   className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 text-sm font-medium text-foreground/85 shadow-card"

@@ -185,7 +185,7 @@ function Home() {
             />
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {whyChoose.map((w, i) => {
-                const Icon = whyIcons[i];
+                const Icon = whyIcons[i] ?? ShieldCheck;
                 return (
                   <li key={w.title} className="flex gap-3">
                     <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-lg bg-accent-soft text-accent">
