@@ -244,7 +244,7 @@ function Home() {
       </section>
 
       {/* Doctors */}
-      <Section tone="muted">
+      <Section id="doctors" tone="muted">
         <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading
             align="left"
@@ -328,7 +328,7 @@ function Home() {
       </Section>
 
       {/* Testimonials */}
-      <Section tone="soft">
+      <Section id="testimonials" tone="soft">
         <SectionHeading
           eyebrow="Patient Stories"
           title="Trusted by Families Across the Region"

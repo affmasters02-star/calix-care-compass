@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link, useLocation, useRouter } from "@tanstack/react-router";
 import {
   Menu,
   Phone,
@@ -347,12 +347,12 @@ export function Header() {
           {/* CENTER: NAVIGATION */}
           <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
-            <NavLink to="/about">ABOUT US</NavLink>
+            <NavLink to="/#about">ABOUT US</NavLink>
             <SpecialtiesMegaMenu isScrolled={isScrolled} />
             <NavLink to="/patient-services">SERVICES</NavLink>
-            <NavLink to="/doctors">DOCTORS</NavLink>
+            <NavLink to="/#doctors">DOCTORS</NavLink>
             <NavLink to="/facilities">FACILITIES</NavLink>
-            <NavLink to="/testimonials">TESTIMONIALS</NavLink>
+            <NavLink to="/#testimonials">TESTIMONIALS</NavLink>
             <NavLink to="/contact">CONTACT</NavLink>
           </div>
 
@@ -394,13 +394,81 @@ export function Header() {
 }
 
 function NavLink({ to, children, onClick }: { to: string; children: React.ReactNode; onClick?: () => void }) {
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const location = useLocation();
+  const router = useRouter();
+
+  useEffect(() => {
+    // Only track sections on the home page
+    if (location.pathname !== "/") {
+      setActiveSection(null);
+      return;
+    }
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0,
+    };
+
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+    const sections = ["home", "about", "specialties", "doctors", "testimonials"];
+    
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
+  const scrollToSection = (e: React.MouseEvent, id: string) => {
+    if (location.pathname !== "/") return;
+    
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      
+      if (onClick) onClick();
+    }
+  };
+
+  const isHomeSection = to.startsWith("/#") || (to === "/" && location.pathname === "/");
+  const sectionId = to.startsWith("/#") ? to.substring(2) : "home";
+  const isActiveSection = activeSection === sectionId;
+
   return (
     <Link
       to={to}
-      onClick={onClick}
+      onClick={(e) => {
+        if (isHomeSection && location.pathname === "/") {
+          scrollToSection(e, sectionId);
+        } else if (onClick) {
+          onClick();
+        }
+      }}
       activeOptions={{ exact: to === "/" }}
       activeProps={{ className: "text-[#003A8C] after:scale-x-100" }}
-      className="relative py-2 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 uppercase whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md"
+      className={cn(
+        "relative py-2 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 uppercase whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
+        isActiveSection && "text-[#003A8C] after:scale-x-100"
+      )}
     >
       {children}
     </Link>
@@ -506,11 +574,12 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
   return (
     <div className="flex flex-col gap-2">
       <NavLink to="/" onClick={closeMenu}>HOME</NavLink>
+      <NavLink to="/#about" onClick={closeMenu}>ABOUT US</NavLink>
       <Accordion type="single" collapsible>
         <AccordionItem value="about" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">ABOUT US</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">HOSPITAL INFO</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">About Calix</Link>
+             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Full Details</Link>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="specialties" className="border-none">
@@ -544,9 +613,9 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
         </AccordionItem>
         <NavLink to="/patient-services" onClick={closeMenu}>SERVICES</NavLink>
       </Accordion>
-      <NavLink to="/doctors" onClick={closeMenu}>DOCTORS</NavLink>
+      <NavLink to="/#doctors" onClick={closeMenu}>DOCTORS</NavLink>
       <NavLink to="/facilities" onClick={closeMenu}>FACILITIES</NavLink>
-      <NavLink to="/testimonials" onClick={closeMenu}>TESTIMONIALS</NavLink>
+      <NavLink to="/#testimonials" onClick={closeMenu}>TESTIMONIALS</NavLink>
       <NavLink to="/contact" onClick={closeMenu}>CONTACT</NavLink>
       <div className="mt-8 flex flex-col gap-4 pb-20">
          <Button asChild className="rounded-full bg-[#E83E8C] text-white">
