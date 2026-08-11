@@ -303,6 +303,7 @@ function Home() {
           subtitle="Real experiences from patients treated across our specialties."
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {testimonials.slice(0, 3).map((t) => (
             <figure key={t.name} className="group relative flex flex-col rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-card transition-all duration-500 hover:-translate-y-2 hover:shadow-premium lg:p-10">
               {/* Quote Mark Background */}
               <Quote className="absolute -right-4 top-8 size-32 -rotate-12 text-slate-50 opacity-[0.03] transition-transform duration-700 group-hover:scale-110" aria-hidden="true" />
