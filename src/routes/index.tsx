@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import * as React from "react";
 import {
   ArrowRight,
   CalendarCheck,
@@ -24,6 +25,7 @@ import {
   testimonials,
   HOSPITAL,
 } from "@/lib/site-data";
+import { cn } from "@/lib/utils";
 import heroImageAsset from "@/assets/hero-hospital.avif.asset.json";
 import teamImage from "@/assets/care-team.jpg";
 
@@ -219,55 +221,9 @@ function Home() {
             </Link>
           </Button>
         </div>
-        
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
-          {doctors.slice(0, 2).map((d) => (
-            <div key={d.name} className="group relative overflow-hidden rounded-[2.5rem] border border-border bg-card p-8 shadow-card transition-all duration-300 hover:shadow-lift lg:p-10">
-              <div className="flex flex-col items-center gap-8 md:flex-row md:items-start">
-                {/* Image Placeholder / Avatar */}
-                <div className="relative shrink-0">
-                  <div className="grid size-40 place-items-center rounded-3xl bg-gradient-brand font-display text-4xl font-extrabold text-primary-foreground shadow-lg transition-transform duration-500 group-hover:scale-105 md:size-48">
-                    {d.name.split(" ")[1]?.[0] ?? "C"}
-                    {d.name.split(" ")[2]?.[0] ?? ""}
-                  </div>
-                </div>
-                
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="font-display text-2xl font-[800] tracking-tight text-primary lg:text-3xl">
-                    {d.name}
-                  </h3>
-                  <p className="mt-2 text-lg font-bold text-accent/80">
-                    {d.qualification}
-                  </p>
-                  
-                  <ul className="mt-6 space-y-2">
-                    <li className="flex items-center justify-center gap-2 text-slate-600 md:justify-start">
-                      <div className="size-1.5 rounded-full bg-accent" />
-                      <span className="text-sm font-semibold">{d.specialty} Specialist</span>
-                    </li>
-                    <li className="flex items-center justify-center gap-2 text-slate-600 md:justify-start">
-                      <div className="size-1.5 rounded-full bg-accent" />
-                      <span className="text-sm font-semibold">{d.experience} Experience</span>
-                    </li>
-                  </ul>
 
-                  <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
-                    <Button asChild variant="accent" className="h-12 rounded-xl bg-primary px-6 font-bold text-white transition-all hover:brightness-110">
-                      <Link to="/book-appointment" search={{ doctor: d.slug }}>
-                        Book An Appointment
-                      </Link>
-                    </Button>
-                    <Button asChild variant="outlineBrand" className="h-12 rounded-xl border-primary/20 px-6 font-bold text-primary hover:bg-primary/5">
-                      <Link to="/doctors/$slug" params={{ slug: d.slug }}>
-                        View Profile
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Filter Tabs */}
+        <DoctorFilters doctors={doctors} />
       </Section>
 
       {/* Packages */}
@@ -377,5 +333,94 @@ function Home() {
         </div>
       </section>
     </>
+  );
+}
+
+function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
+  const [activeTab, setActiveTab] = React.useState("all");
+
+  const filteredDoctors = React.useMemo(() => {
+    if (activeTab === "all") return allDoctors.slice(0, 2);
+    return allDoctors.filter(d => d.specialty.toLowerCase() === activeTab.toLowerCase()).slice(0, 2);
+  }, [activeTab, allDoctors]);
+
+  return (
+    <div className="mt-10">
+      <div className="no-scrollbar mb-10 flex w-full justify-start gap-2 overflow-x-auto pb-4 md:flex-wrap md:justify-center">
+        <button
+          onClick={() => setActiveTab("all")}
+          className={cn(
+            "h-10 shrink-0 whitespace-nowrap rounded-full px-6 text-sm font-bold transition-all",
+            activeTab === "all"
+              ? "bg-primary text-primary-foreground shadow-md"
+              : "bg-primary-soft text-primary hover:bg-primary/10"
+          )}
+        >
+          All Specialties
+        </button>
+        {specialties.map((s) => (
+          <button
+            key={s.slug}
+            onClick={() => setActiveTab(s.name)}
+            className={cn(
+              "h-10 shrink-0 whitespace-nowrap rounded-full px-6 text-sm font-bold transition-all",
+              activeTab === s.name
+                ? "bg-primary text-primary-foreground shadow-md"
+                : "bg-primary-soft text-primary hover:bg-primary/10"
+            )}
+          >
+            {s.name}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+        {filteredDoctors.map((d) => (
+          <div key={d.name} className="group relative overflow-hidden rounded-[2.5rem] border border-border bg-card p-8 shadow-card transition-all duration-300 hover:shadow-lift lg:p-10">
+            <div className="flex flex-col items-center gap-8 md:flex-row md:items-start">
+              <div className="relative shrink-0">
+                <div className="grid size-40 place-items-center rounded-3xl bg-gradient-brand font-display text-4xl font-extrabold text-primary-foreground shadow-lg transition-transform duration-500 group-hover:scale-105 md:size-48">
+                  {d.name.split(" ")[1]?.[0] ?? "C"}
+                  {d.name.split(" ")[2]?.[0] ?? ""}
+                </div>
+              </div>
+              
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="font-display text-2xl font-[800] tracking-tight text-primary lg:text-3xl">
+                  {d.name}
+                </h3>
+                <p className="mt-2 text-lg font-bold text-accent/80">
+                  {d.qualification}
+                </p>
+                
+                <ul className="mt-6 space-y-2">
+                  <li className="flex items-center justify-center gap-2 text-slate-600 md:justify-start">
+                    <div className="size-1.5 rounded-full bg-accent" />
+                    <span className="text-sm font-semibold">{d.specialty} Specialist</span>
+                  </li>
+                  <li className="flex items-center justify-center gap-2 text-slate-600 md:justify-start">
+                    <div className="size-1.5 rounded-full bg-accent" />
+                    <span className="text-sm font-semibold">{d.experience} Experience</span>
+                  </li>
+                </ul>
+
+                <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
+                  <Button asChild variant="accent" className="h-12 rounded-xl bg-primary px-6 font-bold text-white transition-all hover:brightness-110">
+                    <Link to="/book-appointment" search={{ doctor: d.slug }}>
+                      Book An Appointment
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outlineBrand" className="h-12 rounded-xl border-primary/20 px-6 font-bold text-primary hover:bg-primary/5">
+                    <Link to="/doctors/$slug" params={{ slug: d.slug }}>
+                      View Profile
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
