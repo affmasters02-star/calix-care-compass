@@ -127,10 +127,12 @@ function SpecialtiesMegaMenu() {
     };
     const handleKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        escapedRef.current = true;
         closeNow();
         triggerRef.current?.focus();
       }
     };
+
     const handleFocusIn = (event: FocusEvent) => {
       if (!isInside(event.target as Node)) closeNow();
     };
