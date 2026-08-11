@@ -290,7 +290,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
 function NavDropdown({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="group relative">
-      <button className="flex items-center gap-1 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase">
+      <button className="flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap">
         {label}
         <ChevronDown className="size-4 transition-transform duration-300 group-hover:rotate-180" />
       </button>
