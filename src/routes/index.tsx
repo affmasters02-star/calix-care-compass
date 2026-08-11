@@ -460,25 +460,29 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
         className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2"
       >
         {filteredDoctors.map((d) => (
-          <div key={d.name} className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-6 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] sm:rounded-[2.5rem] sm:p-8 md:p-10">
+          <div key={d.name} className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-6 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-[0_30px_70px_-20px_rgba(0,58,140,0.15)] sm:rounded-[2.5rem] sm:p-8 md:p-10">
             {/* Top decorative element */}
             <div className="absolute right-0 top-0 size-32 translate-x-12 -translate-y-12 rounded-full bg-primary/5 blur-3xl transition-transform duration-700 group-hover:scale-150" aria-hidden="true" />
+            <div className="absolute -bottom-16 -left-16 size-48 rounded-full bg-accent/5 blur-3xl transition-transform duration-700 group-hover:scale-125" aria-hidden="true" />
             
             <div className="relative z-10 flex flex-col items-center gap-6 sm:gap-8 md:flex-row md:items-start lg:gap-10">
               {/* Avatar section */}
               <div className="relative shrink-0">
-                <div className="grid size-24 place-items-center overflow-hidden rounded-[1.2rem] bg-gradient-to-br from-[#001F5B] via-[#003A8C] to-[#E83E8C] font-display text-2xl font-black text-white shadow-xl transition-all duration-500 group-hover:scale-105 group-hover:rounded-[1.5rem] sm:size-32 sm:text-3xl md:size-40 md:rounded-[1.5rem] lg:size-48 lg:text-4xl">
+                <div className="relative grid size-28 place-items-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-[#001F5B] via-[#003A8C] to-[#E83E8C] font-display text-3xl font-black text-white shadow-xl transition-all duration-500 group-hover:scale-105 group-hover:rounded-[2rem] sm:size-36 sm:text-4xl md:size-44 md:rounded-[1.8rem] lg:size-52 lg:text-5xl">
                   <span className="drop-shadow-lg">
                     {d.name.split(" ")[1]?.[0] ?? "C"}
                     {d.name.split(" ")[2]?.[0] ?? ""}
                   </span>
                   
                   {/* Glass highlight */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/20" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/30 opacity-60" />
+                  
+                  {/* Internal stroke */}
+                  <div className="absolute inset-0 rounded-inherit border border-white/20" />
                 </div>
                 
                 {/* Experience Badge */}
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-2.5 py-1 text-[0.6rem] font-black uppercase tracking-wider text-[#003A8C] shadow-lg ring-1 ring-slate-100 sm:-bottom-3 sm:px-3 sm:py-1 sm:text-[0.65rem] md:bottom-2 md:left-auto md:right-[-5%] md:translate-x-0 lg:px-4 lg:py-1.5 lg:text-[0.7rem]">
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-3 py-1.5 text-[0.65rem] font-black uppercase tracking-widest text-[#003A8C] shadow-lg ring-1 ring-slate-100 transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-[#003A8C] group-hover:text-white sm:-bottom-3 sm:px-4 sm:text-[0.7rem] md:bottom-3 md:left-auto md:right-[-8%] md:translate-x-0">
                   {d.experience} Exp.
                 </div>
               </div>
