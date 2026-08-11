@@ -159,7 +159,12 @@ function SpecialtiesMegaMenu() {
         aria-controls="specialties-mega-menu"
         onMouseEnter={open}
         onMouseLeave={scheduleClose}
-        onFocus={open}
+        onFocus={(e) => {
+          // Only open on keyboard focus, and never when focus is restored after Escape
+          if (!escapedRef.current && e.currentTarget.matches(":focus-visible")) open();
+          escapedRef.current = false;
+        }}
+
         onClick={closeNow}
         className={cn(
           "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#003A8C] after:transition-[width] after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
