@@ -106,7 +106,7 @@ function Home() {
 
 
       {/* Specialties */}
-      <Section tone="soft" className="bg-slate-50 pt-8 lg:pt-10">
+      <Section id="specialties" tone="soft" className="bg-slate-50 pt-8 lg:pt-10">
         <SectionHeading
           eyebrow="Our Specialties"
           title="Expert Care Across Every Specialty"
