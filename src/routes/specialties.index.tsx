@@ -71,8 +71,6 @@ function SpecialtiesIndex() {
               <div className="flex flex-1 flex-col p-7 sm:p-9">
               <div className="relative z-10">
 
- 
-              <div className="mt-10 relative z-10">
                 <h3 className="font-display text-3xl font-[900] tracking-tight text-primary transition-all duration-500 group-hover:text-primary-deep group-hover:scale-[1.01]">
                   {specialty.name}
                 </h3>
