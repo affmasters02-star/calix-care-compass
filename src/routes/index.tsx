@@ -184,23 +184,23 @@ function Home() {
               key={s.slug}
               to="/specialties/$slug"
               params={{ slug: s.slug }}
-              className="group relative flex flex-col items-center overflow-hidden rounded-[2rem] border border-border bg-card p-8 text-center shadow-card transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-lift"
+              className="group relative flex flex-col items-center overflow-hidden rounded-[2rem] border border-border bg-card p-8 text-center shadow-card transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-lift focus-visible:ring-4 focus-visible:ring-primary/20 focus-visible:outline-none"
             >
               {/* Background Glow */}
-              <div className="absolute -right-12 -top-12 size-32 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-150" />
+              <div className="absolute -right-12 -top-12 size-32 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-150" aria-hidden="true" />
               
               <div className="relative z-10 grid size-20 place-items-center rounded-2xl bg-primary-soft text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/25">
                 <SpecialtyIcon slug={s.slug} className="size-10" />
               </div>
               
               <h3 className="relative z-10 mt-8 font-display text-lg font-bold text-slate-900">{s.name}</h3>
-              <p className="relative z-10 mt-3 text-sm font-medium leading-relaxed text-slate-500 line-clamp-2">
+              <p className="relative z-10 mt-3 text-sm font-medium leading-relaxed text-slate-600 line-clamp-2">
                 {s.tagline}
               </p>
               
               <div className="relative z-10 mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary transition-all group-hover:gap-3">
-                Learn More 
-                <div className="flex size-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <span>Learn More</span>
+                <div className="flex size-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary group-hover:text-primary-foreground" aria-hidden="true">
                   <ArrowRight className="size-3.5" />
                 </div>
               </div>
