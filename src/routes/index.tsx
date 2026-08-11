@@ -74,10 +74,10 @@ function Home() {
             className="size-full object-cover object-center scale-105 animate-in fade-in zoom-in duration-1000"
             style={{ fetchPriority: 'high' } as any}
           />
-          {/* Advanced Multi-layer Gradient Overlay */}
-          <div className="absolute inset-0 bg-[#001F5B]/60 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B] via-[#001F5B]/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B] via-transparent to-transparent" />
+          {/* Advanced Multi-layer Gradient Overlay - Refined for visibility */}
+          <div className="absolute inset-0 bg-[#001F5B]/40 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B]/90 via-[#001F5B]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/80 via-transparent to-transparent" />
           {/* Decorative Radial Glows */}
           <div className="absolute -left-20 top-0 h-[600px] w-[600px] rounded-full bg-[#003A8C]/30 blur-[120px]" />
           <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-accent/10 blur-[100px]" />
@@ -86,7 +86,7 @@ function Home() {
         <div className="container-page relative z-10 py-20 text-white lg:py-32">
           <div className="max-w-4xl">
             {/* Premium Trust Badge */}
-            <div className="mb-8 inline-flex items-center gap-3 rounded-full premium-glass-glow px-5 py-2 text-xs font-black tracking-[0.2em] text-white shadow-2xl animate-in fade-in slide-in-from-left duration-700">
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full premium-glass-glow bg-white/10 px-5 py-2.5 text-xs font-black tracking-[0.2em] text-white shadow-2xl animate-in fade-in slide-in-from-left duration-700 ring-1 ring-white/30 backdrop-blur-md">
               <span className="relative flex size-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
                 <span className="relative inline-flex size-2.5 rounded-full bg-accent"></span>
