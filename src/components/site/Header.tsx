@@ -171,7 +171,7 @@ export function Header() {
       {/* ROW 1: TOP INFO BAR */}
       <div
         className={cn(
-          "h-[45px] bg-[#003A8C] text-white transition-all duration-300 overflow-hidden relative z-20",
+          "h-[45px] bg-[#003A8C] text-white transition-all duration-300 overflow-hidden relative z-20 hidden md:block",
           isScrolled && "h-0 opacity-0"
         )}
       >
