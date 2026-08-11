@@ -86,14 +86,14 @@ function Home() {
         <div className="container-page relative z-10 py-20 text-white lg:py-32">
           <div className="max-w-4xl">
             {/* Premium Trust Badge */}
-            <div className="mb-8 inline-flex items-center gap-3 rounded-full premium-glass-glow bg-white/10 px-5 py-2.5 text-xs font-black tracking-[0.2em] text-white shadow-2xl ring-1 ring-white/30 backdrop-blur-md">
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2.5 text-xs font-black tracking-[0.2em] text-white shadow-2xl ring-1 ring-white/30 backdrop-blur-md">
               <span className="relative flex size-2.5">
                 <span className="relative inline-flex size-2.5 rounded-full bg-accent"></span>
               </span>
-              24/7 EMERGENCY & CRITICAL CARE
+              <span className="leading-none">24/7 EMERGENCY & CRITICAL CARE</span>
             </div>
 
-            <h1 className="text-white drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)] leading-[1.1] animate-in fade-in slide-in-from-bottom duration-700 delay-100">
+            <h1 className="text-white drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)] leading-[1.1]">
               World-Class Multispeciality <br className="hidden sm:block" /> 
               Healthcare <span className="relative inline-block">
                 <span className="relative z-10 bg-gradient-to-r from-accent via-[#FF6BAA] to-accent bg-clip-text text-transparent">Under One Roof</span>
@@ -101,11 +101,11 @@ function Home() {
               </span>
             </h1>
 
-            <p className="mt-8 max-w-2xl text-lg font-medium leading-relaxed text-white/90 drop-shadow-md sm:text-xl animate-in fade-in slide-in-from-bottom duration-700 delay-200">
+            <p className="mt-8 max-w-2xl text-lg font-medium leading-relaxed text-white/90 drop-shadow-md sm:text-xl">
               Experience advanced clinical expertise, cutting-edge diagnostics, and compassionate family-centered care—all delivered with uncompromising excellence.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center animate-in fade-in slide-in-from-bottom duration-700 delay-300">
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Button asChild variant="accent" size="xl" className="h-16 rounded-full bg-gradient-cta px-10 text-lg font-black shadow-[0_20px_40px_-10px_rgba(232,62,140,0.4)] transition-all hover:-translate-y-1 hover:brightness-110 active:scale-95">
                 <Link to="/book-appointment">
                   Book Appointment <ArrowRight className="ml-2 size-6" />
