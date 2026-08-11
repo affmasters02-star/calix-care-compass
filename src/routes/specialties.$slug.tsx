@@ -37,29 +37,52 @@ function SpecialtyDetail() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-primary-deep py-16 text-primary-foreground lg:py-20">
-        <div aria-hidden className="absolute -right-20 -top-20 size-80 rounded-full bg-accent/25 blur-3xl" />
-        <div className="container-page relative">
+      <section className="relative overflow-hidden bg-primary-deep py-20 text-primary-foreground lg:py-28">
+        {/* Background Accents */}
+        <div aria-hidden className="absolute -right-20 -top-20 size-96 rounded-full bg-accent/20 blur-[100px]" />
+        <div aria-hidden className="absolute -left-20 bottom-0 size-80 rounded-full bg-primary/20 blur-[80px]" />
+        
+        <div className="container-page relative z-10">
           <Link
             to="/specialties"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary-foreground/65 hover:text-primary-foreground"
+            className="group inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-primary-foreground/60 transition-colors hover:text-white"
           >
-            <ArrowLeft className="size-3.5" /> All specialties
+            <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" /> 
+            Back to Specialties
           </Link>
-          <div className="mt-8 flex items-start gap-5">
-            <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-primary-foreground/12 ring-1 ring-primary-foreground/25">
-              <SpecialtyIcon slug={specialty.slug} className="size-7" />
-            </span>
-            <div>
-              <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl">{specialty.name}</h1>
-              <p className="mt-3 text-lg text-primary-foreground/80">{specialty.tagline}</p>
-              <Button asChild size="lg" className="mt-6">
-                <Link to="/book-appointment" search={{ specialty: specialty.slug }}>
-                  Book for this specialty <ArrowRight className="size-4" />
-                </Link>
-              </Button>
+          
+          <div className="mt-12 flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
+            <div className="grid size-24 lg:size-32 shrink-0 place-items-center rounded-[2.5rem] bg-white/10 backdrop-blur-md ring-1 ring-white/20 shadow-2xl">
+              <SpecialtyIcon slug={specialty.slug} className="size-12 lg:size-16 text-white" />
             </div>
-
+            
+            <div className="flex-1">
+              <div className="flex items-center gap-3">
+                <span className="h-px w-8 bg-accent" />
+                <span className="text-xs font-black uppercase tracking-[0.2em] text-accent">
+                  Department of Medical Excellence
+                </span>
+              </div>
+              <h1 className="mt-4 text-4xl font-[900] leading-tight sm:text-5xl lg:text-7xl text-white">
+                {specialty.name}
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg lg:text-xl font-medium text-primary-foreground/80 leading-relaxed">
+                {specialty.tagline}
+              </p>
+              
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Button asChild size="xl" className="rounded-full bg-accent hover:bg-accent/90 text-white shadow-xl px-10">
+                  <Link to="/book-appointment" search={{ specialty: specialty.slug }}>
+                    Book Appointment <ArrowRight className="ml-2 size-5" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="xl" className="rounded-full border-white/20 text-white hover:bg-white/10 px-10">
+                  <a href={`tel:${HOSPITAL.phone}`}>
+                    <Phone className="mr-2 size-5" /> Call for Inquiry
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
