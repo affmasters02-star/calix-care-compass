@@ -258,7 +258,7 @@ export function Header() {
       <nav
         className={cn(
           "h-[65px] border-t border-[#EAF4FF] bg-white transition-all duration-300 shadow-sm",
-          isScrolled && "fixed top-0 left-0 right-0 h-[70px] bg-white/80 backdrop-blur-xl shadow-lg border-none"
+          isScrolled && "fixed top-0 left-0 right-0 h-[70px] bg-white/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.05)] border-b border-[#EAF4FF]/50"
         )}
       >
         <div className="container-page flex h-full items-center justify-center relative">
@@ -338,7 +338,7 @@ function NavDropdown({ label, children }: { label: string; children: React.React
         <ChevronDown className="size-4 transition-transform duration-300 group-hover:rotate-180" />
       </button>
       <div className="invisible absolute left-0 top-[calc(100%-10px)] z-50 w-64 pt-2 opacity-0 transition-all duration-300 group-hover:visible group-hover:top-full group-hover:opacity-100">
-        <div className="overflow-hidden rounded-2xl border border-[#EAF4FF] bg-white py-3 shadow-lift">
+        <div className="overflow-hidden rounded-2xl border border-[#EAF4FF] bg-white py-3 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
           {children}
         </div>
       </div>
