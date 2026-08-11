@@ -98,16 +98,16 @@ function Doctors() {
               {/* Decorative Glow */}
               <div className="absolute right-0 top-0 size-24 translate-x-8 -translate-y-8 rounded-full bg-primary/5 blur-2xl transition-transform duration-500 group-hover:scale-150" aria-hidden="true" />
               
-              <div className="relative z-10 flex items-center gap-5">
-                <div className="grid size-20 shrink-0 place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#001F5B] via-[#003A8C] to-[#E83E8C] font-display text-2xl font-black text-white shadow-lg transition-transform duration-500 group-hover:scale-105 group-hover:rounded-[1.5rem]">
+              <div className="relative z-10 flex items-center gap-4 sm:gap-5">
+                <div className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#001F5B] via-[#003A8C] to-[#E83E8C] font-display text-xl font-black text-white shadow-lg transition-transform duration-500 group-hover:scale-105 group-hover:rounded-[1.5rem] sm:size-20 sm:text-2xl">
                   <span className="drop-shadow-lg">{initials(d.name)}</span>
                   <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10" />
                 </div>
-                <div>
-                  <h3 className="font-display text-xl font-[800] leading-tight text-primary transition-colors group-hover:text-primary-deep">{d.name}</h3>
-                  <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-slate-50 px-3 py-1 text-[0.7rem] font-bold text-slate-600 ring-1 ring-inset ring-slate-200/50">
-                    <div className="size-1.5 rounded-full bg-[#00857A]" />
-                    {d.specialty} Specialist
+                <div className="min-w-0">
+                  <h3 className="font-display text-lg font-[800] leading-tight text-primary transition-colors group-hover:text-primary-deep sm:text-xl">{d.name}</h3>
+                  <div className="mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-slate-50 px-2.5 py-1 text-[0.65rem] font-bold text-slate-600 ring-1 ring-inset ring-slate-200/50 sm:mt-2 sm:gap-2 sm:px-3 sm:text-[0.7rem]">
+                    <div className="size-1 rounded-full bg-[#00857A] sm:size-1.5" />
+                    <span className="truncate">{d.specialty} Specialist</span>
                   </div>
                 </div>
               </div>
@@ -124,10 +124,10 @@ function Doctors() {
               </div>
 
               <div className="relative z-10 mt-8 grid grid-cols-2 gap-3">
-                <Button asChild variant="outline" className="h-11 rounded-full border-slate-200 bg-white text-xs font-extrabold text-[#0f172a] shadow-sm transition-all hover:bg-slate-50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                <Button asChild variant="outline" className="h-10 rounded-full border-slate-200 bg-white px-3 text-[0.65rem] font-black uppercase tracking-wider text-[#0f172a] shadow-sm transition-all hover:bg-slate-50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:h-11 sm:px-4 sm:text-[0.7rem]">
                   <Link to="/doctors/$slug" params={{ slug: d.slug }}>View Profile</Link>
                 </Button>
-                <Button asChild className="h-11 rounded-full bg-[#003A8C] text-xs font-extrabold text-white shadow-lg shadow-[#003A8C]/20 transition-all hover:bg-[#001F5B] hover:shadow-xl hover:shadow-[#003A8C]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                <Button asChild className="h-10 rounded-full bg-[#003A8C] px-3 text-[0.65rem] font-black uppercase tracking-wider text-white shadow-lg shadow-[#003A8C]/20 transition-all hover:bg-[#001F5B] hover:shadow-xl sm:h-11 sm:px-4 sm:text-[0.7rem]">
                   <Link
                     to="/book-appointment"
                     search={{
@@ -135,7 +135,7 @@ function Doctors() {
                       doctor: d.slug,
                     }}
                   >
-                    Book Appointment
+                    Book Now
                   </Link>
                 </Button>
               </div>
