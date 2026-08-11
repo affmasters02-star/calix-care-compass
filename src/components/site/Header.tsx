@@ -35,14 +35,17 @@ const socialLinks = [
   { icon: Linkedin, href: "#", label: "LinkedIn" },
 ];
 
-export function Logo({ className }: { className?: string }) {
+export function Logo({ className, inverted = false }: { className?: string; inverted?: boolean }) {
   return (
     <Link to="/" className={cn("flex items-center", className)}>
       <div className="relative h-12 w-auto shrink-0 md:h-14">
         <img 
           src={logoAsset.url} 
           alt="Calix Multispeciality Hospital" 
-          className="h-full w-auto object-contain" 
+          className={cn(
+            "h-full w-auto object-contain",
+            inverted && "brightness-0 invert"
+          )} 
         />
       </div>
     </Link>
@@ -155,11 +158,11 @@ export function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 z-50 w-full transition-all duration-300">
+    <header className="fixed top-0 z-50 w-full transition-all duration-300 border-b border-[#EAF4FF]/30">
       {/* ROW 1: TOP INFO BAR */}
       <div
         className={cn(
-          "h-[45px] bg-[#003A8C] text-white transition-all duration-300 overflow-hidden",
+          "h-[45px] bg-[#003A8C] text-white transition-all duration-300 overflow-hidden relative z-20",
           isScrolled && "h-0 opacity-0"
         )}
       >
@@ -198,12 +201,12 @@ export function Header() {
           "bg-white transition-all duration-300 relative z-10",
           isScrolled 
             ? "h-[75px] shadow-lg bg-white/95 backdrop-blur-md" 
-            : "h-[90px] border-b border-[#EAF4FF]"
+            : "h-[90px]"
         )}
       >
-        <div className="container-page flex h-full items-center justify-between">
+        <div className="container-page flex h-full items-center justify-between gap-4">
           {/* LEFT: LOGO */}
-          <Logo />
+          <Logo className="shrink-0" />
 
           {/* CENTER: NAVIGATION */}
           <div className="hidden items-center gap-4 2xl:gap-8 xl:flex">
@@ -228,7 +231,7 @@ export function Header() {
           </div>
 
           {/* RIGHT: SOCIAL + BUTTONS */}
-          <div className="hidden items-center gap-4 lg:flex">
+          <div className="hidden items-center gap-4 lg:flex shrink-0">
             <div className="hidden xl:flex items-center gap-2 pr-4 border-r border-[#EAF4FF]">
               {socialLinks.map((social) => (
                 <a
