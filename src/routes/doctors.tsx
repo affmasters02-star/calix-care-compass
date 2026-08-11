@@ -65,7 +65,7 @@ function Doctors() {
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Button asChild variant="brand" size="sm">
-                  <Link to="/book-appointment">Book appointment</Link>
+                  <Link to="/doctors/$slug" params={{ slug: d.slug }}>View Profile</Link>
                 </Button>
                 <Button asChild variant="outlineBrand" size="sm">
                   <Link
