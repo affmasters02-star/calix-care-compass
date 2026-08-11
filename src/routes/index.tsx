@@ -179,7 +179,7 @@ function Home() {
       </Section>
 
       {/* About */}
-      <Section>
+      <Section id="about">
         <div className="grid items-center gap-14 lg:grid-cols-2">
           <div className="relative">
             <img
