@@ -52,7 +52,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
   );
 }
 
-function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
+function SpecialtiesMegaMenu() {
   const location = useLocation();
   const isActive = location.pathname.startsWith("/specialties");
   const [isOpen, setIsOpen] = useState(false);
@@ -135,10 +135,11 @@ function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
         onMouseLeave={() => setIsOpen(false)}
         className={cn(
           "fixed left-0 right-0 z-40 flex justify-center transition-all duration-500 ease-out pointer-events-none",
-          // Calculate top based on dynamic header height and scroll state
-          isScrolled ? "top-[var(--header-height-scrolled,75px)]" : "top-[var(--header-height,135px)]",
+          // Always sits exactly below the live header bottom edge
+          "top-[var(--header-bottom,135px)]",
           isOpen ? "visible translate-y-0 opacity-100 pointer-events-auto" : "invisible -translate-y-4 opacity-0"
         )}
+
       >
         <div className="mx-auto w-[1200px] overflow-hidden rounded-[2.5rem] border border-[#EAF4FF] bg-white p-10 shadow-[0_40px_100px_rgba(0,0,0,0.12)]">
           <div className="grid grid-cols-12 gap-12">
@@ -259,30 +260,39 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY > 45;
-      setIsScrolled(scrolled);
-      
-      if (headerRef.current) {
-        const height = headerRef.current.offsetHeight;
-        if (scrolled) {
-          document.documentElement.style.setProperty('--header-height-scrolled', `${height}px`);
-        } else {
-          document.documentElement.style.setProperty('--header-height', `${height}px`);
-        }
+    const measure = () => {
+      const el = headerRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      document.documentElement.style.setProperty('--header-bottom', `${Math.max(0, rect.bottom)}px`);
+      if (window.scrollY <= 45) {
+        document.documentElement.style.setProperty('--header-height', `${rect.height}px`);
+      } else {
+        document.documentElement.style.setProperty('--header-height-scrolled', `${rect.height}px`);
       }
     };
-    
-    // Initial measurement
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 45);
+      measure();
+    };
+
     handleScroll();
-    
-    window.addEventListener("scroll", handleScroll);
+
+    const ro = new ResizeObserver(measure);
+    if (headerRef.current) ro.observe(headerRef.current);
+    headerRef.current?.addEventListener("transitionend", measure);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
     return () => {
+      ro.disconnect();
+      headerRef.current?.removeEventListener("transitionend", measure);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
   }, []);
+
 
   return (
     <header 
@@ -348,7 +358,7 @@ export function Header() {
           <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
             <NavLink to="/about">ABOUT US</NavLink>
-            <SpecialtiesMegaMenu isScrolled={isScrolled} />
+            <SpecialtiesMegaMenu />
             <NavLink to="/patient-services">SERVICES</NavLink>
             <NavLink to="/doctors">DOCTORS</NavLink>
             <NavLink to="/facilities">FACILITIES</NavLink>
