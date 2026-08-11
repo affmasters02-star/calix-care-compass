@@ -35,17 +35,23 @@ const socialLinks = [
   { icon: Linkedin, href: "#", label: "LinkedIn" },
 ];
 
-export function Logo({ className }: { className?: string }) {
+export function Logo({ className, inverted = false }: { className?: string; inverted?: boolean }) {
   return (
     <Link to="/" className={cn("flex items-center gap-4", className)}>
       <div className="relative size-16 shrink-0 overflow-hidden">
         <img src={logoAsset.url} alt="Calix Hospital Logo" className="h-full w-full object-contain" />
       </div>
       <div className="leading-tight">
-        <span className="block font-display text-2xl font-extrabold tracking-tight text-[#001F5B]">
+        <span className={cn(
+          "block font-display text-2xl font-extrabold tracking-tight",
+          inverted ? "text-white" : "text-[#001F5B]"
+        )}>
           CALIX
         </span>
-        <span className="block text-[0.7rem] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+        <span className={cn(
+          "block text-[0.7rem] font-bold uppercase tracking-[0.2em]",
+          inverted ? "text-white/70" : "text-muted-foreground"
+        )}>
           Multispeciality Hospital
         </span>
       </div>
@@ -303,10 +309,11 @@ export function Header() {
   );
 }
 
-function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
+function NavLink({ to, children, onClick }: { to: string; children: React.ReactNode; onClick?: () => void }) {
   return (
     <Link
       to={to}
+      onClick={onClick}
       activeOptions={{ exact: to === "/" }}
       activeProps={{ className: "text-[#003A8C] after:scale-x-100" }}
       className="relative py-2 text-[0.95rem] font-bold tracking-wide text-[#0f172a] transition-colors hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
@@ -332,10 +339,11 @@ function NavDropdown({ label, children }: { label: string; children: React.React
   );
 }
 
-function DropdownLink({ to, children }: { to: string; children: React.ReactNode }) {
+function DropdownLink({ to, children, onClick }: { to: string; children: React.ReactNode; onClick?: () => void }) {
   return (
     <Link
       to={to}
+      onClick={onClick}
       className="block px-6 py-2.5 text-sm font-semibold text-[#0f172a] transition-colors hover:bg-[#EAF4FF] hover:text-[#003A8C]"
     >
       {children}
