@@ -57,11 +57,30 @@ function DoctorProfile() {
                   {initials(doctor.name)}
                 </span>
                 <div>
-                  <h2 className="font-display text-2xl font-extrabold text-foreground">About the Specialist</h2>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-bold text-primary">
+                      {doctor.specialty}
+                    </span>
+                    <span className="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-bold text-accent">
+                      {doctor.experience} Experience
+                    </span>
+                  </div>
+                  <h2 className="mt-4 font-display text-2xl font-extrabold text-foreground">About the Specialist</h2>
                   <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{doctor.description}</p>
+                  <dl className="mt-8 grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-2xl bg-muted/50 p-4">
+                      <dt className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Qualifications</dt>
+                      <dd className="mt-1 text-sm font-bold text-foreground">{doctor.qualification}</dd>
+                    </div>
+                    <div className="rounded-2xl bg-muted/50 p-4">
+                      <dt className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Department</dt>
+                      <dd className="mt-1 text-sm font-bold text-foreground">{doctor.specialty}</dd>
+                    </div>
+                  </dl>
                 </div>
               </div>
             </div>
+
 
             {/* Expertise & Education */}
             <div className="grid gap-6 sm:grid-cols-2">
