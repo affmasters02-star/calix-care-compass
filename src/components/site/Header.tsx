@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, Phone, Clock, MapPin, ChevronDown, Plus } from "lucide-react";
+import { Menu, Phone, Clock, MapPin, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import logoAsset from "@/assets/calix-logo.png.asset.json";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -26,16 +27,17 @@ const navLinks = [
 export function Logo({ inverted = false }: { inverted?: boolean }) {
   return (
     <Link to="/" className="flex items-center gap-3">
-      <span
-        className={`grid size-11 shrink-0 place-items-center rounded-xl ${
-          inverted ? "bg-primary-foreground/10 ring-1 ring-primary-foreground/25" : "bg-gradient-brand"
+      <div
+        className={`relative size-11 shrink-0 overflow-hidden rounded-xl p-1.5 ${
+          inverted ? "bg-primary-foreground/10 ring-1 ring-primary-foreground/25" : "bg-primary/5"
         }`}
       >
-        <Plus
-          className={`size-6 ${inverted ? "text-primary-foreground" : "text-primary-foreground"}`}
-          strokeWidth={2.75}
+        <img
+          src={logoAsset.url}
+          alt="Calix Hospital Logo"
+          className="h-full w-full object-contain"
         />
-      </span>
+      </div>
       <span className="leading-tight">
         <span
           className={`block font-display text-lg font-extrabold tracking-tight ${
