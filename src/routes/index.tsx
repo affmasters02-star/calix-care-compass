@@ -87,10 +87,10 @@ function Home() {
           <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-accent/10 blur-[100px]" />
         </div>
 
-        <div className="container-page relative z-10 py-20 text-white lg:py-32">
+        <div className="container-page relative z-10 py-14 text-white sm:py-16 lg:py-20">
           <div className="max-w-4xl">
             {/* Premium Trust Badge */}
-            <div className="mb-8 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2.5 text-xs font-black tracking-[0.2em] text-white shadow-2xl ring-1 ring-white/30 backdrop-blur-md">
+            <div className="mb-6 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2.5 text-xs font-black tracking-[0.2em] text-white shadow-2xl ring-1 ring-white/30 backdrop-blur-md">
               <span className="relative flex size-2.5">
                 <span className="relative inline-flex size-2.5 rounded-full bg-accent"></span>
               </span>
@@ -105,11 +105,11 @@ function Home() {
               </span>
             </h1>
 
-            <p className="mt-8 max-w-2xl text-lg font-medium leading-relaxed text-white/90 drop-shadow-md sm:text-xl">
+            <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/90 drop-shadow-md sm:text-xl">
               Experience advanced clinical expertise, cutting-edge diagnostics, and compassionate family-centered care—all delivered with uncompromising excellence.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Button asChild variant="accent" size="xl" className="h-16 rounded-full bg-gradient-cta px-10 text-lg font-black shadow-[0_20px_40px_-10px_rgba(232,62,140,0.4)] transition-all hover:-translate-y-1 hover:brightness-110 active:scale-95">
                 <Link to="/book-appointment">
                   Book Appointment <ArrowRight className="ml-2 size-6" />
