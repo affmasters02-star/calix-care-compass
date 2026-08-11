@@ -78,7 +78,7 @@ function SpecialtyDetail() {
                   Common Conditions Treated
                 </h3>
                 <ul className="mt-5 space-y-3">
-                  {specialty.conditions.map((item) => (
+                  {specialty.conditions.map((item: string) => (
                     <li key={item} className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
                       <Check className="size-4 text-primary" /> {item}
                     </li>
