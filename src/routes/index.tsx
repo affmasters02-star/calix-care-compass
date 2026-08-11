@@ -425,41 +425,52 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
         className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2"
       >
         {filteredDoctors.map((d) => (
-          <div key={d.name} className="group relative overflow-hidden rounded-[3rem] border border-border bg-card p-10 shadow-card transition-all duration-300 hover:shadow-lift lg:p-12">
-            <div className="flex flex-col items-center gap-10 md:flex-row md:items-start">
+          <div key={d.name} className="group relative flex flex-col overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] md:p-10">
+            {/* Top decorative element */}
+            <div className="absolute right-0 top-0 size-32 translate-x-12 -translate-y-12 rounded-full bg-primary/5 blur-3xl transition-transform duration-700 group-hover:scale-150" aria-hidden="true" />
+            
+            <div className="relative z-10 flex flex-col items-center gap-8 md:flex-row md:items-start lg:gap-10">
+              {/* Avatar section */}
               <div className="relative shrink-0">
-                <div className="grid size-44 place-items-center rounded-[2.5rem] bg-gradient-brand font-display text-5xl font-extrabold text-primary-foreground shadow-xl transition-transform duration-500 group-hover:scale-105 md:size-56">
-                  {d.name.split(" ")[1]?.[0] ?? "C"}
-                  {d.name.split(" ")[2]?.[0] ?? ""}
+                <div className="grid size-40 place-items-center overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#001F5B] via-[#003A8C] to-[#E83E8C] font-display text-4xl font-black text-white shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:rounded-[2.5rem] md:size-48 lg:size-52">
+                  <span className="drop-shadow-lg">
+                    {d.name.split(" ")[1]?.[0] ?? "C"}
+                    {d.name.split(" ")[2]?.[0] ?? ""}
+                  </span>
+                  
+                  {/* Glass highlight */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/20" />
+                </div>
+                
+                {/* Experience Badge */}
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-4 py-1.5 text-[0.7rem] font-black uppercase tracking-widest text-[#003A8C] shadow-lg ring-1 ring-slate-100 md:bottom-2 md:left-auto md:right-[-10%] md:translate-x-0">
+                  {d.experience} Exp.
                 </div>
               </div>
               
+              {/* Info section */}
               <div className="flex-1 text-center md:text-left">
-                <h3 className="font-display text-3xl font-[800] tracking-tight text-primary lg:text-4xl">
-                  {d.name}
-                </h3>
-                <p className="mt-3 text-lg font-bold text-accent">
-                  {d.qualification}
-                </p>
+                <div className="space-y-1">
+                  <h3 className="font-display text-2xl font-[900] tracking-tight text-[#0f172a] transition-colors group-hover:text-primary sm:text-3xl">
+                    {d.name}
+                  </h3>
+                  <p className="text-sm font-bold uppercase tracking-widest text-[#E83E8C]">
+                    {d.qualification}
+                  </p>
+                </div>
                 
-                <ul className="mt-8 space-y-3">
-                  <li className="flex items-center justify-center gap-3 text-slate-600 md:justify-start">
-                    <div className="size-2 rounded-full bg-accent" />
-                    <span className="text-base font-semibold">{d.specialty} Specialist</span>
-                  </li>
-                  <li className="flex items-center justify-center gap-3 text-slate-600 md:justify-start">
-                    <div className="size-2 rounded-full bg-accent" />
-                    <span className="text-base font-semibold">{d.experience} Experience</span>
-                  </li>
-                </ul>
-
-                <div className="mt-10 flex flex-col gap-3 sm:flex-row justify-center md:justify-start">
-                  <Button asChild variant="accent" className="h-14 rounded-full bg-primary px-8 text-base font-bold text-white transition-all hover:brightness-110 shadow-lg shadow-primary/20">
+                <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-slate-50 px-4 py-2 text-sm font-bold text-slate-600 ring-1 ring-inset ring-slate-200/50">
+                  <div className="size-2 rounded-full bg-[#00857A]" />
+                  {d.specialty} Specialist
+                </div>
+                
+                <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row md:justify-start">
+                  <Button asChild size="lg" className="h-12 flex-1 rounded-full bg-[#003A8C] text-sm font-extrabold text-white shadow-lg shadow-[#003A8C]/20 transition-all hover:bg-[#001F5B] hover:shadow-xl hover:shadow-[#003A8C]/30 sm:flex-none sm:px-8">
                     <Link to="/book-appointment" search={{ doctor: d.slug }}>
-                      Book An Appointment
+                      Book Appointment
                     </Link>
                   </Button>
-                  <Button asChild variant="outlineBrand" className="h-14 rounded-full border-primary/10 bg-slate-50/50 px-8 text-base font-bold text-primary hover:bg-primary hover:text-white transition-all">
+                  <Button asChild variant="outline" size="lg" className="h-12 flex-1 rounded-full border-slate-200 bg-white text-sm font-extrabold text-[#0f172a] transition-all hover:bg-slate-50 hover:text-primary sm:flex-none sm:px-8">
                     <Link to="/doctors/$slug" params={{ slug: d.slug }}>
                       View Profile
                     </Link>
