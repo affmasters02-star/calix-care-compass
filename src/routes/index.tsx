@@ -98,22 +98,6 @@ function Home() {
             </div>
           </div>
         </div>
-        {/* Mobile Specialty Quick Links */}
-        <div className="container-page relative z-10 -mt-6 pb-6 sm:hidden">
-          <div className="no-scrollbar flex gap-2.5 overflow-x-auto pb-2">
-            {specialties.map((s) => (
-              <Link
-                key={s.slug}
-                to="/specialties/$slug"
-                params={{ slug: s.slug }}
-                className="flex shrink-0 items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-2 text-xs font-bold whitespace-nowrap text-white backdrop-blur-md transition-colors active:bg-white/20"
-              >
-                <SpecialtyIcon slug={s.slug} className="size-3.5" />
-                {s.name}
-              </Link>
-            ))}
-          </div>
-        </div>
       </section>
 
 
