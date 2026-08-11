@@ -439,7 +439,7 @@ function DropdownLink({ to, children, onClick }: { to: string; children: React.R
       to={to}
       onClick={onClick}
       activeProps={{ className: "bg-[#EAF4FF] text-[#003A8C]" }}
-      className="block px-6 py-2.5 text-sm font-semibold text-[#0f172a] transition-colors hover:bg-[#EAF4FF] hover:text-[#003A8C]"
+      className="block px-6 py-2.5 text-sm font-semibold text-[#0f172a] transition-colors hover:bg-[#EAF4FF] hover:text-[#003A8C] focus-visible:outline-none focus-visible:bg-[#EAF4FF] focus-visible:text-[#003A8C]"
     >
       {children}
     </Link>
