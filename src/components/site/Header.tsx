@@ -349,12 +349,24 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
         </AccordionItem>
         <AccordionItem value="specialties" className="border-none">
           <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">SPECIALTIES</AccordionTrigger>
-          <AccordionContent className="flex flex-col gap-1 pl-4">
-             {specialties.map(s => (
-                <Link key={s.slug} to="/specialties/$slug" params={{ slug: s.slug }} onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm text-muted-foreground transition-colors hover:text-[#003A8C]">
-                   {s.name}
+          <AccordionContent className="flex flex-col gap-0 pl-2">
+            <div className="grid grid-cols-1 gap-1 py-2">
+              {specialties.map((s) => (
+                <Link
+                  key={s.slug}
+                  to="/specialties/$slug"
+                  params={{ slug: s.slug }}
+                  onClick={closeMenu}
+                  activeProps={{ className: "bg-[#EAF4FF] text-[#003A8C] border-l-4 border-[#003A8C]" }}
+                  className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-[#0f172a] transition-all hover:bg-[#EAF4FF] hover:text-[#003A8C] active:scale-[0.98]"
+                >
+                  <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#EAF4FF] group-hover:bg-white text-[#003A8C]">
+                    <StarIcon className="size-4" />
+                  </div>
+                  <span>{s.name}</span>
                 </Link>
-             ))}
+              ))}
+            </div>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="services" className="border-none">
