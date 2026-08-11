@@ -33,6 +33,7 @@ export const specialties: Specialty[] = [
     highlights: ["Preventive health checks", "Infectious disease care", "Chronic illness management", "Adult vaccinations", "Travel medicine consultation"],
     conditions: ["Hypertension", "Type 2 Diabetes", "Viral Fevers", "Thyroid Disorders", "Common Cold & Flu", "Anemia"],
     diagnostics: ["Comprehensive Blood Panels", "Thyroid Function Tests", "Vitamin Screenings", "Digital X-Ray", "Urine Analysis"],
+    icon: Stethoscope,
   },
   {
     slug: "diabetology",
@@ -43,6 +44,7 @@ export const specialties: Specialty[] = [
     highlights: ["Insulin optimisation", "Diabetic foot clinic", "Diet & lifestyle planning", "Continuous glucose monitoring", "Diabetes education"],
     conditions: ["Type 1 Diabetes", "Type 2 Diabetes", "Gestational Diabetes", "Hypoglycemia", "Diabetic Neuropathy", "Metabolic Syndrome"],
     diagnostics: ["HbA1c Testing", "Fasting & Post-Prandial Blood Sugar", "Oral Glucose Tolerance Test (OGTT)", "C-Peptide Test", "Microalbuminuria Screening"],
+    icon: Activity,
   },
   {
     slug: "nephrology",
@@ -53,6 +55,7 @@ export const specialties: Specialty[] = [
     highlights: ["CKD management", "Dialysis services", "Electrolyte disorders", "Acute kidney injury care", "Kidney biopsy"],
     conditions: ["Chronic Kidney Disease (CKD)", "Kidney Stones", "Glomerulonephritis", "Polycystic Kidney Disease", "Renal Failure", "Proteinuria"],
     diagnostics: ["Serum Creatinine & GFR", "Renal Ultrasound", "Kidney Biopsy", "Electrolyte Panel", "24-Hour Urine Protein"],
+    icon: Droplets,
   },
   {
     slug: "critical-care",
@@ -63,6 +66,7 @@ export const specialties: Specialty[] = [
     highlights: ["Medical & surgical ICU", "Ventilator support", "Sepsis care protocols", "Hemodynamic monitoring", "Post-operative recovery"],
     conditions: ["Septic Shock", "Respiratory Failure", "Multi-organ Failure", "Severe Trauma", "Stroke & Coma", "Heart Failure"],
     diagnostics: ["Arterial Blood Gas (ABG)", "Continuous Hemodynamic Monitoring", "Bedside Ultrasound/Echo", "Point-of-care Testing", "Microbiological Cultures"],
+    icon: HeartPulse,
   },
   {
     slug: "urology",
@@ -73,6 +77,7 @@ export const specialties: Specialty[] = [
     highlights: ["Laser stone treatment", "Prostate care", "Endourology", "Laparoscopic urology", "Male infertility care"],
     conditions: ["Kidney & Bladder Stones", "Benign Prostatic Hyperplasia (BPH)", "Urinary Tract Infections (UTI)", "Incontinence", "Urological Cancers", "Erectile Dysfunction"],
     diagnostics: ["Uroflowmetry", "KUB Ultrasound", "Cystoscopy", "PSA Screening", "Intravenous Urogram (IVU)"],
+    icon: ShieldPlus,
   },
   {
     slug: "orthopedics",
@@ -83,6 +88,7 @@ export const specialties: Specialty[] = [
     highlights: ["Knee & hip replacement", "Arthroscopy", "Fracture & trauma care", "Sports medicine", "Spine surgery"],
     conditions: ["Osteoarthritis", "Fractures & Dislocations", "Ligament Tears (ACL/MCL)", "Slipped Disc", "Carpal Tunnel Syndrome", "Rheumatoid Arthritis"],
     diagnostics: ["Digital X-Ray", "CT Scan", "MRI Advisory", "Bone Density (DEXA) Scan", "Diagnostic Arthroscopy"],
+    icon: Bone,
   },
   {
     slug: "obstetrics-gynecology",
@@ -93,6 +99,7 @@ export const specialties: Specialty[] = [
     highlights: ["Birthing suites", "High-risk pregnancy", "Laparoscopic gynaec surgery", "Infertility workup", "PCOS clinic"],
     conditions: ["Pregnancy Management", "PCOS/PCOD", "Endometriosis", "Fibroids", "Menopausal Issues", "Pelvic Inflammatory Disease"],
     diagnostics: ["Obstetric Ultrasound", "Follicular Tracking", "Pap Smear", "Colposcopy", "Mammogram Advisory"],
+    icon: Baby,
   },
   {
     slug: "gastroenterology",
@@ -103,6 +110,7 @@ export const specialties: Specialty[] = [
     highlights: ["Diagnostic endoscopy", "Colonoscopy", "Liver clinic", "ERCP", "Capsule endoscopy"],
     conditions: ["GERD/Acidity", "Irritable Bowel Syndrome (IBS)", "Fatty Liver Disease", "Gastritis", "Inflammatory Bowel Disease (IBD)", "Gallstones"],
     diagnostics: ["Upper GI Endoscopy", "Colonoscopy", "Liver Function Tests", "FibroScan Advisory", "Urea Breath Test"],
+    icon: Flame,
   },
   {
     slug: "neurology",
@@ -113,6 +121,7 @@ export const specialties: Specialty[] = [
     highlights: ["Stroke pathway", "Epilepsy clinic", "Headache & migraine care", "Electro-physiology", "Neuro-rehabilitation"],
     conditions: ["Migraine & Tension Headaches", "Epilepsy & Seizures", "Stroke", "Parkinson's Disease", "Alzheimer's/Dementia", "Neuropathy"],
     diagnostics: ["EEG (Electroencephalogram)", "NCV (Nerve Conduction Velocity)", "EMG (Electromyography)", "CT Brain", "MRI Advisory"],
+    icon: Brain,
   },
   {
     slug: "general-surgery",
@@ -123,6 +132,7 @@ export const specialties: Specialty[] = [
     highlights: ["Laparoscopic surgery", "Daycare procedures", "Proctology care", "Laser surgery", "Wound care"],
     conditions: ["Hernia", "Gallstones (Cholecystitis)", "Appendicitis", "Piles/Fissure/Fistula", "Breast Lumps", "Varicose Veins"],
     diagnostics: ["Digital X-Ray", "Ultrasound Abdomen", "CT Scan Advisory", "Diagnostic Laparoscopy", "Biopsy & FNAC"],
+    icon: Scissors,
   },
 ];
 
