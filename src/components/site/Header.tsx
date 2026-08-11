@@ -238,18 +238,6 @@ export function Header() {
 
           {/* RIGHT: SOCIAL + BUTTONS */}
           <div className="hidden items-center gap-4 lg:flex shrink-0">
-            <div className="hidden xl:flex items-center gap-2 pr-4 border-r border-[#EAF4FF]">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="grid size-8 place-items-center rounded-full bg-[#EAF4FF] text-[#003A8C] transition-all duration-300 hover:bg-[#003A8C] hover:text-white hover:-translate-y-1"
-                  aria-label={social.label}
-                >
-                  <social.icon className="size-3.5" />
-                </a>
-              ))}
-            </div>
             <div className="flex items-center gap-3">
               <Button asChild className="h-10 rounded-full bg-[#E83E8C] px-6 text-sm text-white shadow-md hover:bg-[#D81B60] transition-all hover:-translate-y-0.5">
                 <Link to="/book-appointment">Book Appointment</Link>
