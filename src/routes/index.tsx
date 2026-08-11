@@ -70,27 +70,27 @@ function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B] via-[#001F5B]/85 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/60 via-transparent to-transparent" />
-        <div className="container-page relative flex min-h-[85vh] flex-col justify-center py-20 text-primary-foreground lg:py-32">
+        <div className="container-page relative flex min-h-[70vh] flex-col justify-center py-16 text-primary-foreground sm:min-h-[85vh] lg:py-32">
           <div className="max-w-4xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold tracking-wide backdrop-blur-md">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold tracking-wide backdrop-blur-md sm:mb-6 sm:px-4 sm:py-1.5 sm:text-sm">
               <span className="flex size-2 rounded-full bg-accent animate-pulse" />
               24/7 EMERGENCY & CRITICAL CARE
             </div>
-            <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-8xl">
+            <h1 className="text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-8xl">
               World-Class Multispeciality Healthcare <span className="text-accent drop-shadow-sm">Under One Roof</span>
             </h1>
-            <p className="mt-8 text-xl font-medium leading-relaxed text-primary-foreground/90 lg:text-2xl">
+            <p className="mt-4 text-base font-medium leading-relaxed text-primary-foreground/90 sm:mt-8 sm:text-xl lg:text-2xl">
               Combining expert specialists, advanced diagnostics, and compassionate family care to provide you with a seamless healthcare experience.
             </p>
-            <div className="mt-12 flex flex-wrap gap-5">
-              <Button asChild variant="accent" size="xl" className="h-14 bg-gradient-cta px-8 text-lg shadow-xl transition-all hover:-translate-y-1 hover:brightness-110">
+            <div className="mt-8 flex flex-wrap gap-3 sm:mt-12 sm:gap-5">
+              <Button asChild variant="accent" size="xl" className="h-12 bg-gradient-cta px-6 text-base shadow-xl transition-all hover:-translate-y-1 hover:brightness-110 sm:h-14 sm:px-8 sm:text-lg">
                 <Link to="/book-appointment">
-                  Book Appointment <ArrowRight className="ml-2 size-5" />
+                  Book Appointment <ArrowRight className="ml-2 size-4 sm:size-5" />
                 </Link>
               </Button>
-              <Button asChild variant="brand" size="xl" className="h-14 border border-white/20 bg-primary-deep/40 px-8 text-lg backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-primary-deep/60">
+              <Button asChild variant="brand" size="xl" className="h-12 border border-white/20 bg-primary-deep/40 px-6 text-base backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-primary-deep/60 sm:h-14 sm:px-8 sm:text-lg">
                 <a href={`tel:${HOSPITAL.emergency}`}>
-                  <Phone className="mr-2 size-5" /> Emergency Care
+                  <Phone className="mr-2 size-4 sm:size-5" /> Emergency Care
                 </a>
               </Button>
             </div>
