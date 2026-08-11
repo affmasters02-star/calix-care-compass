@@ -323,7 +323,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
       onClick={onClick}
       activeOptions={{ exact: to === "/" }}
       activeProps={{ className: "text-[#003A8C] after:scale-x-100" }}
-      className="relative py-2 text-[0.95rem] font-bold tracking-wide text-[#0f172a] transition-colors hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+      className="relative py-2 text-[0.9rem] font-bold tracking-wide text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] hover:scale-105 active:scale-95 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
     >
       {children}
     </Link>
@@ -333,11 +333,11 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
 function NavDropdown({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="group relative">
-      <button className="flex items-center gap-1 py-5 text-[0.95rem] font-bold tracking-wide text-[#0f172a] transition-colors hover:text-[#003A8C]">
+      <button className="flex items-center gap-1 py-5 text-[0.9rem] font-bold tracking-wide text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] hover:scale-105 active:scale-95">
         {label}
-        <ChevronDown className="size-4 transition-transform group-hover:rotate-180" />
+        <ChevronDown className="size-4 transition-transform duration-300 group-hover:rotate-180" />
       </button>
-      <div className="invisible absolute left-0 top-full z-50 w-64 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+      <div className="invisible absolute left-0 top-[calc(100%-10px)] z-50 w-64 pt-2 opacity-0 transition-all duration-300 group-hover:visible group-hover:top-full group-hover:opacity-100">
         <div className="overflow-hidden rounded-2xl border border-[#EAF4FF] bg-white py-3 shadow-lift">
           {children}
         </div>
