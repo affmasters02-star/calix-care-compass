@@ -320,10 +320,10 @@ function DropdownLink({ to, children, onClick }: { to: string; children: React.R
 function MobileNav({ closeMenu }: { closeMenu: () => void }) {
   return (
     <div className="flex flex-col gap-2">
-      <NavLink to="/" onClick={closeMenu}>Home</NavLink>
+      <NavLink to="/" onClick={closeMenu}>HOME</NavLink>
       <Accordion type="single" collapsible>
         <AccordionItem value="about" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">About Us</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">ABOUT US</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
              <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Our Story</Link>
              <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Mission & Values</Link>
@@ -332,7 +332,7 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="specialties" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">Specialties</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">SPECIALTIES</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
              {specialties.map(s => (
                 <Link key={s.slug} to="/specialties/$slug" params={{ slug: s.slug }} onClick={closeMenu} className="py-2 font-medium text-sm text-muted-foreground">
@@ -342,7 +342,7 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="services" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">Patient Care</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">SERVICES</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
              <Link to="/book-appointment" onClick={closeMenu} className="py-2 font-medium text-sm">Plan Your Visit</Link>
              <Link to="/health-packages" onClick={closeMenu} className="py-2 font-medium text-sm">Checkup Packages</Link>
@@ -351,10 +351,10 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <NavLink to="/doctors" onClick={closeMenu}>Find a Doctor</NavLink>
-      <NavLink to="/facilities" onClick={closeMenu}>Infrastructure</NavLink>
-      <NavLink to="/testimonials" onClick={closeMenu}>Patient Stories</NavLink>
-      <NavLink to="/contact" onClick={closeMenu}>Reach Us</NavLink>
+      <NavLink to="/doctors" onClick={closeMenu}>DOCTORS</NavLink>
+      <NavLink to="/facilities" onClick={closeMenu}>FACILITIES</NavLink>
+      <NavLink to="/testimonials" onClick={closeMenu}>TESTIMONIALS</NavLink>
+      <NavLink to="/contact" onClick={closeMenu}>CONTACT</NavLink>
       <div className="mt-8 flex flex-col gap-4 pb-20">
          <Button asChild className="rounded-full bg-[#E83E8C] text-white">
             <Link to="/book-appointment" onClick={closeMenu}>Book Appointment</Link>
