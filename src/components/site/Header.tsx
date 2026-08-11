@@ -210,12 +210,12 @@ export function Header() {
             : "h-[90px]"
         )}
       >
-        <div className="container-page flex h-full items-center justify-between gap-4">
+        <div className="container-page flex h-full items-center justify-between gap-2 lg:gap-4">
           {/* LEFT: LOGO */}
           <Logo className="shrink-0" />
 
           {/* CENTER: NAVIGATION */}
-          <div className="hidden items-center gap-4 2xl:gap-8 xl:flex">
+          <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
             <NavDropdown label="ABOUT US">
               <DropdownLink to="/about">Our Story</DropdownLink>
@@ -236,13 +236,11 @@ export function Header() {
             <NavLink to="/contact">CONTACT</NavLink>
           </div>
 
-          {/* RIGHT: SOCIAL + BUTTONS */}
-          <div className="hidden items-center gap-4 lg:flex shrink-0">
-            <div className="flex items-center gap-3">
-              <Button asChild className="h-10 rounded-full bg-[#E83E8C] px-6 text-sm text-white shadow-md hover:bg-[#D81B60] transition-all hover:-translate-y-0.5">
-                <Link to="/book-appointment">Book Appointment</Link>
-              </Button>
-            </div>
+          {/* RIGHT: BUTTONS */}
+          <div className="hidden items-center gap-2 lg:flex shrink-0">
+            <Button asChild className="h-9 2xl:h-10 rounded-full bg-[#E83E8C] px-4 2xl:px-6 text-[0.75rem] 2xl:text-sm text-white shadow-md hover:bg-[#D81B60] transition-all hover:-translate-y-0.5 whitespace-nowrap">
+              <Link to="/book-appointment">Book Appointment</Link>
+            </Button>
           </div>
 
           {/* MOBILE TOGGLE */}
