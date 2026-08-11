@@ -68,8 +68,8 @@ function Home() {
           height={1104}
           className="absolute inset-0 size-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B] via-[#001F5B]/85 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B]/90 via-[#001F5B]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/80 via-transparent to-transparent" />
         <div className="container-page relative flex min-h-[70vh] flex-col justify-center py-16 text-primary-foreground sm:min-h-[85vh] lg:py-32">
           <div className="max-w-4xl">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold tracking-wide backdrop-blur-md sm:mb-6 sm:px-4 sm:py-1.5 sm:text-sm">
