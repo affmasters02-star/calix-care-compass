@@ -123,7 +123,15 @@ function DoctorProfile() {
 
               <div className="mt-8 flex flex-col gap-3">
                 <Button asChild variant="brand" size="xl" className="w-full">
-                  <Link to="/book-appointment">Confirm Appointment</Link>
+                  <Link 
+                    to="/book-appointment" 
+                    search={{ 
+                      specialty: doctor.specialty.toLowerCase().replace(/\s+/g, '-').replace('&', 'and'),
+                      doctor: doctor.slug 
+                    }}
+                  >
+                    Confirm Appointment
+                  </Link>
                 </Button>
                 <Button asChild variant="outline" size="xl" className="w-full border-primary/20 text-primary">
                   <a href={`tel:${HOSPITAL.phone}`}>
@@ -137,6 +145,36 @@ function DoctorProfile() {
                 <span>NABL Accredited Facility</span>
               </div>
             </div>
+          </div>
+        </div>
+      </Section>
+      <Section className="bg-muted/30">
+        <div className="mx-auto max-w-4xl rounded-[2.5rem] bg-gradient-brand p-12 text-center text-primary-foreground shadow-lift">
+          <Calendar className="mx-auto size-12 text-accent" />
+          <h2 className="mt-6 font-display text-3xl font-extrabold sm:text-4xl">
+            Ready to Consult {doctor.name}?
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-primary-foreground/80">
+            Skip the queue and secure your consultation slot with {doctor.specialty} expert today. 
+            Our care team will prioritize your request.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button asChild variant="secondary" size="xl" className="min-w-[240px]">
+              <Link 
+                to="/book-appointment"
+                search={{ 
+                  specialty: doctor.specialty.toLowerCase().replace(/\s+/g, '-').replace('&', 'and'),
+                  doctor: doctor.slug 
+                }}
+              >
+                Book Instant Appointment
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="xl" className="min-w-[240px] bg-white/10 text-white hover:bg-white/20">
+              <a href={`tel:${HOSPITAL.phone}`}>
+                <Phone className="mr-2 size-4" /> Speak to Care Team
+              </a>
+            </Button>
           </div>
         </div>
       </Section>

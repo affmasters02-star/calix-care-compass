@@ -15,9 +15,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { PageHero, Section } from "@/components/site/Bits";
-import { specialties, HOSPITAL } from "@/lib/site-data";
+import { specialties, HOSPITAL, doctors } from "@/lib/site-data";
+import { z } from "zod";
+
+const searchSchema = z.object({
+  specialty: z.string().optional(),
+  doctor: z.string().optional(),
+});
 
 export const Route = createFileRoute("/book-appointment")({
+  validateSearch: (search) => searchSchema.parse(search),
   head: () => ({
     meta: [
       { title: "Book an Appointment | Calix Multispeciality Hospital" },
@@ -37,7 +44,13 @@ export const Route = createFileRoute("/book-appointment")({
 });
 
 function BookAppointment() {
-  const [specialty, setSpecialty] = useState("");
+  const { specialty: initialSpecialty, doctor: initialDoctor } = Route.useSearch();
+  const [specialty, setSpecialty] = useState(initialSpecialty || "");
+  const [doctor, setDoctor] = useState(initialDoctor || "");
+
+  const filteredDoctors = doctors.filter((d) => 
+    !specialty || d.specialty.toLowerCase().replace('&', 'and').replace(/\s+/g, '-') === specialty
+  );
 
   return (
     <>
@@ -90,6 +103,21 @@ function BookAppointment() {
                     {specialties.map((s) => (
                       <SelectItem key={s.slug} value={s.slug}>
                         {s.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label htmlFor="doctor">Doctor (optional)</Label>
+                <Select value={doctor} onValueChange={setDoctor}>
+                  <SelectTrigger id="doctor" className="mt-2">
+                    <SelectValue placeholder="Choose a specialist" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {filteredDoctors.map((d) => (
+                      <SelectItem key={d.slug} value={d.slug}>
+                        {d.name}
                       </SelectItem>
                     ))}
                   </SelectContent>
