@@ -320,41 +320,41 @@ function DropdownLink({ to, children, onClick }: { to: string; children: React.R
 function MobileNav({ closeMenu }: { closeMenu: () => void }) {
   return (
     <div className="flex flex-col gap-2">
-      <NavLink to="/" onClick={closeMenu}>HOME</NavLink>
+      <NavLink to="/" onClick={closeMenu}>Home</NavLink>
       <Accordion type="single" collapsible>
         <AccordionItem value="about" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">ABOUT US</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3">About Us</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Overview</Link>
-             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Mission & Vision</Link>
-             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Why Choose Calix</Link>
-             <Link to="/facilities" onClick={closeMenu} className="py-2 font-medium text-sm">Facilities</Link>
+             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Our Story</Link>
+             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Mission & Values</Link>
+             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Why Choose Us</Link>
+             <Link to="/facilities" onClick={closeMenu} className="py-2 font-medium text-sm">Our Facilities</Link>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="specialties" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">SPECIALTIES</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3">Specialties</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
              {specialties.map(s => (
-               <Link key={s.slug} to="/specialties/$slug" params={{ slug: s.slug }} onClick={closeMenu} className="py-2 font-medium text-sm text-muted-foreground">
-                  {s.name}
-               </Link>
+                <Link key={s.slug} to="/specialties/$slug" params={{ slug: s.slug }} onClick={closeMenu} className="py-2 font-medium text-sm text-muted-foreground">
+                   {s.name}
+                </Link>
              ))}
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="services" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">PATIENT SERVICES</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3">Patient Care</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/book-appointment" onClick={closeMenu} className="py-2 font-medium text-sm">Book Appointment</Link>
-             <Link to="/health-packages" onClick={closeMenu} className="py-2 font-medium text-sm">Health Packages</Link>
-             <Link to="/patient-services" onClick={closeMenu} className="py-2 font-medium text-sm">Insurance & Cashless</Link>
-             <Link to="/contact" onClick={closeMenu} className="py-2 font-medium text-sm">Online Consultation</Link>
+             <Link to="/book-appointment" onClick={closeMenu} className="py-2 font-medium text-sm">Plan Your Visit</Link>
+             <Link to="/health-packages" onClick={closeMenu} className="py-2 font-medium text-sm">Checkup Packages</Link>
+             <Link to="/patient-services" onClick={closeMenu} className="py-2 font-medium text-sm">Insurance & TPA</Link>
+             <Link to="/contact" onClick={closeMenu} className="py-2 font-medium text-sm">Tele-Consultation</Link>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <NavLink to="/doctors" onClick={closeMenu}>DOCTORS</NavLink>
-      <NavLink to="/facilities" onClick={closeMenu}>FACILITIES</NavLink>
-      <NavLink to="/testimonials" onClick={closeMenu}>TESTIMONIALS</NavLink>
-      <NavLink to="/contact" onClick={closeMenu}>CONTACT</NavLink>
+      <NavLink to="/doctors" onClick={closeMenu}>Find a Doctor</NavLink>
+      <NavLink to="/facilities" onClick={closeMenu}>Infrastructure</NavLink>
+      <NavLink to="/testimonials" onClick={closeMenu}>Patient Stories</NavLink>
+      <NavLink to="/contact" onClick={closeMenu}>Reach Us</NavLink>
       <div className="mt-8 flex flex-col gap-4 pb-20">
          <Button asChild className="rounded-full bg-[#E83E8C] text-white">
             <Link to="/book-appointment" onClick={closeMenu}>Book Appointment</Link>
