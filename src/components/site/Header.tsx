@@ -157,7 +157,10 @@ function SpecialtiesMegaMenu() {
         aria-expanded={isOpen}
         aria-haspopup="true"
         aria-controls="specialties-mega-menu"
-        onMouseEnter={() => setIsOpen(true)}
+        onMouseEnter={open}
+        onMouseLeave={scheduleClose}
+        onFocus={open}
+        onClick={closeNow}
         className={cn(
           "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#003A8C] after:transition-[width] after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
           isActive && "text-brand-blue after:w-full",
@@ -170,7 +173,8 @@ function SpecialtiesMegaMenu() {
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
-            setIsOpen(!isOpen);
+            if (isOpen) closeNow();
+            else open();
           }}
         />
       </Link>
@@ -180,7 +184,9 @@ function SpecialtiesMegaMenu() {
         id="specialties-mega-menu"
         role="region"
         aria-label="Specialties Menu"
-        onMouseLeave={() => setIsOpen(false)}
+        onMouseEnter={open}
+        onMouseLeave={scheduleClose}
+
         className={cn(
           "fixed left-0 right-0 z-40 flex justify-center transition-all duration-500 ease-out pointer-events-none",
           // Always sits exactly below the live header bottom edge
