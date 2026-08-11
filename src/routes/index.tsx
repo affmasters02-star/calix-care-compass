@@ -63,42 +63,80 @@ const stats = [
 function Home() {
   return (
     <>
-      {/* Hero */}
-      <section id="home" className="relative isolate overflow-hidden">
-        <img
-          src={heroImageAsset.url}
-          alt="Calix Multispeciality Hospital entrance at sunrise"
-          width={1600}
-          height={1104}
-          className="absolute inset-0 size-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B]/95 via-[#001F5B]/65 to-[#001F5B]/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/85 via-transparent to-transparent" />
-        <div className="container-page relative flex min-h-[72vh] flex-col justify-center py-16 text-primary-foreground sm:min-h-[82vh] lg:py-28">
+      <section id="home" className="relative isolate min-h-[85vh] overflow-hidden flex flex-col justify-center">
+        {/* Background Layer */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImageAsset.url}
+            alt="Calix Multispeciality Hospital entrance at sunrise"
+            width={1600}
+            height={1104}
+            className="size-full object-cover object-center scale-105 animate-in fade-in zoom-in duration-1000"
+            style={{ fetchPriority: 'high' } as any}
+          />
+          {/* Advanced Multi-layer Gradient Overlay */}
+          <div className="absolute inset-0 bg-[#001F5B]/60 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B] via-[#001F5B]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B] via-transparent to-transparent" />
+          {/* Decorative Radial Glows */}
+          <div className="absolute -left-20 top-0 h-[600px] w-[600px] rounded-full bg-[#003A8C]/30 blur-[120px]" />
+          <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-accent/10 blur-[100px]" />
+        </div>
+
+        <div className="container-page relative z-10 py-20 text-white lg:py-32">
           <div className="max-w-4xl">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-bold tracking-widest text-white backdrop-blur-md sm:mb-6 sm:px-4 sm:text-sm">
-              <span className="flex size-2 rounded-full bg-accent animate-pulse" />
+            {/* Premium Trust Badge */}
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full premium-glass-glow px-5 py-2 text-xs font-black tracking-[0.2em] text-white shadow-2xl animate-in fade-in slide-in-from-left duration-700">
+              <span className="relative flex size-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
+                <span className="relative inline-flex size-2.5 rounded-full bg-accent"></span>
+              </span>
               24/7 EMERGENCY & CRITICAL CARE
             </div>
-            <h1 className="text-white drop-shadow-2xl">
+
+            <h1 className="text-white drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)] leading-[1.1] animate-in fade-in slide-in-from-bottom duration-700 delay-100">
               World-Class Multispeciality <br className="hidden sm:block" /> 
-              Healthcare <span className="bg-gradient-cta bg-clip-text text-transparent">Under One Roof</span>
+              Healthcare <span className="relative inline-block">
+                <span className="relative z-10 bg-gradient-to-r from-accent via-[#FF6BAA] to-accent bg-clip-text text-transparent">Under One Roof</span>
+                <span className="absolute -bottom-2 left-0 h-1.5 w-full rounded-full bg-accent/20 blur-sm" />
+              </span>
             </h1>
-            <p className="mt-6 max-w-2xl text-base font-semibold leading-relaxed text-white/95 drop-shadow-md sm:mt-8 sm:text-lg lg:text-xl">
-              Experience advanced diagnostics, expert specialists, and compassionate family care 
-              delivered with world-class excellence in the heart of Hyderabad.
+
+            <p className="mt-8 max-w-2xl text-lg font-medium leading-relaxed text-white/90 drop-shadow-md sm:text-xl animate-in fade-in slide-in-from-bottom duration-700 delay-200">
+              Experience advanced clinical expertise, cutting-edge diagnostics, and compassionate family-centered care—all delivered with uncompromising excellence.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3 sm:mt-10 sm:gap-4">
-              <Button asChild variant="accent" size="xl" className="bg-gradient-cta shadow-xl transition-all hover:-translate-y-1 hover:brightness-110">
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center animate-in fade-in slide-in-from-bottom duration-700 delay-300">
+              <Button asChild variant="accent" size="xl" className="h-16 rounded-full bg-gradient-cta px-10 text-lg font-black shadow-[0_20px_40px_-10px_rgba(232,62,140,0.4)] transition-all hover:-translate-y-1 hover:brightness-110 active:scale-95">
                 <Link to="/book-appointment">
-                  Book Appointment <ArrowRight className="ml-2 size-5" />
+                  Book Appointment <ArrowRight className="ml-2 size-6" />
                 </Link>
               </Button>
-              <Button asChild variant="brand" size="xl" className="border-2 border-white/30 bg-primary-deep/40 backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-primary-deep/60">
+              <Button asChild variant="brand" size="xl" className="h-16 rounded-full border border-white/20 bg-white/5 px-10 text-lg font-bold backdrop-blur-xl transition-all hover:-translate-y-1 hover:bg-white/10 active:scale-95">
                 <a href={`tel:${HOSPITAL.emergency}`}>
-                  <Phone className="mr-2 size-5" /> Emergency Care
+                  <Phone className="mr-2 size-5 text-accent" /> Emergency Care
                 </a>
               </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Hero Bottom Trust Indicators */}
+        <div className="relative z-10 mt-auto border-t border-white/10 bg-[#001F5B]/40 backdrop-blur-xl animate-in fade-in slide-in-from-bottom duration-1000 delay-500">
+          <div className="container-page py-8">
+            <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:gap-12">
+              {stats.map((s, idx) => (
+                <div key={s.label} className={cn(
+                  "flex flex-col border-white/10",
+                  idx !== 0 && "sm:border-l sm:pl-8 lg:pl-12"
+                )}>
+                  <div className="flex items-baseline gap-1">
+                    <span className="font-display text-3xl font-[900] text-white lg:text-4xl">{s.value}</span>
+                    <span className="text-accent font-black">+</span>
+                  </div>
+                  <span className="mt-1 text-[0.7rem] font-black uppercase tracking-[0.2em] text-white/50">{s.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
