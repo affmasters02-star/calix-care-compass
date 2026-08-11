@@ -72,21 +72,25 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/60 via-transparent to-transparent" />
         <div className="container-page relative py-20 text-primary-foreground lg:py-32">
           <div className="max-w-4xl">
-            <h1 className="text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-7xl">
-              World-Class Multispeciality Healthcare <span className="text-accent">Under One Roof</span>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold tracking-wide backdrop-blur-md">
+              <span className="flex size-2 rounded-full bg-accent animate-pulse" />
+              24/7 EMERGENCY & CRITICAL CARE
+            </div>
+            <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-8xl">
+              World-Class Multispeciality Healthcare <span className="text-accent drop-shadow-sm">Under One Roof</span>
             </h1>
-            <p className="mt-6 text-xl font-medium text-primary-foreground/90 lg:text-2xl">
-              Advanced Diagnostics • Expert Specialists • Compassionate Family Care
+            <p className="mt-8 text-xl font-medium leading-relaxed text-primary-foreground/90 lg:text-2xl">
+              Combining expert specialists, advanced diagnostics, and compassionate family care to provide you with a seamless healthcare experience.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button asChild variant="accent" size="xl" className="bg-gradient-cta hover:brightness-110">
+            <div className="mt-12 flex flex-wrap gap-5">
+              <Button asChild variant="accent" size="xl" className="h-14 bg-gradient-cta px-8 text-lg shadow-xl transition-all hover:-translate-y-1 hover:brightness-110">
                 <Link to="/book-appointment">
-                  Book Appointment <ArrowRight className="size-5" />
+                  Book Appointment <ArrowRight className="ml-2 size-5" />
                 </Link>
               </Button>
-              <Button asChild variant="brand" size="xl" className="bg-primary-deep hover:brightness-110">
+              <Button asChild variant="brand" size="xl" className="h-14 border border-white/20 bg-primary-deep/40 px-8 text-lg backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-primary-deep/60">
                 <a href={`tel:${HOSPITAL.emergency}`}>
-                  <Phone className="size-5" /> Emergency Care
+                  <Phone className="mr-2 size-5" /> Emergency Care
                 </a>
               </Button>
             </div>
