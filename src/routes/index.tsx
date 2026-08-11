@@ -210,28 +210,61 @@ function Home() {
           <SectionHeading
             align="left"
             eyebrow="Our Doctors"
-            title="Expert Doctors Across Specialties"
-            subtitle="Senior consultants with decades of combined experience, supported by trained nursing and allied health teams."
+            title="Expert Doctors Dedicated to Your Health"
+            subtitle="A dedicated and experienced team of clinicians to entrust your health and well-being."
           />
-          <Button asChild variant="soft" size="lg">
+          <Button asChild variant="soft" size="lg" className="rounded-xl font-bold">
             <Link to="/doctors">
               View all doctors <ArrowRight className="size-4" />
             </Link>
           </Button>
         </div>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {doctors.slice(0, 4).map((d) => (
-            <div key={d.name} className="rounded-3xl border border-border bg-card p-6 shadow-card">
-              <span className="grid size-14 place-items-center rounded-full bg-primary-soft font-display text-lg font-bold text-primary">
-                {d.name.split(" ")[1]?.[0] ?? "C"}
-                {d.name.split(" ")[2]?.[0] ?? ""}
-              </span>
-              <h3 className="mt-5 font-display text-base font-[800] text-primary">{d.name}</h3>
-              <p className="mt-1 text-sm font-bold text-accent">{d.specialty}</p>
-              <p className="mt-2 text-xs text-muted-foreground">{d.qualification}</p>
-              <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                {d.experience} experience
-              </p>
+        
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+          {doctors.slice(0, 2).map((d) => (
+            <div key={d.name} className="group relative overflow-hidden rounded-[2.5rem] border border-border bg-card p-8 shadow-card transition-all duration-300 hover:shadow-lift lg:p-10">
+              <div className="flex flex-col items-center gap-8 md:flex-row md:items-start">
+                {/* Image Placeholder / Avatar */}
+                <div className="relative shrink-0">
+                  <div className="grid size-40 place-items-center rounded-3xl bg-gradient-brand font-display text-4xl font-extrabold text-primary-foreground shadow-lg transition-transform duration-500 group-hover:scale-105 md:size-48">
+                    {d.name.split(" ")[1]?.[0] ?? "C"}
+                    {d.name.split(" ")[2]?.[0] ?? ""}
+                  </div>
+                </div>
+                
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="font-display text-2xl font-[800] tracking-tight text-primary lg:text-3xl">
+                    {d.name}
+                  </h3>
+                  <p className="mt-2 text-lg font-bold text-accent/80">
+                    {d.qualification}
+                  </p>
+                  
+                  <ul className="mt-6 space-y-2">
+                    <li className="flex items-center justify-center gap-2 text-slate-600 md:justify-start">
+                      <div className="size-1.5 rounded-full bg-accent" />
+                      <span className="text-sm font-semibold">{d.specialty} Specialist</span>
+                    </li>
+                    <li className="flex items-center justify-center gap-2 text-slate-600 md:justify-start">
+                      <div className="size-1.5 rounded-full bg-accent" />
+                      <span className="text-sm font-semibold">{d.experience} Experience</span>
+                    </li>
+                  </ul>
+
+                  <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
+                    <Button asChild variant="accent" className="h-12 rounded-xl bg-primary px-6 font-bold text-white transition-all hover:brightness-110">
+                      <Link to="/book-appointment" search={{ doctor: d.slug }}>
+                        Book An Appointment
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outlineBrand" className="h-12 rounded-xl border-primary/20 px-6 font-bold text-primary hover:bg-primary/5">
+                      <Link to="/doctors/$slug" params={{ slug: d.slug }}>
+                        View Profile
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
