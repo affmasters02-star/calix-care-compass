@@ -123,7 +123,7 @@ function Home() {
                 <SpecialtyIcon slug={s.slug} className="size-10" />
               </div>
               
-              <h3 className="relative z-10 mt-8 font-display text-lg font-bold text-slate-900">{s.name}</h3>
+              <h3 className="relative z-10 mt-8 font-display text-lg font-[800] text-primary">{s.name}</h3>
               <p className="relative z-10 mt-3 text-sm font-medium leading-relaxed text-slate-600 line-clamp-2">
                 {s.tagline}
               </p>
@@ -226,8 +226,8 @@ function Home() {
                 {d.name.split(" ")[1]?.[0] ?? "C"}
                 {d.name.split(" ")[2]?.[0] ?? ""}
               </span>
-              <h3 className="mt-5 font-display text-base font-bold text-foreground">{d.name}</h3>
-              <p className="mt-1 text-sm font-semibold text-primary">{d.specialty}</p>
+              <h3 className="mt-5 font-display text-base font-[800] text-primary">{d.name}</h3>
+              <p className="mt-1 text-sm font-bold text-accent">{d.specialty}</p>
               <p className="mt-2 text-xs text-muted-foreground">{d.qualification}</p>
               <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 {d.experience} experience
@@ -254,7 +254,7 @@ function Home() {
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h3 className="font-display text-xl font-bold text-foreground">{p.name}</h3>
+                  <h3 className="font-display text-xl font-[800] text-primary">{p.name}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{p.for}</p>
                 </div>
                 <p className="font-display text-2xl font-extrabold text-primary">{p.price}</p>
