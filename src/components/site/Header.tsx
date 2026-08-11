@@ -240,7 +240,7 @@ export function Header() {
             <span className="flex items-center gap-2">
               <span className="text-lg">🚑</span> 24×7 Emergency Care
             </span>
-            <a href={`tel:${HOSPITAL.phone}`} className="flex items-center gap-2 hover:text-white/80 transition-colors">
+            <a href={`tel:${HOSPITAL.phone}`} className="flex items-center gap-2 hover:text-white/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#003A8C] rounded-sm">
               <Phone className="size-3.5" /> {HOSPITAL.phone}
             </a>
             <a href={`mailto:${HOSPITAL.email}`} className="hidden items-center gap-2 sm:flex hover:text-white/80 transition-colors">
