@@ -349,7 +349,7 @@ export function Header() {
           <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
             <NavLink to="/about">ABOUT US</NavLink>
-            <SpecialtiesMegaMenu isScrolled={isScrolled} />
+            <SpecialtiesMegaMenu />
             <NavLink to="/patient-services">SERVICES</NavLink>
             <NavLink to="/doctors">DOCTORS</NavLink>
             <NavLink to="/facilities">FACILITIES</NavLink>
