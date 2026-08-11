@@ -242,25 +242,45 @@ function Home() {
           {healthPackages.slice(0, 2).map((p) => (
             <div
               key={p.name}
-              className={`rounded-3xl border p-8 shadow-card ${
-                p.featured ? "border-primary/40 bg-gradient-soft" : "border-border bg-card"
-              }`}
+              className={cn(
+                "group relative overflow-hidden rounded-[2.5rem] border p-8 transition-all duration-500 hover:-translate-y-2 lg:p-10",
+                p.featured 
+                  ? "border-primary/20 bg-white shadow-[0_20px_50px_-20px_rgba(0,58,140,0.15)]" 
+                  : "border-slate-100 bg-white shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)]"
+              )}
             >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-display text-xl font-[800] text-primary">{p.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.for}</p>
+              {p.featured && (
+                <div className="absolute right-0 top-0 rounded-bl-2xl bg-gradient-cta px-4 py-1.5 text-[0.65rem] font-black uppercase tracking-[0.2em] text-white shadow-lg">
+                  Most Popular
                 </div>
-                <p className="font-display text-2xl font-extrabold text-primary">{p.price}</p>
+              )}
+              
+              <div className="relative z-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
+                <div>
+                  <h3 className="font-display text-2xl font-[900] tracking-tight text-primary">{p.name}</h3>
+                  <p className="mt-1.5 text-sm font-semibold text-slate-500">{p.for}</p>
+                </div>
+                <div className="text-left sm:text-right">
+                  <p className="text-[0.7rem] font-bold uppercase tracking-widest text-slate-400">Starting at</p>
+                  <p className="font-display text-3xl font-black text-primary">{p.price}</p>
+                </div>
               </div>
-              <ul className="mt-6 space-y-2.5">
-                {p.includes.map((i) => (
-                  <li key={i} className="flex gap-2.5 text-sm text-foreground/80">
-                    <Check className="mt-0.5 size-4 shrink-0 text-accent" /> {i}
-                  </li>
+
+              <div className="relative z-10 mt-8 space-y-3.5">
+                {p.includes.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <div className="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
+                      <Check className="size-3 stroke-[3]" />
+                    </div>
+                    <span className="text-sm font-medium leading-relaxed text-slate-600">{item}</span>
+                  </div>
                 ))}
-              </ul>
-              <Button asChild variant="brand" size="lg" className="mt-8 w-full">
+              </div>
+
+              <Button asChild variant={p.featured ? "accent" : "brand"} size="xl" className={cn(
+                "relative z-10 mt-10 h-14 w-full rounded-full text-base font-black shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]",
+                p.featured ? "bg-gradient-cta" : "bg-primary"
+              )}>
                 <Link to="/book-appointment">Book this package</Link>
               </Button>
             </div>
