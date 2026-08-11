@@ -68,45 +68,45 @@ function Home() {
           height={1104}
           className="absolute inset-0 size-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B]/90 via-[#001F5B]/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/80 via-transparent to-transparent" />
-        <div className="container-page relative flex min-h-[80vh] flex-col justify-center py-20 text-primary-foreground sm:min-h-[90vh] lg:py-40">
-          <div className="max-w-5xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold tracking-widest text-white backdrop-blur-md sm:mb-8 sm:text-sm">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B]/95 via-[#001F5B]/65 to-[#001F5B]/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/85 via-transparent to-transparent" />
+        <div className="container-page relative flex min-h-[72vh] flex-col justify-center py-16 text-primary-foreground sm:min-h-[82vh] lg:py-28">
+          <div className="max-w-4xl">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-bold tracking-widest text-white backdrop-blur-md sm:mb-6 sm:px-4 sm:text-sm">
               <span className="flex size-2 rounded-full bg-accent animate-pulse" />
               24/7 EMERGENCY & CRITICAL CARE
             </div>
-            <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-2xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem]">
-              World-Class Multispeciality <br className="hidden lg:block" /> 
+            <h1 className="text-[2.75rem] font-extrabold leading-[1.05] tracking-tight text-white drop-shadow-2xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.25rem]">
+              World-Class Multispeciality <br className="hidden sm:block" /> 
               Healthcare <span className="text-accent">Under One Roof</span>
             </h1>
-            <p className="mt-8 max-w-3xl text-lg font-medium leading-relaxed text-white/95 drop-shadow-md sm:mt-10 sm:text-xl lg:text-2xl">
+            <p className="mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/95 drop-shadow-md sm:mt-8 sm:text-lg lg:text-xl">
               Experience advanced diagnostics, expert specialists, and compassionate family care 
               delivered with world-class excellence in the heart of Hyderabad.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4 sm:mt-14 sm:gap-6">
-              <Button asChild variant="accent" size="xl" className="h-14 bg-gradient-cta px-10 text-lg font-bold shadow-2xl transition-all hover:-translate-y-1 hover:brightness-110 sm:h-16 sm:px-12 sm:text-xl">
+            <div className="mt-8 flex flex-wrap gap-3 sm:mt-10 sm:gap-4">
+              <Button asChild variant="accent" size="lg" className="h-12 bg-gradient-cta px-7 text-base font-bold shadow-xl transition-all hover:-translate-y-1 hover:brightness-110 sm:h-14 sm:px-10 sm:text-lg">
                 <Link to="/book-appointment">
-                  Book Appointment <ArrowRight className="ml-2 size-5 sm:size-6" />
+                  Book Appointment <ArrowRight className="ml-2 size-4 sm:size-5" />
                 </Link>
               </Button>
-              <Button asChild variant="brand" size="xl" className="h-14 border-2 border-white/30 bg-primary-deep/40 px-10 text-lg font-bold backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-primary-deep/60 sm:h-16 sm:px-12 sm:text-xl">
+              <Button asChild variant="brand" size="lg" className="h-12 border-2 border-white/30 bg-primary-deep/40 px-7 text-base font-bold backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-primary-deep/60 sm:h-14 sm:px-10 sm:text-lg">
                 <a href={`tel:${HOSPITAL.emergency}`}>
-                  <Phone className="mr-2 size-5 sm:size-6" /> Emergency Care
+                  <Phone className="mr-2 size-4 sm:size-5" /> Emergency Care
                 </a>
               </Button>
             </div>
           </div>
         </div>
         {/* Mobile Specialty Quick Links */}
-        <div className="container-page relative z-10 -mt-8 mb-4 sm:hidden">
-          <div className="no-scrollbar flex gap-3 overflow-x-auto pb-4">
+        <div className="container-page relative z-10 -mt-6 pb-6 sm:hidden">
+          <div className="no-scrollbar flex gap-2.5 overflow-x-auto pb-2">
             {specialties.map((s) => (
               <Link
                 key={s.slug}
                 to="/specialties/$slug"
                 params={{ slug: s.slug }}
-                className="flex shrink-0 items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold whitespace-nowrap text-white backdrop-blur-md transition-colors active:bg-white/20"
+                className="flex shrink-0 items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-2 text-xs font-bold whitespace-nowrap text-white backdrop-blur-md transition-colors active:bg-white/20"
               >
                 <SpecialtyIcon slug={s.slug} className="size-3.5" />
                 {s.name}
