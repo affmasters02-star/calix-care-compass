@@ -217,14 +217,14 @@ export function Header() {
           {/* CENTER: NAVIGATION */}
           <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
-            <NavDropdown label="ABOUT US">
+            <NavDropdown label="ABOUT US" activePaths={["/about", "/facilities"]}>
               <DropdownLink to="/about">Our Story</DropdownLink>
               <DropdownLink to="/about">Mission & Values</DropdownLink>
               <DropdownLink to="/about">Why Choose Us</DropdownLink>
               <DropdownLink to="/facilities">Our Facilities</DropdownLink>
             </NavDropdown>
             <SpecialtiesMegaMenu />
-            <NavDropdown label="SERVICES">
+            <NavDropdown label="SERVICES" activePaths={["/book-appointment", "/health-packages", "/patient-services", "/contact"]}>
               <DropdownLink to="/book-appointment">Plan Your Visit</DropdownLink>
               <DropdownLink to="/health-packages">Checkup Packages</DropdownLink>
               <DropdownLink to="/patient-services">Insurance & TPA</DropdownLink>
@@ -333,7 +333,7 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
           <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">SPECIALTIES</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
              {specialties.map(s => (
-                <Link key={s.slug} to="/specialties/$slug" params={{ slug: s.slug }} onClick={closeMenu} className="py-2 font-medium text-sm text-muted-foreground">
+                <Link key={s.slug} to="/specialties/$slug" params={{ slug: s.slug }} onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm text-muted-foreground transition-colors hover:text-[#003A8C]">
                    {s.name}
                 </Link>
              ))}
