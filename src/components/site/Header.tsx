@@ -226,12 +226,7 @@ export function Header() {
           {/* CENTER: NAVIGATION */}
           <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
-            <NavDropdown label="ABOUT US" activePaths={["/about", "/facilities"]}>
-              <DropdownLink to="/about">Our Story</DropdownLink>
-              <DropdownLink to="/about">Mission & Values</DropdownLink>
-              <DropdownLink to="/about">Why Choose Us</DropdownLink>
-              <DropdownLink to="/facilities">Our Facilities</DropdownLink>
-            </NavDropdown>
+            <NavLink to="/about">ABOUT US</NavLink>
             <SpecialtiesMegaMenu />
             <NavDropdown label="SERVICES" activePaths={["/book-appointment", "/health-packages", "/patient-services", "/contact"]}>
               <DropdownLink to="/book-appointment">Plan Your Visit</DropdownLink>
@@ -341,10 +336,7 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
         <AccordionItem value="about" className="border-none">
           <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">ABOUT US</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Our Story</Link>
-             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Mission & Values</Link>
-             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Why Choose Us</Link>
-             <Link to="/facilities" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Our Facilities</Link>
+             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">About Calix</Link>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="specialties" className="border-none">
