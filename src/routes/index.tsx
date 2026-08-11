@@ -12,6 +12,8 @@ import {
   UserRound,
   Quote,
   Check,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -338,6 +340,17 @@ function Home() {
 
 function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
   const [activeTab, setActiveTab] = React.useState("all");
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 200;
+      scrollContainerRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   const filteredDoctors = React.useMemo(() => {
     if (activeTab === "all") return allDoctors.slice(0, 2);
@@ -346,32 +359,54 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
 
   return (
     <div className="mt-10">
-      <div className="no-scrollbar mb-10 flex w-full justify-start gap-2 overflow-x-auto pb-4 md:flex-wrap md:justify-center">
+      <div className="relative mb-10 group/tabs">
+        {/* Navigation Arrows */}
         <button
-          onClick={() => setActiveTab("all")}
-          className={cn(
-            "h-10 shrink-0 whitespace-nowrap rounded-full px-6 text-sm font-bold transition-all",
-            activeTab === "all"
-              ? "bg-primary text-primary-foreground shadow-md"
-              : "bg-primary-soft text-primary hover:bg-primary/10"
-          )}
+          onClick={() => scroll("left")}
+          className="absolute -left-4 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-border bg-card text-primary shadow-md transition-all hover:bg-primary-soft hover:text-primary md:flex"
+          aria-label="Scroll left"
         >
-          All Specialties
+          <ChevronLeft className="size-5" />
         </button>
-        {specialties.map((s) => (
+        
+        <div 
+          ref={scrollContainerRef}
+          className="no-scrollbar flex w-full justify-start gap-2 overflow-x-auto px-2 pb-2 md:justify-center"
+        >
           <button
-            key={s.slug}
-            onClick={() => setActiveTab(s.name)}
+            onClick={() => setActiveTab("all")}
             className={cn(
               "h-10 shrink-0 whitespace-nowrap rounded-full px-6 text-sm font-bold transition-all",
-              activeTab === s.name
+              activeTab === "all"
                 ? "bg-primary text-primary-foreground shadow-md"
                 : "bg-primary-soft text-primary hover:bg-primary/10"
             )}
           >
-            {s.name}
+            All Specialties
           </button>
-        ))}
+          {specialties.map((s) => (
+            <button
+              key={s.slug}
+              onClick={() => setActiveTab(s.name)}
+              className={cn(
+                "h-10 shrink-0 whitespace-nowrap rounded-full px-6 text-sm font-bold transition-all",
+                activeTab === s.name
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-primary-soft text-primary hover:bg-primary/10"
+              )}
+            >
+              {s.name}
+            </button>
+          ))}
+        </div>
+
+        <button
+          onClick={() => scroll("right")}
+          className="absolute -right-4 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-border bg-card text-primary shadow-md transition-all hover:bg-primary-soft hover:text-primary md:flex"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="size-5" />
+        </button>
       </div>
 
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
