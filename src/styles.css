@@ -68,18 +68,18 @@
   --card-foreground: oklch(0.18 0.02 260);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.02 260);
-  --primary: oklch(0.38 0.16 265); /* #003A8C */
+  --primary: oklch(0.25 0.12 265); /* #001F5B (Deep Navy from Logo text) */
   --primary-foreground: oklch(0.99 0 0);
-  --primary-deep: oklch(0.24 0.14 265); /* #001F5B */
-  --primary-soft: oklch(0.94 0.02 265); /* #EAF4FF */
+  --primary-deep: oklch(0.20 0.10 265); /* Darker shade of the navy */
+  --primary-soft: oklch(0.94 0.02 265); /* Soft Medical Blue */
   --secondary: oklch(0.96 0.01 260);
-  --secondary-foreground: oklch(0.24 0.14 265);
+  --secondary-foreground: oklch(0.25 0.12 265);
   --muted: oklch(0.96 0.01 260);
   --muted-foreground: oklch(0.45 0.02 260);
-  --accent: oklch(0.60 0.18 350); /* #E83E8C */
+  --accent: oklch(0.65 0.20 350); /* #E83E8C (Pink from Logo icon) */
   --accent-foreground: oklch(0.99 0 0);
-  --accent-soft: oklch(0.95 0.03 350); /* #FCE7F3 */
-  --teal: oklch(0.55 0.15 180); /* #00857A */
+  --accent-soft: oklch(0.95 0.03 350);
+  --teal: oklch(0.45 0.10 180); /* #00857A (Teal from Logo tag) */
   --destructive: oklch(0.57 0.25 27);
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(0.92 0.01 260);
