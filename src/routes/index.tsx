@@ -142,7 +142,7 @@ function Home() {
               <div className="absolute -right-20 -top-20 size-64 rounded-full bg-[#003A8C]/5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:bg-[#003A8C]/15 group-hover:opacity-100 opacity-0" aria-hidden="true" />
               <div className="absolute -bottom-20 -left-20 size-64 rounded-full bg-accent/5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:bg-accent/15 group-hover:opacity-100 opacity-0" aria-hidden="true" />
               
-              <div className="relative z-10 grid size-28 place-items-center rounded-[2.5rem] bg-white/10 text-white shadow-inner transition-all duration-500 group-hover:bg-white group-hover:text-[#003A8C] group-hover:shadow-premium group-hover:shadow-white/20 group-hover:-translate-y-1 backdrop-blur-md ring-1 ring-white/20">
+              <div className="relative z-10 grid size-28 place-items-center rounded-[2.5rem] bg-white/10 text-white shadow-inner transition-all duration-500 group-hover:bg-white group-hover:text-brand-blue group-hover:shadow-premium group-hover:shadow-white/20 group-hover:-translate-y-1 backdrop-blur-md ring-1 ring-white/20">
                 <s.icon className="size-12 transition-transform duration-500 group-hover:scale-110" />
                 {/* Dual Glass stroke effect */}
                 <div className="absolute inset-0 rounded-[2.5rem] border border-white/20 transition-colors duration-500 group-hover:border-primary/20" />
@@ -308,10 +308,10 @@ function Home() {
               <div className="relative z-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
                 <div>
                   <h3 className="font-display text-2xl font-[900] tracking-tight text-primary">{p.name}</h3>
-                  <p className="mt-1.5 text-sm font-semibold text-slate-500">{p.for}</p>
+                  <p className="mt-1.5 text-sm font-semibold text-muted-foreground">{p.for}</p>
                 </div>
                 <div className="text-left sm:text-right">
-                  <p className="text-[0.7rem] font-bold uppercase tracking-widest text-slate-400">Starting at</p>
+                  <p className="text-[0.7rem] font-bold uppercase tracking-widest text-muted-foreground/70">Starting at</p>
                   <p className="font-display text-3xl font-black text-primary">{p.price}</p>
                 </div>
               </div>
@@ -322,7 +322,7 @@ function Home() {
                     <div className="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
                       <Check className="size-3 stroke-[3]" />
                     </div>
-                    <span className="text-sm font-medium leading-relaxed text-slate-600">{item}</span>
+                    <span className="text-sm font-medium leading-relaxed text-muted-foreground">{item}</span>
                   </div>
                 ))}
               </div>
@@ -356,13 +356,13 @@ function Home() {
           {testimonials.slice(0, 3).map((t) => (
             <figure key={t.name} className="group relative flex flex-col rounded-[2.5rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-card transition-all duration-500 hover:-translate-y-2 hover:shadow-premium lg:p-10">
               {/* Quote Mark Background */}
-              <Quote className="absolute -right-4 top-8 size-32 -rotate-12 text-slate-50 opacity-[0.03] transition-transform duration-700 group-hover:scale-110" aria-hidden="true" />
+              <Quote className="absolute -right-4 top-8 size-32 -rotate-12 text-muted opacity-[0.03] transition-transform duration-700 group-hover:scale-110" aria-hidden="true" />
               
               <div className="relative z-10 flex size-12 items-center justify-center rounded-2xl bg-accent-soft text-accent shadow-sm">
                 <Quote className="size-6" />
               </div>
 
-              <blockquote className="relative z-10 mt-6 text-base font-medium leading-relaxed text-slate-600 italic">
+              <blockquote className="relative z-10 mt-6 text-base font-medium leading-relaxed text-muted-foreground italic">
                 "{t.quote}"
               </blockquote>
 
@@ -372,7 +372,7 @@ function Home() {
                 </div>
                 <div>
                   <span className="block text-sm font-[900] tracking-tight text-primary">{t.name}</span>
-                  <span className="block text-[0.7rem] font-bold uppercase tracking-widest text-slate-400">{t.context}</span>
+                  <span className="block text-[0.7rem] font-bold uppercase tracking-widest text-muted-foreground/70">{t.context}</span>
                 </div>
               </figcaption>
             </figure>
@@ -543,15 +543,15 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
                     <div className="size-1.5 rounded-full bg-healthcare-teal" />
                     {d.specialty} Specialist
                   </div>
-                  <h3 className="mt-3 font-display text-xl font-[900] tracking-tight text-[#0f172a] transition-colors group-hover:text-primary sm:text-2xl lg:text-3xl">
+                  <h3 className="mt-3 font-display text-xl font-[900] tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-2xl lg:text-3xl">
                     {d.name}
                   </h3>
-                  <p className="text-[0.7rem] font-black uppercase tracking-[0.2em] text-[#E83E8C] sm:text-xs">
+                  <p className="text-[0.7rem] font-black uppercase tracking-[0.2em] text-accent sm:text-xs">
                     {d.qualification}
                   </p>
                 </div>
                 
-                <p className="mt-4 line-clamp-2 text-sm font-medium leading-relaxed text-slate-500">
+                <p className="mt-4 line-clamp-2 text-sm font-medium leading-relaxed text-muted-foreground">
                   Providing expert clinical care with a focus on patient outcomes and compassionate family healthcare.
                 </p>
                 

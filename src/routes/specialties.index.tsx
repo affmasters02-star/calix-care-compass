@@ -61,7 +61,7 @@ function SpecialtiesIndex() {
                   <div className="absolute inset-0 rounded-[2.5rem] border border-white/0 transition-colors duration-500 group-hover:border-white/20" />
                   <div className="absolute inset-[2px] rounded-[calc(2.5rem-2px)] border border-white/0 transition-colors duration-700 group-hover:border-white/10" />
                 </div>
-                <div className="rounded-full bg-slate-50 p-4 text-slate-300 transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:shadow-premium group-hover:shadow-accent/40 group-hover:scale-110 group-hover:rotate-12">
+                <div className="rounded-full bg-slate-50 p-4 text-muted-foreground/60 transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:shadow-premium group-hover:shadow-accent/40 group-hover:scale-110 group-hover:rotate-12">
                   <ArrowRight className="size-5.5" />
                 </div>
               </div>
@@ -76,14 +76,14 @@ function SpecialtiesIndex() {
                     {specialty.tagline}
                   </p>
                 </div>
-                <p className="mt-6 line-clamp-3 text-[1rem] leading-relaxed text-slate-500 font-semibold transition-colors duration-500 group-hover:text-slate-700">
+                <p className="mt-6 line-clamp-3 text-[1rem] leading-relaxed text-muted-foreground font-semibold transition-colors duration-500 group-hover:text-foreground">
                   {specialty.description}
                 </p>
               </div>
  
               <div className="mt-10 grid gap-4 relative z-10">
                 {specialty.highlights.slice(0, 3).map((highlight) => (
-                  <div key={highlight} className="flex items-center gap-4 text-[0.9375rem] font-bold text-slate-600 transition-colors duration-500 group-hover:text-slate-800">
+                  <div key={highlight} className="flex items-center gap-4 text-[0.9375rem] font-bold text-muted-foreground transition-colors duration-500 group-hover:text-foreground">
                     <div className="flex size-6.5 shrink-0 items-center justify-center rounded-full bg-healthcare-teal/10 shadow-sm transition-all duration-500 group-hover:bg-healthcare-teal group-hover:text-white group-hover:scale-110">
                       <Check className="size-4 stroke-[3.5]" />
                     </div>

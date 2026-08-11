@@ -66,7 +66,7 @@ function About() {
               title="A Legacy of Trust & Clinical Excellence"
               subtitle="We believe that high-quality healthcare should be coordinated, transparent, and accessible under one roof."
             />
-            <div className="mt-8 space-y-6 text-base leading-relaxed text-slate-600">
+            <div className="mt-8 space-y-6 text-base leading-relaxed text-muted-foreground">
               <p>
                 Calix Multispeciality Hospital is more than just a medical facility; it is a center of excellence where ten core clinical departments work in unison. By integrating <strong>General Medicine, Surgery, Critical Care, and Diagnostics</strong>, we ensure that every patient receives a comprehensive treatment plan without having to navigate multiple centers.
               </p>
@@ -103,7 +103,7 @@ function About() {
             <div className="absolute -bottom-8 -right-8 hidden h-48 w-48 rounded-[2rem] bg-white p-6 shadow-premium lg:block">
                <div className="flex h-full w-full flex-col items-center justify-center rounded-[1.5rem] bg-slate-50 border border-slate-100 text-center">
                   <Users className="size-8 text-primary mb-2" />
-                  <span className="text-xs font-bold text-slate-500">Expert Team</span>
+                  <span className="text-xs font-bold text-muted-foreground">Expert Team</span>
                   <span className="text-lg font-black text-primary">40+ Doctors</span>
                </div>
             </div>
@@ -145,7 +145,7 @@ function About() {
                 <c.icon className="size-8" />
               </span>
               <h3 className="mt-8 font-display text-2xl font-black text-primary">{c.title}</h3>
-              <p className="mt-4 text-base leading-relaxed text-slate-600">{c.body}</p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{c.body}</p>
             </div>
           ))}
         </div>
@@ -186,7 +186,7 @@ function About() {
                   <Icon className="size-7" />
                 </div>
                 <h3 className="mt-6 font-display text-xl font-bold text-primary">{w.title}</h3>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-slate-500">{w.body}</p>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{w.body}</p>
               </div>
              );
           })}

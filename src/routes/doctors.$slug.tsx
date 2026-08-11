@@ -125,7 +125,7 @@ function DoctorProfile() {
               </div>
               <div className="grid gap-6 sm:grid-cols-2">
                 {testimonials.filter(t => t.context.includes(doctor.specialty) || t.context === "Family Care").slice(0, 2).map((t) => (
-                  <div key={t.name} className="relative rounded-3xl border border-slate-100 bg-white p-6 shadow-sm italic text-slate-600 text-sm leading-relaxed">
+                  <div key={t.name} className="relative rounded-3xl border border-slate-100 bg-white p-6 shadow-sm italic text-muted-foreground text-sm leading-relaxed">
                     <Quote className="absolute -right-2 -top-2 size-8 text-primary/5 -rotate-12" />
                     "{t.quote}"
                     <div className="mt-4 not-italic font-bold text-primary flex items-center gap-2">
