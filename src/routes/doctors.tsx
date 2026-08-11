@@ -93,7 +93,7 @@ function Doctors() {
           {filteredDoctors.map((d) => (
             <div
               key={d.name}
-              className="group relative flex flex-col rounded-3xl border border-slate-100 bg-white p-7 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] sm:p-8"
+              className="group relative flex flex-col rounded-[2.5rem] border border-slate-100 bg-white p-7 shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-premium sm:p-8"
             >
               {/* Decorative Glow */}
               <div className="absolute right-0 top-0 size-24 translate-x-8 -translate-y-8 rounded-full bg-primary/5 blur-2xl transition-transform duration-500 group-hover:scale-150" aria-hidden="true" />
@@ -145,7 +145,7 @@ function Doctors() {
       </Section>
 
       <Section tone="soft">
-        <div className="rounded-3xl bg-gradient-brand p-10 text-center text-primary-foreground shadow-lift lg:p-14">
+        <div className="rounded-[2.5rem] bg-gradient-brand p-10 text-center text-primary-foreground shadow-premium lg:p-14">
           <h2 className="text-2xl font-bold sm:text-3xl">Not sure which specialist you need?</h2>
           <p className="mx-auto mt-3 max-w-xl text-primary-foreground/80">
             Call our care coordinators and describe your symptoms — we'll guide you to the right
