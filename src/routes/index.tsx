@@ -80,7 +80,7 @@ function Home() {
               <span className="flex size-2 rounded-full bg-accent animate-pulse" />
               24/7 EMERGENCY & CRITICAL CARE
             </div>
-            <h1 className="text-[2.75rem] font-[800] leading-[1.05] tracking-tight text-white drop-shadow-2xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.25rem]">
+            <h1 className="text-white drop-shadow-2xl">
               World-Class Multispeciality <br className="hidden sm:block" /> 
               Healthcare <span className="bg-gradient-cta bg-clip-text text-transparent">Under One Roof</span>
             </h1>
