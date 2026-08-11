@@ -118,24 +118,27 @@ function Home() {
               key={s.slug}
               to="/specialties/$slug"
               params={{ slug: s.slug }}
-              className="group relative flex flex-col items-center overflow-hidden rounded-[2rem] border border-border bg-card p-8 text-center shadow-card transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-lift focus-visible:ring-4 focus-visible:ring-primary/20 focus-visible:outline-none"
+              className="group relative flex flex-col items-center overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white p-8 text-center shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
             >
               {/* Background Glow */}
-              <div className="absolute -right-12 -top-12 size-32 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-150" aria-hidden="true" />
+              <div className="absolute -right-12 -top-12 size-40 rounded-full bg-primary/5 blur-3xl transition-transform duration-700 group-hover:scale-150" aria-hidden="true" />
+              <div className="absolute -bottom-12 -left-12 size-40 rounded-full bg-accent/5 blur-3xl transition-transform duration-700 group-hover:scale-150" aria-hidden="true" />
               
-              <div className="relative z-10 grid size-20 place-items-center rounded-2xl bg-primary-soft text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/25">
-                <SpecialtyIcon slug={s.slug} className="size-10" />
+              <div className="relative z-10 grid size-24 place-items-center rounded-[2rem] bg-slate-50 text-primary shadow-inner transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#001F5B] group-hover:to-[#003A8C] group-hover:text-white group-hover:shadow-2xl group-hover:shadow-primary/30">
+                <SpecialtyIcon slug={s.slug} className="size-11 transition-transform duration-500 group-hover:scale-110" />
+                {/* Decorative overlay for icon box */}
+                <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-0 group-hover:opacity-100" />
               </div>
               
-              <h3 className="relative z-10 mt-8 font-display text-lg font-[800] text-primary">{s.name}</h3>
-              <p className="relative z-10 mt-3 text-sm font-medium leading-relaxed text-slate-600 line-clamp-2">
+              <h3 className="relative z-10 mt-8 font-display text-xl font-[900] tracking-tight text-primary transition-colors group-hover:text-[#001F5B]">{s.name}</h3>
+              <p className="relative z-10 mt-4 text-sm font-medium leading-relaxed text-slate-500 transition-colors group-hover:text-slate-600 line-clamp-2 px-2">
                 {s.tagline}
               </p>
               
-              <div className="relative z-10 mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary transition-all group-hover:gap-3">
-                <span>Learn More</span>
-                <div className="flex size-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary group-hover:text-primary-foreground" aria-hidden="true">
-                  <ArrowRight className="size-3.5" />
+              <div className="relative z-10 mt-8 flex items-center gap-2.5 text-[0.7rem] font-black uppercase tracking-[0.2em] text-primary transition-all group-hover:gap-4">
+                <span>Explore Department</span>
+                <div className="flex size-7 items-center justify-center rounded-full bg-primary/10 transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:shadow-lg group-hover:shadow-accent/30" aria-hidden="true">
+                  <ArrowRight className="size-4" />
                 </div>
               </div>
             </Link>
