@@ -64,7 +64,7 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate overflow-hidden">
+      <section id="home" className="relative isolate overflow-hidden">
         <img
           src={heroImageAsset.url}
           alt="Calix Multispeciality Hospital entrance at sunrise"
@@ -106,7 +106,7 @@ function Home() {
 
 
       {/* Specialties */}
-      <Section tone="soft" className="bg-slate-50 pt-8 lg:pt-10">
+      <Section id="specialties" tone="soft" className="bg-slate-50 pt-8 lg:pt-10">
         <SectionHeading
           eyebrow="Our Specialties"
           title="Expert Care Across Every Specialty"
@@ -179,7 +179,7 @@ function Home() {
       </Section>
 
       {/* About */}
-      <Section>
+      <Section id="about">
         <div className="grid items-center gap-14 lg:grid-cols-2">
           <div className="relative">
             <img
@@ -244,7 +244,7 @@ function Home() {
       </section>
 
       {/* Doctors */}
-      <Section tone="muted">
+      <Section id="doctors" tone="muted">
         <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading
             align="left"
@@ -328,7 +328,7 @@ function Home() {
       </Section>
 
       {/* Testimonials */}
-      <Section tone="soft">
+      <Section id="testimonials" tone="soft">
         <SectionHeading
           eyebrow="Patient Stories"
           title="Trusted by Families Across the Region"
