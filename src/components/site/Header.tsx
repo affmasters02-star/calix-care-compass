@@ -260,30 +260,39 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY > 45;
-      setIsScrolled(scrolled);
-      
-      if (headerRef.current) {
-        const height = headerRef.current.offsetHeight;
-        if (scrolled) {
-          document.documentElement.style.setProperty('--header-height-scrolled', `${height}px`);
-        } else {
-          document.documentElement.style.setProperty('--header-height', `${height}px`);
-        }
+    const measure = () => {
+      const el = headerRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      document.documentElement.style.setProperty('--header-bottom', `${Math.max(0, rect.bottom)}px`);
+      if (window.scrollY <= 45) {
+        document.documentElement.style.setProperty('--header-height', `${rect.height}px`);
+      } else {
+        document.documentElement.style.setProperty('--header-height-scrolled', `${rect.height}px`);
       }
     };
-    
-    // Initial measurement
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 45);
+      measure();
+    };
+
     handleScroll();
-    
-    window.addEventListener("scroll", handleScroll);
+
+    const ro = new ResizeObserver(measure);
+    if (headerRef.current) ro.observe(headerRef.current);
+    headerRef.current?.addEventListener("transitionend", measure);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
     return () => {
+      ro.disconnect();
+      headerRef.current?.removeEventListener("transitionend", measure);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
   }, []);
+
 
   return (
     <header 
