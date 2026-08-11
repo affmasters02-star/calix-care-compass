@@ -178,22 +178,32 @@ function Home() {
           title="Expert Care Across Every Specialty"
           subtitle="Ten core departments working together so your diagnosis, treatment and follow-up happen in one place."
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {specialties.map((s) => (
             <Link
               key={s.slug}
               to="/specialties/$slug"
               params={{ slug: s.slug }}
-              className="group rounded-3xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-2 hover:border-primary/30 hover:shadow-lift"
+              className="group relative flex flex-col items-center overflow-hidden rounded-[2rem] border border-border bg-card p-8 text-center shadow-card transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-lift"
             >
-              <span className="grid size-12 place-items-center rounded-2xl bg-primary-soft text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                <SpecialtyIcon slug={s.slug} className="size-6" />
-              </span>
-              <h3 className="mt-5 font-display text-base font-bold text-foreground">{s.name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.tagline}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-primary">
-                Explore <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-              </span>
+              {/* Background Glow */}
+              <div className="absolute -right-12 -top-12 size-32 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-150" />
+              
+              <div className="relative z-10 grid size-20 place-items-center rounded-2xl bg-primary-soft text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/25">
+                <SpecialtyIcon slug={s.slug} className="size-10" />
+              </div>
+              
+              <h3 className="relative z-10 mt-8 font-display text-lg font-bold text-slate-900">{s.name}</h3>
+              <p className="relative z-10 mt-3 text-sm font-medium leading-relaxed text-slate-500 line-clamp-2">
+                {s.tagline}
+              </p>
+              
+              <div className="relative z-10 mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary transition-all group-hover:gap-3">
+                Learn More 
+                <div className="flex size-6 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <ArrowRight className="size-3.5" />
+                </div>
+              </div>
             </Link>
           ))}
         </div>
