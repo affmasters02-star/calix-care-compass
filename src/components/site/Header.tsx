@@ -55,7 +55,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
 function SpecialtiesMegaMenu() {
   return (
     <div className="group/mega">
-      <button className="flex items-center gap-1.5 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
+      <button className="flex items-center gap-1.5 py-4 text-[0.7rem] xl:text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
         Specialties
         <ChevronDown className="size-4 transition-transform duration-300 group-hover/mega:rotate-180" />
       </button>
