@@ -28,7 +28,7 @@ export function PageHero({
             {eyebrow}
           </p>
         </div>
-        <h1 className="mt-4 max-w-3xl text-3xl font-[900] leading-[1.1] sm:text-4xl lg:text-5xl xl:text-6xl text-white">
+        <h1 className="mt-4 max-w-3xl font-[900] text-white text-balance">
           {title}
         </h1>
         {subtitle ? (
@@ -62,7 +62,7 @@ export function SectionHeading({
           <span className="h-px w-8 bg-accent/30" />
         </div>
       ) : null}
-      <h2 className="mt-3 text-2xl font-[800] leading-tight text-primary sm:text-3xl lg:text-4xl">
+      <h2 className="mt-3 text-balance">
         {title}
       </h2>
       {subtitle ? <p className="mt-4 text-base font-medium text-slate-600">{subtitle}</p> : null}

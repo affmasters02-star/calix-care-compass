@@ -80,7 +80,7 @@ function Home() {
               <span className="flex size-2 rounded-full bg-accent animate-pulse" />
               24/7 EMERGENCY & CRITICAL CARE
             </div>
-            <h1 className="text-[2.75rem] font-[800] leading-[1.05] tracking-tight text-white drop-shadow-2xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.25rem]">
+            <h1 className="text-white drop-shadow-2xl">
               World-Class Multispeciality <br className="hidden sm:block" /> 
               Healthcare <span className="bg-gradient-cta bg-clip-text text-transparent">Under One Roof</span>
             </h1>
@@ -89,14 +89,14 @@ function Home() {
               delivered with world-class excellence in the heart of Hyderabad.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 sm:mt-10 sm:gap-4">
-              <Button asChild variant="accent" size="lg" className="h-12 bg-gradient-cta px-7 text-base font-bold shadow-xl transition-all hover:-translate-y-1 hover:brightness-110 sm:h-14 sm:px-10 sm:text-lg">
+              <Button asChild variant="accent" size="xl" className="bg-gradient-cta shadow-xl transition-all hover:-translate-y-1 hover:brightness-110">
                 <Link to="/book-appointment">
-                  Book Appointment <ArrowRight className="ml-2 size-4 sm:size-5" />
+                  Book Appointment <ArrowRight className="ml-2 size-5" />
                 </Link>
               </Button>
-              <Button asChild variant="brand" size="lg" className="h-12 border-2 border-white/30 bg-primary-deep/40 px-7 text-base font-bold backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-primary-deep/60 sm:h-14 sm:px-10 sm:text-lg">
+              <Button asChild variant="brand" size="xl" className="border-2 border-white/30 bg-primary-deep/40 backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-primary-deep/60">
                 <a href={`tel:${HOSPITAL.emergency}`}>
-                  <Phone className="mr-2 size-4 sm:size-5" /> Emergency Care
+                  <Phone className="mr-2 size-5" /> Emergency Care
                 </a>
               </Button>
             </div>
