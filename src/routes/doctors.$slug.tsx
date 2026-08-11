@@ -138,7 +138,18 @@ function DoctorProfile() {
                     <p className="text-sm font-bold">Calix Hospital Main Tower</p>
                   </div>
                 </div>
+
+                <div className="flex items-center gap-4 rounded-2xl bg-muted/50 p-4">
+                  <Mail className="size-5 text-primary" />
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email</p>
+                    <a href={`mailto:${HOSPITAL.email}`} className="block truncate text-sm font-bold hover:text-primary">
+                      {HOSPITAL.email}
+                    </a>
+                  </div>
+                </div>
               </div>
+
 
               <div className="mt-8 flex flex-col gap-3">
                 <Button asChild variant="brand" size="xl" className="w-full">
