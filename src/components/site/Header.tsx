@@ -57,6 +57,7 @@ function SpecialtiesMegaMenu() {
     <div className="group/mega">
       <button className="flex items-center gap-1.5 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
         Specialties
+        <ChevronDown className="size-4 transition-transform duration-300 group-hover/mega:rotate-180" />
       </button>
       <div className="invisible absolute left-0 right-0 top-[calc(100%-10px)] z-50 flex justify-center opacity-0 transition-all duration-500 ease-out group-hover/mega:visible group-hover/mega:top-full group-hover/mega:opacity-100">
         <div className="mx-auto w-[1200px] overflow-hidden rounded-[24px] border border-[#EAF4FF] bg-white p-8 shadow-[0_25px_80px_rgba(0,0,0,0.08)]">
