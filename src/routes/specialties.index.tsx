@@ -56,7 +56,7 @@ function SpecialtiesIndex() {
 
               <div className="flex items-start justify-between relative z-10">
                 <div className="relative grid size-28 place-items-center rounded-[2.5rem] bg-primary/5 ring-1 ring-primary/10 transition-all duration-500 group-hover:bg-gradient-brand group-hover:ring-0 group-hover:shadow-premium group-hover:shadow-primary/40 group-hover:-translate-y-1">
-                  <SpecialtyIcon slug={specialty.slug} className="size-12 text-primary group-hover:text-white transition-all duration-500 group-hover:scale-110" />
+                  <specialty.icon className="size-12 text-primary group-hover:text-white transition-all duration-500 group-hover:scale-110" />
                   {/* Dual Glass stroke effect */}
                   <div className="absolute inset-0 rounded-[2.5rem] border border-white/0 transition-colors duration-500 group-hover:border-white/20" />
                   <div className="absolute inset-[2px] rounded-[calc(2.5rem-2px)] border border-white/0 transition-colors duration-700 group-hover:border-white/10" />

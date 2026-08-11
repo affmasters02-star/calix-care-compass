@@ -220,7 +220,7 @@ function SpecialtyItem({ specialty, onSelect }: { specialty: (typeof specialties
     >
       <div className="flex items-center gap-4">
         <div className="size-11 rounded-xl bg-[#EAF4FF] group-hover/item:bg-white group-hover/item:shadow-sm transition-all flex items-center justify-center text-[#003A8C] ring-1 ring-primary/5">
-          <StarIcon className="size-5 transition-transform group-hover/item:scale-110" />
+          <specialty.icon className="size-5 transition-transform group-hover/item:scale-110" />
         </div>
         <div>
           <span className="block text-[0.9375rem] font-[800] text-[#0f172a] transition-colors group-hover/item:text-[#003A8C]">{specialty.name}</span>

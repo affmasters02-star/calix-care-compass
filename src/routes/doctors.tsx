@@ -73,12 +73,13 @@ function Doctors() {
                 key={s.slug}
                 onClick={() => setActiveTab(s.name)}
                 className={cn(
-                  "h-10 shrink-0 whitespace-nowrap rounded-full px-6 text-sm font-bold transition-all",
+                  "flex h-10 items-center gap-2 shrink-0 whitespace-nowrap rounded-full px-5 text-sm font-bold transition-all",
                   activeTab === s.name
                     ? "bg-primary text-primary-foreground shadow-md"
                     : "bg-primary-soft text-primary hover:bg-primary/10"
                 )}
               >
+                <s.icon className={cn("size-4", activeTab === s.name ? "text-white" : "text-primary")} />
                 {s.name}
               </button>
             ))}

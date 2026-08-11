@@ -53,7 +53,7 @@ function SpecialtyDetail() {
           
           <div className="mt-12 flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
             <div className="grid size-24 lg:size-32 shrink-0 place-items-center rounded-[2.5rem] bg-white/10 backdrop-blur-md ring-1 ring-white/20 shadow-2xl">
-              <SpecialtyIcon slug={specialty.slug} className="size-12 lg:size-16 text-white" />
+              <specialty.icon className="size-12 lg:size-16 text-white" />
             </div>
             
             <div className="flex-1">

@@ -54,12 +54,12 @@ export function SectionHeading({
   return (
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       {eyebrow ? (
-        <div className="flex items-center gap-3 mb-3 justify-center">
+        <div className={align === "center" ? "flex items-center gap-3 mb-3 justify-center" : "flex items-center gap-3 mb-3"}>
           <span className="h-px w-8 bg-accent/30" />
           <p className="text-xs font-black uppercase tracking-[0.2em] text-accent drop-shadow-sm leading-none">
             {eyebrow}
           </p>
-          <span className="h-px w-8 bg-accent/30" />
+          {align === "center" && <span className="h-px w-8 bg-accent/30" />}
         </div>
       ) : null}
       <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] text-balance">
