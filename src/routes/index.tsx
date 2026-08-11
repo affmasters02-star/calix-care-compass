@@ -124,8 +124,8 @@ function Home() {
               <div className="absolute -right-20 -top-20 size-64 rounded-full bg-[#003A8C]/5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:bg-[#003A8C]/15 group-hover:opacity-100 opacity-0" aria-hidden="true" />
               <div className="absolute -bottom-20 -left-20 size-64 rounded-full bg-accent/5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:bg-accent/15 group-hover:opacity-100 opacity-0" aria-hidden="true" />
               
-              <div className="relative z-10 grid size-28 place-items-center rounded-[2.5rem] bg-white/10 text-white shadow-inner transition-all duration-500 group-hover:bg-white group-hover:text-primary group-hover:shadow-premium group-hover:shadow-white/20 group-hover:-translate-y-1 backdrop-blur-md ring-1 ring-white/20">
-                <SpecialtyIcon slug={s.slug} className="size-12 transition-transform duration-500 group-hover:scale-110" />
+              <div className="relative z-10 grid size-28 place-items-center rounded-[2.5rem] bg-white/10 text-white shadow-inner transition-all duration-500 group-hover:bg-white group-hover:text-[#003A8C] group-hover:shadow-premium group-hover:shadow-white/20 group-hover:-translate-y-1 backdrop-blur-md ring-1 ring-white/20">
+                <s.icon className="size-12 transition-transform duration-500 group-hover:scale-110" />
                 {/* Dual Glass stroke effect */}
                 <div className="absolute inset-0 rounded-[2.5rem] border border-white/20 transition-colors duration-500 group-hover:border-primary/20" />
                 <div className="absolute inset-[2px] rounded-[calc(2.5rem-2px)] border border-white/10 transition-colors duration-700 group-hover:border-primary/10" />
