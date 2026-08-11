@@ -503,18 +503,18 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
                   {d.specialty} Specialist
                 </div>
                 
-                <div className="mt-6 flex flex-col items-stretch gap-2.5 sm:mt-8 sm:flex-row sm:gap-3 md:justify-start">
-                  <Button asChild size="lg" className="h-10 flex-1 rounded-full bg-[#003A8C] px-3 text-[0.65rem] font-black uppercase tracking-wider text-white shadow-lg shadow-[#003A8C]/20 transition-all hover:bg-[#001F5B] hover:shadow-xl sm:h-11 sm:flex-none sm:px-6 sm:text-[0.7rem] md:h-12 md:px-8 md:text-sm">
-                    <Link to="/book-appointment" search={{ doctor: d.slug }}>
-                      Book Appointment
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" size="lg" className="h-10 flex-1 rounded-full border-slate-200 bg-white px-3 text-[0.65rem] font-black uppercase tracking-wider text-[#0f172a] transition-all hover:bg-slate-50 hover:text-primary sm:h-11 sm:flex-none sm:px-6 sm:text-[0.7rem] md:h-12 md:px-8 md:text-sm">
-                    <Link to="/doctors/$slug" params={{ slug: d.slug }}>
-                      View Profile
-                    </Link>
-                  </Button>
-                </div>
+                  <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row md:justify-start">
+                    <Button asChild size="lg" className="h-12 flex-1 rounded-full bg-primary px-8 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-primary/20 transition-all hover:-translate-y-1 hover:bg-primary-deep hover:shadow-xl sm:flex-none">
+                      <Link to="/book-appointment" search={{ doctor: d.slug }}>
+                        Book Appointment
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" size="lg" className="h-12 flex-1 rounded-full border-slate-200 bg-white px-8 text-xs font-black uppercase tracking-widest text-primary transition-all hover:-translate-y-1 hover:bg-slate-50 sm:flex-none">
+                      <Link to="/doctors/$slug" params={{ slug: d.slug }}>
+                        View Profile
+                      </Link>
+                    </Button>
+                  </div>
               </div>
             </div>
           </div>
