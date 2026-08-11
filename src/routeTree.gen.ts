@@ -17,7 +17,6 @@ import { Route as DoctorsRouteImport } from './routes/doctors'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as HealthPackagesRouteImport } from './routes/health-packages'
 import { Route as PatientServicesRouteImport } from './routes/patient-services'
-import { Route as SpecialtiesRouteImport } from './routes/specialties'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as DoctorsSlugRouteImport } from './routes/doctors.$slug'
 import { Route as SpecialtiesIndexRouteImport } from './routes/specialties.index'
@@ -63,11 +62,6 @@ const PatientServicesRoute = PatientServicesRouteImport.update({
   path: '/patient-services',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SpecialtiesRoute = SpecialtiesRouteImport.update({
-  id: '/specialties',
-  path: '/specialties',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TestimonialsRoute = TestimonialsRouteImport.update({
   id: '/testimonials',
   path: '/testimonials',
@@ -79,14 +73,14 @@ const DoctorsSlugRoute = DoctorsSlugRouteImport.update({
   getParentRoute: () => DoctorsRoute,
 } as any)
 const SpecialtiesIndexRoute = SpecialtiesIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => SpecialtiesRoute,
+  id: '/specialties/',
+  path: '/specialties/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const SpecialtiesSlugRoute = SpecialtiesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => SpecialtiesRoute,
+  id: '/specialties/$slug',
+  path: '/specialties/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -98,7 +92,6 @@ export interface FileRoutesByFullPath {
   '/facilities': typeof FacilitiesRoute
   '/health-packages': typeof HealthPackagesRoute
   '/patient-services': typeof PatientServicesRoute
-  '/specialties': typeof SpecialtiesRouteWithChildren
   '/testimonials': typeof TestimonialsRoute
   '/doctors/$slug': typeof DoctorsSlugRoute
   '/specialties/$slug': typeof SpecialtiesSlugRoute
@@ -128,7 +121,6 @@ export interface FileRoutesById {
   '/facilities': typeof FacilitiesRoute
   '/health-packages': typeof HealthPackagesRoute
   '/patient-services': typeof PatientServicesRoute
-  '/specialties': typeof SpecialtiesRouteWithChildren
   '/testimonials': typeof TestimonialsRoute
   '/doctors/$slug': typeof DoctorsSlugRoute
   '/specialties/$slug': typeof SpecialtiesSlugRoute
@@ -145,7 +137,6 @@ export interface FileRouteTypes {
     | '/facilities'
     | '/health-packages'
     | '/patient-services'
-    | '/specialties'
     | '/testimonials'
     | '/doctors/$slug'
     | '/specialties/$slug'
@@ -174,7 +165,6 @@ export interface FileRouteTypes {
     | '/facilities'
     | '/health-packages'
     | '/patient-services'
-    | '/specialties'
     | '/testimonials'
     | '/doctors/$slug'
     | '/specialties/$slug'
@@ -190,8 +180,9 @@ export interface RootRouteChildren {
   FacilitiesRoute: typeof FacilitiesRoute
   HealthPackagesRoute: typeof HealthPackagesRoute
   PatientServicesRoute: typeof PatientServicesRoute
-  SpecialtiesRoute: typeof SpecialtiesRouteWithChildren
   TestimonialsRoute: typeof TestimonialsRoute
+  SpecialtiesSlugRoute: typeof SpecialtiesSlugRoute
+  SpecialtiesIndexRoute: typeof SpecialtiesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -252,13 +243,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PatientServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/specialties': {
-      id: '/specialties'
-      path: '/specialties'
-      fullPath: '/specialties'
-      preLoaderRoute: typeof SpecialtiesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/testimonials': {
       id: '/testimonials'
       path: '/testimonials'
@@ -275,17 +259,17 @@ declare module '@tanstack/react-router' {
     }
     '/specialties/': {
       id: '/specialties/'
-      path: '/'
+      path: '/specialties'
       fullPath: '/specialties/'
       preLoaderRoute: typeof SpecialtiesIndexRouteImport
-      parentRoute: typeof SpecialtiesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/specialties/$slug': {
       id: '/specialties/$slug'
-      path: '/$slug'
+      path: '/specialties/$slug'
       fullPath: '/specialties/$slug'
       preLoaderRoute: typeof SpecialtiesSlugRouteImport
-      parentRoute: typeof SpecialtiesRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -301,20 +285,6 @@ const DoctorsRouteChildren: DoctorsRouteChildren = {
 const DoctorsRouteWithChildren =
   DoctorsRoute._addFileChildren(DoctorsRouteChildren)
 
-interface SpecialtiesRouteChildren {
-  SpecialtiesSlugRoute: typeof SpecialtiesSlugRoute
-  SpecialtiesIndexRoute: typeof SpecialtiesIndexRoute
-}
-
-const SpecialtiesRouteChildren: SpecialtiesRouteChildren = {
-  SpecialtiesSlugRoute: SpecialtiesSlugRoute,
-  SpecialtiesIndexRoute: SpecialtiesIndexRoute,
-}
-
-const SpecialtiesRouteWithChildren = SpecialtiesRoute._addFileChildren(
-  SpecialtiesRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -324,8 +294,9 @@ const rootRouteChildren: RootRouteChildren = {
   FacilitiesRoute: FacilitiesRoute,
   HealthPackagesRoute: HealthPackagesRoute,
   PatientServicesRoute: PatientServicesRoute,
-  SpecialtiesRoute: SpecialtiesRouteWithChildren,
   TestimonialsRoute: TestimonialsRoute,
+  SpecialtiesSlugRoute: SpecialtiesSlugRoute,
+  SpecialtiesIndexRoute: SpecialtiesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
