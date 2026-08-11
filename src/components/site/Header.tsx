@@ -238,8 +238,6 @@ export function Header() {
 
           {/* RIGHT: SOCIAL + BUTTONS */}
           <div className="hidden items-center gap-4 lg:flex shrink-0">
-            <div className="hidden xl:flex items-center gap-2 pr-4 border-r border-[#EAF4FF]">
-            </div>
             <div className="flex items-center gap-3">
               <Button asChild className="h-10 rounded-full bg-[#E83E8C] px-6 text-sm text-white shadow-md hover:bg-[#D81B60] transition-all hover:-translate-y-0.5">
                 <Link to="/book-appointment">Book Appointment</Link>
