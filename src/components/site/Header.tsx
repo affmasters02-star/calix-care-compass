@@ -56,7 +56,7 @@ function SpecialtiesMegaMenu() {
   return (
     <div className="group/mega">
       <button className="flex items-center gap-1.5 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
-        SPECIALTIES
+        Specialties
         <ChevronDown className="size-4 transition-transform duration-300 group-hover/mega:rotate-180" />
       </button>
       <div className="invisible absolute left-0 right-0 top-[calc(100%-10px)] z-50 flex justify-center opacity-0 transition-all duration-500 ease-out group-hover/mega:visible group-hover/mega:top-full group-hover/mega:opacity-100">
@@ -216,24 +216,24 @@ export function Header() {
 
           {/* CENTER: NAVIGATION */}
           <div className="hidden items-center gap-4 2xl:gap-8 xl:flex">
-            <NavLink to="/">HOME</NavLink>
-            <NavDropdown label="ABOUT US">
-              <DropdownLink to="/about">Overview</DropdownLink>
-              <DropdownLink to="/about">Mission & Vision</DropdownLink>
-              <DropdownLink to="/about">Why Choose Calix</DropdownLink>
-              <DropdownLink to="/facilities">Facilities</DropdownLink>
+            <NavLink to="/">Home</NavLink>
+            <NavDropdown label="About Us">
+              <DropdownLink to="/about">Our Story</DropdownLink>
+              <DropdownLink to="/about">Mission & Values</DropdownLink>
+              <DropdownLink to="/about">Why Choose Us</DropdownLink>
+              <DropdownLink to="/facilities">Our Facilities</DropdownLink>
             </NavDropdown>
             <SpecialtiesMegaMenu />
-            <NavLink to="/doctors">DOCTORS</NavLink>
-            <NavLink to="/facilities">FACILITIES</NavLink>
-            <NavDropdown label="PATIENT SERVICES">
-              <DropdownLink to="/book-appointment">Book Appointment</DropdownLink>
-              <DropdownLink to="/health-packages">Health Packages</DropdownLink>
-              <DropdownLink to="/patient-services">Insurance & Cashless</DropdownLink>
-              <DropdownLink to="/contact">Online Consultation</DropdownLink>
+            <NavLink to="/doctors">Find a Doctor</NavLink>
+            <NavLink to="/facilities">Infrastructure</NavLink>
+            <NavDropdown label="Patient Care">
+              <DropdownLink to="/book-appointment">Plan Your Visit</DropdownLink>
+              <DropdownLink to="/health-packages">Checkup Packages</DropdownLink>
+              <DropdownLink to="/patient-services">Insurance & TPA</DropdownLink>
+              <DropdownLink to="/contact">Tele-Consultation</DropdownLink>
             </NavDropdown>
-            <NavLink to="/testimonials">TESTIMONIALS</NavLink>
-            <NavLink to="/contact">CONTACT</NavLink>
+            <NavLink to="/testimonials">Patient Stories</NavLink>
+            <NavLink to="/contact">Reach Us</NavLink>
           </div>
 
           {/* RIGHT: SOCIAL + BUTTONS */}
@@ -320,41 +320,41 @@ function DropdownLink({ to, children, onClick }: { to: string; children: React.R
 function MobileNav({ closeMenu }: { closeMenu: () => void }) {
   return (
     <div className="flex flex-col gap-2">
-      <NavLink to="/" onClick={closeMenu}>HOME</NavLink>
+      <NavLink to="/" onClick={closeMenu}>Home</NavLink>
       <Accordion type="single" collapsible>
         <AccordionItem value="about" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">ABOUT US</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3">About Us</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Overview</Link>
-             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Mission & Vision</Link>
-             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Why Choose Calix</Link>
-             <Link to="/facilities" onClick={closeMenu} className="py-2 font-medium text-sm">Facilities</Link>
+             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Our Story</Link>
+             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Mission & Values</Link>
+             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Why Choose Us</Link>
+             <Link to="/facilities" onClick={closeMenu} className="py-2 font-medium text-sm">Our Facilities</Link>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="specialties" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">SPECIALTIES</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3">Specialties</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
              {specialties.map(s => (
-               <Link key={s.slug} to="/specialties/$slug" params={{ slug: s.slug }} onClick={closeMenu} className="py-2 font-medium text-sm text-muted-foreground">
-                  {s.name}
-               </Link>
+                <Link key={s.slug} to="/specialties/$slug" params={{ slug: s.slug }} onClick={closeMenu} className="py-2 font-medium text-sm text-muted-foreground">
+                   {s.name}
+                </Link>
              ))}
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="services" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">PATIENT SERVICES</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3">Patient Care</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/book-appointment" onClick={closeMenu} className="py-2 font-medium text-sm">Book Appointment</Link>
-             <Link to="/health-packages" onClick={closeMenu} className="py-2 font-medium text-sm">Health Packages</Link>
-             <Link to="/patient-services" onClick={closeMenu} className="py-2 font-medium text-sm">Insurance & Cashless</Link>
-             <Link to="/contact" onClick={closeMenu} className="py-2 font-medium text-sm">Online Consultation</Link>
+             <Link to="/book-appointment" onClick={closeMenu} className="py-2 font-medium text-sm">Plan Your Visit</Link>
+             <Link to="/health-packages" onClick={closeMenu} className="py-2 font-medium text-sm">Checkup Packages</Link>
+             <Link to="/patient-services" onClick={closeMenu} className="py-2 font-medium text-sm">Insurance & TPA</Link>
+             <Link to="/contact" onClick={closeMenu} className="py-2 font-medium text-sm">Tele-Consultation</Link>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <NavLink to="/doctors" onClick={closeMenu}>DOCTORS</NavLink>
-      <NavLink to="/facilities" onClick={closeMenu}>FACILITIES</NavLink>
-      <NavLink to="/testimonials" onClick={closeMenu}>TESTIMONIALS</NavLink>
-      <NavLink to="/contact" onClick={closeMenu}>CONTACT</NavLink>
+      <NavLink to="/doctors" onClick={closeMenu}>Find a Doctor</NavLink>
+      <NavLink to="/facilities" onClick={closeMenu}>Infrastructure</NavLink>
+      <NavLink to="/testimonials" onClick={closeMenu}>Patient Stories</NavLink>
+      <NavLink to="/contact" onClick={closeMenu}>Reach Us</NavLink>
       <div className="mt-8 flex flex-col gap-4 pb-20">
          <Button asChild className="rounded-full bg-[#E83E8C] text-white">
             <Link to="/book-appointment" onClick={closeMenu}>Book Appointment</Link>
