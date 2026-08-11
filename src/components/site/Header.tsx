@@ -226,12 +226,7 @@ export function Header() {
           {/* CENTER: NAVIGATION */}
           <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
-            <NavDropdown label="ABOUT US" activePaths={["/about", "/facilities"]}>
-              <DropdownLink to="/about">Our Story</DropdownLink>
-              <DropdownLink to="/about">Mission & Values</DropdownLink>
-              <DropdownLink to="/about">Why Choose Us</DropdownLink>
-              <DropdownLink to="/facilities">Our Facilities</DropdownLink>
-            </NavDropdown>
+            <NavLink to="/about">ABOUT US</NavLink>
             <SpecialtiesMegaMenu />
             <NavDropdown label="SERVICES" activePaths={["/book-appointment", "/health-packages", "/patient-services", "/contact"]}>
               <DropdownLink to="/book-appointment">Plan Your Visit</DropdownLink>
