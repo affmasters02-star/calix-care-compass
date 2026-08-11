@@ -12,14 +12,16 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden bg-gradient-hero py-16 text-primary-foreground lg:py-24">
+    <section className="relative overflow-hidden bg-[#001F5B] py-16 text-primary-foreground lg:py-24">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#001F5B] via-[#003A8C] to-[#001F5B]" />
       <div
         aria-hidden
-        className="absolute -right-24 -top-24 size-96 rounded-full bg-accent/25 blur-3xl"
+        className="absolute -right-24 -top-24 size-[500px] rounded-full bg-accent/10 blur-[120px] animate-pulse"
       />
       <div
         aria-hidden
-        className="absolute -bottom-32 left-1/4 size-96 rounded-full bg-primary/40 blur-3xl"
+        className="absolute -bottom-32 left-1/4 size-[400px] rounded-full bg-[#00857A]/10 blur-[100px]"
       />
       <div className="container-page relative">
         <div className="flex items-center gap-3 mb-4">
