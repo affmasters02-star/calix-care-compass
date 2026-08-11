@@ -179,18 +179,24 @@ export function Header() {
             </a>
           </div>
           <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="flex size-7 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110"
+                  aria-label={social.label}
+                >
+                  <social.icon className="size-3" />
+                </a>
+              ))}
+            </div>
             <span className="hidden items-center gap-2 lg:flex">
               <Clock className="size-3.5" /> Open 24 Hours
             </span>
             <span className="hidden items-center gap-2 sm:flex">
               <MapPin className="size-3.5" /> {HOSPITAL.address.split(",")[0]}
             </span>
-            <span className="flex lg:hidden items-center gap-2">
-              <span className="text-lg">🚑</span> Emergency
-            </span>
-            <a href={`tel:${HOSPITAL.phone}`} className="flex lg:hidden items-center gap-2 font-bold">
-               📞 Call Now
-            </a>
           </div>
         </div>
       </div>
