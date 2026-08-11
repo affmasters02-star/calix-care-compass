@@ -134,8 +134,9 @@ function SpecialtiesMegaMenu() {
         aria-label="Specialties Menu"
         onMouseLeave={() => setIsOpen(false)}
         className={cn(
-          "absolute left-0 right-0 top-[calc(100%-10px)] z-50 flex justify-center transition-all duration-500 ease-out",
-          isOpen ? "visible top-full opacity-100" : "invisible opacity-0"
+          "fixed left-0 right-0 top-[90px] z-50 flex justify-center transition-all duration-500 ease-out",
+          isScrolled && "top-[75px]",
+          isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-4 opacity-0"
         )}
       >
         <div className="mx-auto w-[1200px] overflow-hidden rounded-[2.5rem] border border-[#EAF4FF] bg-white p-10 shadow-[0_40px_100px_rgba(0,0,0,0.12)]">
