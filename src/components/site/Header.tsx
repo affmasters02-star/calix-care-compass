@@ -341,10 +341,7 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
         <AccordionItem value="about" className="border-none">
           <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">ABOUT US</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Our Story</Link>
-             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Mission & Values</Link>
-             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Why Choose Us</Link>
-             <Link to="/facilities" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Our Facilities</Link>
+             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">About Calix</Link>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="specialties" className="border-none">
