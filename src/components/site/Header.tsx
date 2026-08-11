@@ -13,6 +13,7 @@ import {
   ArrowRight,
   MessageCircle,
   Calendar,
+  Search,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import logoAsset from "@/assets/calix-logo.png.asset.json";
@@ -62,11 +63,11 @@ export function Logo({ className, inverted = false }: { className?: string; inve
 function SpecialtiesMegaMenu() {
   return (
     <div className="group/mega">
-      <button className="flex items-center gap-1.5 py-5 text-[0.95rem] font-bold tracking-wide text-[#0f172a] transition-colors hover:text-[#003A8C]">
+      <button className="flex items-center gap-1.5 py-5 text-[0.9rem] font-bold tracking-wide text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] hover:scale-105 active:scale-95">
         SPECIALTIES
-        <ChevronDown className="size-4 transition-transform group-hover/mega:rotate-180" />
+        <ChevronDown className="size-4 transition-transform duration-300 group-hover/mega:rotate-180" />
       </button>
-      <div className="invisible absolute left-0 right-0 top-full z-50 flex justify-center opacity-0 transition-all duration-300 group-hover/mega:visible group-hover/mega:opacity-100">
+      <div className="invisible absolute left-0 right-0 top-[calc(100%-10px)] z-50 flex justify-center opacity-0 transition-all duration-500 ease-out group-hover/mega:visible group-hover/mega:top-full group-hover/mega:opacity-100">
         <div className="mx-auto w-[1200px] overflow-hidden rounded-[24px] border border-[#EAF4FF] bg-white p-8 shadow-[0_25px_80px_rgba(0,0,0,0.08)]">
           <div className="grid grid-cols-5 gap-8">
             <div className="col-span-4 grid grid-cols-3 gap-x-12 gap-y-4">
@@ -212,17 +213,23 @@ export function Header() {
         <div className="container-page flex h-full items-center justify-between">
           <Logo />
           
-          <div className="hidden lg:flex items-center gap-3">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                className="grid size-10 place-items-center rounded-full bg-[#EAF4FF] text-[#003A8C] transition-all hover:bg-[#003A8C] hover:text-white"
-                aria-label={social.label}
-              >
-                <social.icon className="size-5" />
-              </a>
-            ))}
+          <div className="hidden lg:flex items-center gap-6">
+            <div className="flex items-center gap-3 pr-6 border-r border-[#EAF4FF]">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="grid size-9 place-items-center rounded-full bg-[#EAF4FF] text-[#003A8C] transition-all duration-300 hover:bg-[#003A8C] hover:text-white hover:-translate-y-1 hover:shadow-md"
+                  aria-label={social.label}
+                >
+                  <social.icon className="size-4" />
+                </a>
+              ))}
+            </div>
+            <button className="flex items-center gap-2 text-[#64748B] hover:text-[#003A8C] transition-colors group">
+              <Search className="size-5 group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-medium">Search</span>
+            </button>
           </div>
 
           <div className="hidden items-center gap-4 md:flex">
