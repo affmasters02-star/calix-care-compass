@@ -55,8 +55,8 @@ export function Logo({ className, inverted = false }: { className?: string; inve
 function SpecialtiesMegaMenu() {
   return (
     <div className="group/mega">
-      <button className="flex items-center gap-1.5 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
-        Specialties
+      <button className="flex items-center gap-1.5 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase">
+        SPECIALTIES
         <ChevronDown className="size-4 transition-transform duration-300 group-hover/mega:rotate-180" />
       </button>
       <div className="invisible absolute left-0 right-0 top-[calc(100%-10px)] z-50 flex justify-center opacity-0 transition-all duration-500 ease-out group-hover/mega:visible group-hover/mega:top-full group-hover/mega:opacity-100">
@@ -216,24 +216,24 @@ export function Header() {
 
           {/* CENTER: NAVIGATION */}
           <div className="hidden items-center gap-4 2xl:gap-8 xl:flex">
-            <NavLink to="/">Home</NavLink>
-            <NavDropdown label="About Us">
+            <NavLink to="/">HOME</NavLink>
+            <NavDropdown label="ABOUT US">
               <DropdownLink to="/about">Our Story</DropdownLink>
               <DropdownLink to="/about">Mission & Values</DropdownLink>
               <DropdownLink to="/about">Why Choose Us</DropdownLink>
               <DropdownLink to="/facilities">Our Facilities</DropdownLink>
             </NavDropdown>
             <SpecialtiesMegaMenu />
-            <NavLink to="/doctors">Find a Doctor</NavLink>
-            <NavLink to="/facilities">Infrastructure</NavLink>
-            <NavDropdown label="Patient Care">
+            <NavDropdown label="SERVICES">
               <DropdownLink to="/book-appointment">Plan Your Visit</DropdownLink>
               <DropdownLink to="/health-packages">Checkup Packages</DropdownLink>
               <DropdownLink to="/patient-services">Insurance & TPA</DropdownLink>
               <DropdownLink to="/contact">Tele-Consultation</DropdownLink>
             </NavDropdown>
-            <NavLink to="/testimonials">Patient Stories</NavLink>
-            <NavLink to="/contact">Reach Us</NavLink>
+            <NavLink to="/doctors">DOCTORS</NavLink>
+            <NavLink to="/facilities">FACILITIES</NavLink>
+            <NavLink to="/testimonials">TESTIMONIALS</NavLink>
+            <NavLink to="/contact">CONTACT</NavLink>
           </div>
 
           {/* RIGHT: SOCIAL + BUTTONS */}
@@ -282,7 +282,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
       onClick={onClick}
       activeOptions={{ exact: to === "/" }}
       activeProps={{ className: "text-[#003A8C] after:scale-x-100" }}
-      className="relative py-2 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+      className="relative py-2 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 uppercase"
     >
       {children}
     </Link>
@@ -292,7 +292,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
 function NavDropdown({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="group relative">
-      <button className="flex items-center gap-1 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
+      <button className="flex items-center gap-1 py-4 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase">
         {label}
         <ChevronDown className="size-4 transition-transform duration-300 group-hover:rotate-180" />
       </button>
@@ -320,10 +320,10 @@ function DropdownLink({ to, children, onClick }: { to: string; children: React.R
 function MobileNav({ closeMenu }: { closeMenu: () => void }) {
   return (
     <div className="flex flex-col gap-2">
-      <NavLink to="/" onClick={closeMenu}>Home</NavLink>
+      <NavLink to="/" onClick={closeMenu}>HOME</NavLink>
       <Accordion type="single" collapsible>
         <AccordionItem value="about" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">About Us</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">ABOUT US</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
              <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Our Story</Link>
              <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Mission & Values</Link>
@@ -332,7 +332,7 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="specialties" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">Specialties</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">SPECIALTIES</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
              {specialties.map(s => (
                 <Link key={s.slug} to="/specialties/$slug" params={{ slug: s.slug }} onClick={closeMenu} className="py-2 font-medium text-sm text-muted-foreground">
@@ -342,7 +342,7 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="services" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3">Patient Care</AccordionTrigger>
+          <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">SERVICES</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
              <Link to="/book-appointment" onClick={closeMenu} className="py-2 font-medium text-sm">Plan Your Visit</Link>
              <Link to="/health-packages" onClick={closeMenu} className="py-2 font-medium text-sm">Checkup Packages</Link>
@@ -351,10 +351,10 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <NavLink to="/doctors" onClick={closeMenu}>Find a Doctor</NavLink>
-      <NavLink to="/facilities" onClick={closeMenu}>Infrastructure</NavLink>
-      <NavLink to="/testimonials" onClick={closeMenu}>Patient Stories</NavLink>
-      <NavLink to="/contact" onClick={closeMenu}>Reach Us</NavLink>
+      <NavLink to="/doctors" onClick={closeMenu}>DOCTORS</NavLink>
+      <NavLink to="/facilities" onClick={closeMenu}>FACILITIES</NavLink>
+      <NavLink to="/testimonials" onClick={closeMenu}>TESTIMONIALS</NavLink>
+      <NavLink to="/contact" onClick={closeMenu}>CONTACT</NavLink>
       <div className="mt-8 flex flex-col gap-4 pb-20">
          <Button asChild className="rounded-full bg-[#E83E8C] text-white">
             <Link to="/book-appointment" onClick={closeMenu}>Book Appointment</Link>
