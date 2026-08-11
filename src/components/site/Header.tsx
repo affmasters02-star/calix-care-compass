@@ -103,12 +103,12 @@ function SpecialtiesMegaMenu() {
 
   return (
     <div className="group/mega relative" onKeyDown={handleKeyDown}>
-      <button 
+      <Link 
+        to="/specialties"
         ref={triggerRef}
         aria-expanded={isOpen}
         aria-haspopup="true"
         aria-controls="specialties-mega-menu"
-        onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsOpen(true)}
         className={cn(
           "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
@@ -117,8 +117,15 @@ function SpecialtiesMegaMenu() {
         )}
       >
         SPECIALTIES
-        <ChevronDown className={cn("size-4 transition-transform duration-300", isOpen && "rotate-180")} />
-      </button>
+        <ChevronDown 
+          className={cn("size-4 transition-transform duration-300", isOpen && "rotate-180")} 
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsOpen(!isOpen);
+          }}
+        />
+      </Link>
       
       <div 
         ref={containerRef}
@@ -131,37 +138,67 @@ function SpecialtiesMegaMenu() {
           isOpen ? "visible top-full opacity-100" : "invisible opacity-0"
         )}
       >
-        <div className="mx-auto w-[1200px] overflow-hidden rounded-[24px] border border-[#EAF4FF] bg-white p-8 shadow-[0_25px_80px_rgba(0,0,0,0.08)]">
-          <div className="grid grid-cols-5 gap-8">
-            <div className="col-span-4 grid grid-cols-3 gap-x-12 gap-y-4">
-              <div className="space-y-1">
-                {specialties.slice(0, 3).map((s) => (
-                  <SpecialtyItem key={s.slug} specialty={s} onSelect={() => setIsOpen(false)} />
-                ))}
+        <div className="mx-auto w-[1200px] overflow-hidden rounded-[2.5rem] border border-[#EAF4FF] bg-white p-10 shadow-[0_40px_100px_rgba(0,0,0,0.12)]">
+          <div className="grid grid-cols-12 gap-12">
+            {/* Left Column: Menu Items */}
+            <div className="col-span-9">
+              <div className="flex items-center justify-between mb-8 border-b border-[#EAF4FF] pb-4">
+                <h3 className="font-display text-2xl font-[900] text-[#003A8C] tracking-tight">Medical Specialties</h3>
+                <Link 
+                  to="/specialties" 
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 text-sm font-black text-[#E83E8C] hover:translate-x-1 transition-transform uppercase tracking-widest"
+                >
+                  View All Departments <ArrowRight className="size-4" />
+                </Link>
               </div>
-              <div className="space-y-1">
-                {specialties.slice(3, 6).map((s) => (
-                  <SpecialtyItem key={s.slug} specialty={s} onSelect={() => setIsOpen(false)} />
-                ))}
-              </div>
-              <div className="space-y-1">
-                {specialties.slice(6, 10).map((s) => (
-                  <SpecialtyItem key={s.slug} specialty={s} onSelect={() => setIsOpen(false)} />
-                ))}
+              <div className="grid grid-cols-3 gap-x-10 gap-y-2">
+                <div className="space-y-1">
+                  {specialties.slice(0, 4).map((s) => (
+                    <SpecialtyItem key={s.slug} specialty={s} onSelect={() => setIsOpen(false)} />
+                  ))}
+                </div>
+                <div className="space-y-1">
+                  {specialties.slice(4, 7).map((s) => (
+                    <SpecialtyItem key={s.slug} specialty={s} onSelect={() => setIsOpen(false)} />
+                  ))}
+                </div>
+                <div className="space-y-1">
+                  {specialties.slice(7, 10).map((s) => (
+                    <SpecialtyItem key={s.slug} specialty={s} onSelect={() => setIsOpen(false)} />
+                  ))}
+                </div>
               </div>
             </div>
 
-            <div className="rounded-2xl bg-gradient-to-br from-[#003A8C] to-[#E83E8C] p-6 text-white shadow-lift">
-              <h4 className="font-display text-lg font-bold">Comprehensive Care</h4>
-              <ul className="mt-4 space-y-2 text-sm text-white/90">
-                <li className="flex items-center gap-2">✓ Expert Specialists</li>
-                <li className="flex items-center gap-2">✓ Advanced Diagnostics</li>
-                <li className="flex items-center gap-2">✓ Modern Infrastructure</li>
-                <li className="flex items-center gap-2">✓ 24×7 Emergency Care</li>
-              </ul>
-              <Button asChild variant="secondary" size="sm" className="mt-6 w-full rounded-full bg-white text-[#003A8C] hover:bg-white/90 focus-visible:ring-white">
-                <Link to="/book-appointment" onClick={() => setIsOpen(false)}>Book Now</Link>
-              </Button>
+            {/* Right Column: Featured CTA Card */}
+            <div className="col-span-3 flex flex-col">
+              <div className="flex-1 rounded-[2rem] bg-gradient-brand p-8 text-white shadow-premium relative overflow-hidden group/cta">
+                <div className="absolute -right-10 -top-10 size-40 rounded-full bg-white/10 blur-3xl transition-transform duration-700 group-hover/cta:scale-150" />
+                <div className="absolute -bottom-10 -left-10 size-40 rounded-full bg-[#E83E8C]/20 blur-3xl" />
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="size-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-6 ring-1 ring-white/30">
+                    <Calendar className="size-7 text-white" />
+                  </div>
+                  <h4 className="font-display text-xl font-[800] leading-tight">Patient-First Excellence</h4>
+                  <p className="mt-4 text-[0.9375rem] text-white/80 font-medium leading-relaxed">
+                    World-class specialists and advanced technology, dedicated to your family's health.
+                  </p>
+                  <ul className="mt-6 space-y-3">
+                    {['Expert Doctors', '24/7 Support'].map(item => (
+                      <li key={item} className="flex items-center gap-2 text-xs font-black uppercase tracking-widest">
+                        <span className="flex size-5 items-center justify-center rounded-full bg-white/20 text-[10px]">✓</span> {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-8">
+                    <Button asChild size="lg" className="w-full rounded-full bg-white text-[#003A8C] font-black uppercase tracking-widest text-[0.7rem] hover:bg-[#EAF4FF] hover:shadow-xl transition-all active:scale-[0.98]">
+                      <Link to="/book-appointment" onClick={() => setIsOpen(false)}>Book Appointment</Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -180,12 +217,12 @@ function SpecialtyItem({ specialty, onSelect }: { specialty: (typeof specialties
       className="group/item flex items-center justify-between gap-3 rounded-xl px-3 py-2 transition-all hover:bg-[#EAF4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C]"
     >
       <div className="flex items-center gap-4">
-        <div className="size-10 rounded-full bg-[#EAF4FF] group-hover/item:bg-white transition-colors flex items-center justify-center text-[#003A8C]">
-          <StarIcon className="size-5" />
+        <div className="size-11 rounded-xl bg-[#EAF4FF] group-hover/item:bg-white group-hover/item:shadow-sm transition-all flex items-center justify-center text-[#003A8C] ring-1 ring-primary/5">
+          <StarIcon className="size-5 transition-transform group-hover/item:scale-110" />
         </div>
         <div>
-          <span className="block text-sm font-bold text-[#0f172a]">{specialty.name}</span>
-          <span className="block text-[0.7rem] text-muted-foreground line-clamp-1">
+          <span className="block text-[0.9375rem] font-[800] text-[#0f172a] transition-colors group-hover/item:text-[#003A8C]">{specialty.name}</span>
+          <span className="block text-[0.7rem] font-bold text-muted-foreground uppercase tracking-widest mt-0.5">
             {specialty.tagline}
           </span>
         </div>
@@ -460,6 +497,13 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
         <AccordionItem value="specialties" className="border-none">
           <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">SPECIALTIES</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-0 pl-2">
+            <Link 
+              to="/specialties" 
+              onClick={closeMenu}
+              className="flex items-center gap-3 px-4 py-3 text-sm font-black text-[#E83E8C] uppercase tracking-widest border-b border-[#EAF4FF] mb-2"
+            >
+              All Specialties <ArrowRight className="size-4" />
+            </Link>
             <div className="grid grid-cols-1 gap-1 py-2">
               {specialties.map((s) => (
                 <Link
