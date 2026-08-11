@@ -1,3 +1,17 @@
+import { 
+  Stethoscope, 
+  Activity, 
+  Droplets, 
+  HeartPulse, 
+  ShieldPlus, 
+  Bone, 
+  Baby, 
+  Flame, 
+  Brain, 
+  Scissors,
+  LucideIcon
+} from "lucide-react";
+
 export type Specialty = {
   slug: string;
   name: string;
@@ -6,6 +20,7 @@ export type Specialty = {
   highlights: string[];
   conditions: string[];
   diagnostics: string[];
+  icon: LucideIcon;
 };
 
 export const specialties: Specialty[] = [
