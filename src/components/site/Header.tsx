@@ -38,7 +38,7 @@ const socialLinks = [
 export function Logo({ className, inverted = false }: { className?: string; inverted?: boolean }) {
   return (
     <Link to="/" className={cn("flex items-center", className)}>
-      <div className="relative h-16 w-auto shrink-0">
+      <div className="relative h-12 w-auto shrink-0 md:h-14">
         <img 
           src={logoAsset.url} 
           alt="Calix Multispeciality Hospital" 
@@ -151,19 +151,19 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 45);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header className="fixed top-0 z-50 w-full transition-all duration-300">
+    <header className="fixed top-0 z-50 w-full transition-all duration-300 border-b border-[#EAF4FF]/30">
       {/* ROW 1: TOP INFO BAR */}
       <div
         className={cn(
-          "h-[45px] bg-[#003A8C] text-white transition-all duration-300",
-          isScrolled && "-mt-[45px] opacity-0"
+          "h-[45px] bg-[#003A8C] text-white transition-all duration-300 overflow-hidden relative z-20",
+          isScrolled && "h-0 opacity-0"
         )}
       >
         <div className="container-page flex h-full items-center justify-between text-[0.8rem] font-medium">
@@ -195,72 +195,21 @@ export function Header() {
         </div>
       </div>
 
-      {/* ROW 2: BRAND HEADER */}
-      <div
-        className={cn(
-          "h-[80px] bg-white transition-all duration-300",
-          isScrolled && "h-[0px] overflow-hidden opacity-0"
-        )}
-      >
-        <div className="container-page flex h-full items-center justify-between">
-          <Logo />
-          
-          <div className="hidden lg:flex items-center gap-6">
-            <div className="flex items-center gap-3 pr-6 border-r border-[#EAF4FF]">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="grid size-9 place-items-center rounded-full bg-[#EAF4FF] text-[#003A8C] transition-all duration-300 hover:bg-[#003A8C] hover:text-white hover:-translate-y-1 hover:shadow-md"
-                  aria-label={social.label}
-                >
-                  <social.icon className="size-4" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className="hidden items-center gap-4 md:flex">
-            <Button asChild className="h-10 rounded-full bg-[#DC2626] px-6 text-sm text-white shadow-card hover:bg-[#B91C1C] transition-all hover:-translate-y-0.5">
-              <Link to="/contact">Emergency Care</Link>
-            </Button>
-            <Button asChild className="h-10 rounded-full bg-[#E83E8C] px-6 text-sm text-white shadow-card hover:bg-[#D81B60] transition-all hover:-translate-y-0.5">
-              <Link to="/book-appointment">Book Appointment</Link>
-            </Button>
-          </div>
-          
-          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild className="xl:hidden">
-              <Button variant="ghost" size="icon" className="size-12 rounded-xl text-[#001F5B]">
-                <Menu className="size-8" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[88vw] max-w-sm overflow-y-auto pt-16">
-               <MobileNav closeMenu={() => setMobileMenuOpen(false)} />
-            </SheetContent>
-          </Sheet>
-        </div>
-      </div>
-
-      {/* ROW 3: NAVIGATION BAR */}
+      {/* ROW 2: MAIN HEADER */}
       <nav
         className={cn(
-          "h-[55px] border-t border-[#EAF4FF] bg-white transition-all duration-300 shadow-sm",
-          isScrolled && "fixed top-0 left-0 right-0 h-[55px] bg-white/95 backdrop-blur-xl shadow-md border-b border-[#EAF4FF]/50"
+          "bg-white transition-all duration-300 relative z-10",
+          isScrolled 
+            ? "h-[75px] shadow-lg bg-white/95 backdrop-blur-md" 
+            : "h-[90px]"
         )}
       >
-        <div className="container-page flex h-full items-center justify-center relative">
-          {isScrolled && (
-            <div className="hidden 2xl:flex absolute left-5 items-center">
-               <img 
-                src={logoAsset.url} 
-                alt="Calix" 
-                className="h-10 w-auto object-contain" 
-              />
-            </div>
-          )}
+        <div className="container-page flex h-full items-center justify-between gap-4">
+          {/* LEFT: LOGO */}
+          <Logo className="shrink-0" />
 
-          <div className="hidden items-center gap-6 2xl:gap-10 xl:flex">
+          {/* CENTER: NAVIGATION */}
+          <div className="hidden items-center gap-4 2xl:gap-8 xl:flex">
             <NavLink to="/">HOME</NavLink>
             <NavDropdown label="ABOUT US">
               <DropdownLink to="/about">Overview</DropdownLink>
@@ -281,23 +230,51 @@ export function Header() {
             <NavLink to="/contact">CONTACT</NavLink>
           </div>
 
-          {isScrolled && (
-             <div className="absolute right-5 hidden 2xl:flex">
-                <Button asChild size="sm" className="rounded-full bg-[#E83E8C] px-6 text-white hover:bg-[#D81B60]">
-                   <Link to="/book-appointment">Book Appointment</Link>
-                </Button>
-             </div>
-          )}
+          {/* RIGHT: SOCIAL + BUTTONS */}
+          <div className="hidden items-center gap-4 lg:flex shrink-0">
+            <div className="hidden xl:flex items-center gap-2 pr-4 border-r border-[#EAF4FF]">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="grid size-8 place-items-center rounded-full bg-[#EAF4FF] text-[#003A8C] transition-all duration-300 hover:bg-[#003A8C] hover:text-white hover:-translate-y-1"
+                  aria-label={social.label}
+                >
+                  <social.icon className="size-3.5" />
+                </a>
+              ))}
+            </div>
+            <div className="flex items-center gap-3">
+              <Button asChild className="h-10 rounded-full bg-[#E83E8C] px-6 text-sm text-white shadow-md hover:bg-[#D81B60] transition-all hover:-translate-y-0.5">
+                <Link to="/book-appointment">Book Appointment</Link>
+              </Button>
+              <Button asChild className="h-10 rounded-full bg-[#DC2626] px-6 text-sm text-white shadow-md hover:bg-[#B91C1C] transition-all hover:-translate-y-0.5">
+                <Link to="/contact">Emergency Care</Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* MOBILE TOGGLE */}
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild className="xl:hidden">
+              <Button variant="ghost" size="icon" className="size-10 rounded-xl text-[#001F5B]">
+                <Menu className="size-7" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[88vw] max-w-sm overflow-y-auto pt-16">
+               <MobileNav closeMenu={() => setMobileMenuOpen(false)} />
+            </SheetContent>
+          </Sheet>
         </div>
       </nav>
 
-      {/* MOBILE BOTTOM CTA */}
+      {/* MOBILE BOTTOM ACTIONS */}
       <div className="fixed bottom-0 left-0 right-0 z-50 flex h-16 border-t border-border bg-white md:hidden">
         <a href={`tel:${HOSPITAL.phone}`} className="flex flex-1 items-center justify-center gap-2 bg-[#003A8C] text-white font-bold text-sm">
            <Phone className="size-4" /> Call Now
         </a>
         <Link to="/book-appointment" className="flex flex-1 items-center justify-center gap-2 bg-[#E83E8C] text-white font-bold text-sm">
-           <Calendar className="size-4" /> Book Appt
+           <Calendar className="size-4" /> Appointment
         </Link>
         <a href="https://wa.me/#" className="flex flex-1 items-center justify-center gap-2 bg-[#25D366] text-white font-bold text-sm">
            <MessageCircle className="size-4" /> WhatsApp
@@ -357,9 +334,10 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
         <AccordionItem value="about" className="border-none">
           <AccordionTrigger className="text-[0.95rem] font-bold py-3">ABOUT US</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/about" onClick={closeMenu} className="py-2 font-medium">Overview</Link>
-             <Link to="/about" onClick={closeMenu} className="py-2 font-medium">Why Choose Calix</Link>
-             <Link to="/facilities" onClick={closeMenu} className="py-2 font-medium">Facilities</Link>
+             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Overview</Link>
+             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Mission & Vision</Link>
+             <Link to="/about" onClick={closeMenu} className="py-2 font-medium text-sm">Why Choose Calix</Link>
+             <Link to="/facilities" onClick={closeMenu} className="py-2 font-medium text-sm">Facilities</Link>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="specialties" className="border-none">
@@ -375,8 +353,10 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
         <AccordionItem value="services" className="border-none">
           <AccordionTrigger className="text-[0.95rem] font-bold py-3">PATIENT SERVICES</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/book-appointment" onClick={closeMenu} className="py-2 font-medium">Book Appointment</Link>
-             <Link to="/health-packages" onClick={closeMenu} className="py-2 font-medium">Health Packages</Link>
+             <Link to="/book-appointment" onClick={closeMenu} className="py-2 font-medium text-sm">Book Appointment</Link>
+             <Link to="/health-packages" onClick={closeMenu} className="py-2 font-medium text-sm">Health Packages</Link>
+             <Link to="/patient-services" onClick={closeMenu} className="py-2 font-medium text-sm">Insurance & Cashless</Link>
+             <Link to="/contact" onClick={closeMenu} className="py-2 font-medium text-sm">Online Consultation</Link>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -388,11 +368,10 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
          <Button asChild className="rounded-full bg-[#E83E8C] text-white">
             <Link to="/book-appointment" onClick={closeMenu}>Book Appointment</Link>
          </Button>
-         <Button asChild variant="outline" className="rounded-full border-[#003A8C] text-[#003A8C]">
-            <a href={`tel:${HOSPITAL.phone}`}>Emergency Care</a>
+         <Button asChild variant="outline" className="rounded-full border-[#DC2626] text-[#DC2626] hover:bg-red-50">
+            <Link to="/contact" onClick={closeMenu}>Emergency Care</Link>
          </Button>
       </div>
     </div>
   );
 }
-
