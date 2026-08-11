@@ -52,7 +52,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
   );
 }
 
-function SpecialtiesMegaMenu() {
+function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
   const location = useLocation();
   const isActive = location.pathname.startsWith("/specialties");
   const [isOpen, setIsOpen] = useState(false);
@@ -325,7 +325,7 @@ export function Header() {
           <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
             <NavLink to="/about">ABOUT US</NavLink>
-            <SpecialtiesMegaMenu />
+            <SpecialtiesMegaMenu isScrolled={isScrolled} />
             <NavDropdown label="SERVICES" activePaths={["/book-appointment", "/health-packages", "/patient-services", "/contact"]}>
               <DropdownLink to="/book-appointment">Plan Your Visit</DropdownLink>
               <DropdownLink to="/health-packages">Checkup Packages</DropdownLink>
