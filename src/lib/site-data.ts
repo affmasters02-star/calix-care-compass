@@ -12,6 +12,17 @@ import {
   LucideIcon
 } from "lucide-react";
 
+import imgGeneralMedicine from "@/assets/spec-general-medicine.jpg";
+import imgDiabetology from "@/assets/spec-diabetology.jpg";
+import imgNephrology from "@/assets/spec-nephrology.jpg";
+import imgCriticalCare from "@/assets/spec-critical-care.jpg";
+import imgUrology from "@/assets/spec-urology.jpg";
+import imgOrthopedics from "@/assets/spec-orthopedics.jpg";
+import imgObstetricsGynecology from "@/assets/spec-obstetrics-gynecology.jpg";
+import imgGastroenterology from "@/assets/spec-gastroenterology.jpg";
+import imgNeurology from "@/assets/spec-neurology.jpg";
+import imgGeneralSurgery from "@/assets/spec-general-surgery.jpg";
+
 export type Specialty = {
   slug: string;
   name: string;
@@ -21,6 +32,7 @@ export type Specialty = {
   conditions: string[];
   diagnostics: string[];
   icon: LucideIcon;
+  image: string;
 };
 
 export const specialties: Specialty[] = [
@@ -34,6 +46,7 @@ export const specialties: Specialty[] = [
     conditions: ["Hypertension", "Type 2 Diabetes", "Viral Fevers", "Thyroid Disorders", "Common Cold & Flu", "Anemia"],
     diagnostics: ["Comprehensive Blood Panels", "Thyroid Function Tests", "Vitamin Screenings", "Digital X-Ray", "Urine Analysis"],
     icon: Stethoscope,
+    image: imgGeneralMedicine,
   },
   {
     slug: "diabetology",
@@ -45,6 +58,7 @@ export const specialties: Specialty[] = [
     conditions: ["Type 1 Diabetes", "Type 2 Diabetes", "Gestational Diabetes", "Hypoglycemia", "Diabetic Neuropathy", "Metabolic Syndrome"],
     diagnostics: ["HbA1c Testing", "Fasting & Post-Prandial Blood Sugar", "Oral Glucose Tolerance Test (OGTT)", "C-Peptide Test", "Microalbuminuria Screening"],
     icon: Activity,
+    image: imgDiabetology,
   },
   {
     slug: "nephrology",
@@ -56,6 +70,7 @@ export const specialties: Specialty[] = [
     conditions: ["Chronic Kidney Disease (CKD)", "Kidney Stones", "Glomerulonephritis", "Polycystic Kidney Disease", "Renal Failure", "Proteinuria"],
     diagnostics: ["Serum Creatinine & GFR", "Renal Ultrasound", "Kidney Biopsy", "Electrolyte Panel", "24-Hour Urine Protein"],
     icon: Droplets,
+    image: imgNephrology,
   },
   {
     slug: "critical-care",
@@ -67,6 +82,7 @@ export const specialties: Specialty[] = [
     conditions: ["Septic Shock", "Respiratory Failure", "Multi-organ Failure", "Severe Trauma", "Stroke & Coma", "Heart Failure"],
     diagnostics: ["Arterial Blood Gas (ABG)", "Continuous Hemodynamic Monitoring", "Bedside Ultrasound/Echo", "Point-of-care Testing", "Microbiological Cultures"],
     icon: HeartPulse,
+    image: imgCriticalCare,
   },
   {
     slug: "urology",
@@ -78,6 +94,7 @@ export const specialties: Specialty[] = [
     conditions: ["Kidney & Bladder Stones", "Benign Prostatic Hyperplasia (BPH)", "Urinary Tract Infections (UTI)", "Incontinence", "Urological Cancers", "Erectile Dysfunction"],
     diagnostics: ["Uroflowmetry", "KUB Ultrasound", "Cystoscopy", "PSA Screening", "Intravenous Urogram (IVU)"],
     icon: ShieldPlus,
+    image: imgUrology,
   },
   {
     slug: "orthopedics",
@@ -89,6 +106,7 @@ export const specialties: Specialty[] = [
     conditions: ["Osteoarthritis", "Fractures & Dislocations", "Ligament Tears (ACL/MCL)", "Slipped Disc", "Carpal Tunnel Syndrome", "Rheumatoid Arthritis"],
     diagnostics: ["Digital X-Ray", "CT Scan", "MRI Advisory", "Bone Density (DEXA) Scan", "Diagnostic Arthroscopy"],
     icon: Bone,
+    image: imgOrthopedics,
   },
   {
     slug: "obstetrics-gynecology",
@@ -100,6 +118,7 @@ export const specialties: Specialty[] = [
     conditions: ["Pregnancy Management", "PCOS/PCOD", "Endometriosis", "Fibroids", "Menopausal Issues", "Pelvic Inflammatory Disease"],
     diagnostics: ["Obstetric Ultrasound", "Follicular Tracking", "Pap Smear", "Colposcopy", "Mammogram Advisory"],
     icon: Baby,
+    image: imgObstetricsGynecology,
   },
   {
     slug: "gastroenterology",
@@ -111,6 +130,7 @@ export const specialties: Specialty[] = [
     conditions: ["GERD/Acidity", "Irritable Bowel Syndrome (IBS)", "Fatty Liver Disease", "Gastritis", "Inflammatory Bowel Disease (IBD)", "Gallstones"],
     diagnostics: ["Upper GI Endoscopy", "Colonoscopy", "Liver Function Tests", "FibroScan Advisory", "Urea Breath Test"],
     icon: Flame,
+    image: imgGastroenterology,
   },
   {
     slug: "neurology",
@@ -122,6 +142,7 @@ export const specialties: Specialty[] = [
     conditions: ["Migraine & Tension Headaches", "Epilepsy & Seizures", "Stroke", "Parkinson's Disease", "Alzheimer's/Dementia", "Neuropathy"],
     diagnostics: ["EEG (Electroencephalogram)", "NCV (Nerve Conduction Velocity)", "EMG (Electromyography)", "CT Brain", "MRI Advisory"],
     icon: Brain,
+    image: imgNeurology,
   },
   {
     slug: "general-surgery",
@@ -133,6 +154,7 @@ export const specialties: Specialty[] = [
     conditions: ["Hernia", "Gallstones (Cholecystitis)", "Appendicitis", "Piles/Fissure/Fistula", "Breast Lumps", "Varicose Veins"],
     diagnostics: ["Digital X-Ray", "Ultrasound Abdomen", "CT Scan Advisory", "Diagnostic Laparoscopy", "Biopsy & FNAC"],
     icon: Scissors,
+    image: imgGeneralSurgery,
   },
 ];
 
