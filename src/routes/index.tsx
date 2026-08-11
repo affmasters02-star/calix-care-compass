@@ -70,7 +70,7 @@ function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B] via-[#001F5B]/85 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/60 via-transparent to-transparent" />
-        <div className="container-page relative py-20 text-primary-foreground lg:py-32">
+        <div className="container-page relative flex min-h-[85vh] flex-col justify-center py-20 text-primary-foreground lg:py-32">
           <div className="max-w-4xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold tracking-wide backdrop-blur-md">
               <span className="flex size-2 rounded-full bg-accent animate-pulse" />
