@@ -347,12 +347,12 @@ export function Header() {
           {/* CENTER: NAVIGATION */}
           <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
-            <NavLink to="/#about">ABOUT US</NavLink>
+            <NavLink to="/about">ABOUT US</NavLink>
             <SpecialtiesMegaMenu isScrolled={isScrolled} />
             <NavLink to="/patient-services">SERVICES</NavLink>
-            <NavLink to="/#doctors">DOCTORS</NavLink>
+            <NavLink to="/doctors">DOCTORS</NavLink>
             <NavLink to="/facilities">FACILITIES</NavLink>
-            <NavLink to="/#testimonials">TESTIMONIALS</NavLink>
+            <NavLink to="/testimonials">TESTIMONIALS</NavLink>
             <NavLink to="/contact">CONTACT</NavLink>
           </div>
 
