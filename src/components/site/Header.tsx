@@ -15,7 +15,7 @@ import {
   Calendar,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import logoAsset from "@/assets/calix-logo.png.asset.json";
+import logoAsset from "@/assets/calix-logo-full.png.asset.json";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -37,23 +37,16 @@ const socialLinks = [
 
 export function Logo({ className, inverted = false }: { className?: string; inverted?: boolean }) {
   return (
-    <Link to="/" className={cn("flex items-center gap-4", className)}>
-      <div className="relative size-16 shrink-0 overflow-hidden">
-        <img src={logoAsset.url} alt="Calix Hospital Logo" className="h-full w-full object-contain" />
-      </div>
-      <div className="leading-tight">
-        <span className={cn(
-          "block font-display text-2xl font-extrabold tracking-tight",
-          inverted ? "text-white" : "text-[#001F5B]"
-        )}>
-          CALIX
-        </span>
-        <span className={cn(
-          "block text-[0.7rem] font-bold uppercase tracking-[0.2em]",
-          inverted ? "text-white/70" : "text-muted-foreground"
-        )}>
-          Multispeciality Hospital
-        </span>
+    <Link to="/" className={cn("flex items-center", className)}>
+      <div className="relative h-16 w-auto shrink-0">
+        <img 
+          src={logoAsset.url} 
+          alt="Calix Multispeciality Hospital" 
+          className={cn(
+            "h-full w-auto object-contain",
+            inverted && "brightness-0 invert"
+          )} 
+        />
       </div>
     </Link>
   );
@@ -258,9 +251,12 @@ export function Header() {
       >
         <div className="container-page flex h-full items-center justify-center relative">
           {isScrolled && (
-            <div className="absolute left-5 flex items-center gap-2">
-               <img src={logoAsset.url} alt="Calix" className="h-10 w-10 object-contain" />
-               <span className="font-display font-extrabold text-[#001F5B] text-lg">CALIX</span>
+            <div className="absolute left-5 flex items-center">
+               <img 
+                src={logoAsset.url} 
+                alt="Calix" 
+                className="h-10 w-auto object-contain" 
+              />
             </div>
           )}
 
