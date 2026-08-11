@@ -71,7 +71,7 @@ function Home() {
             alt="Calix Multispeciality Hospital entrance at sunrise"
             width={1600}
             height={1104}
-            className="size-full object-cover object-center scale-105 animate-in fade-in zoom-in duration-1000"
+            className="size-full object-cover object-center"
             style={{ fetchPriority: 'high' } as any}
           />
           {/* Advanced Multi-layer Gradient Overlay - Refined for visibility */}
