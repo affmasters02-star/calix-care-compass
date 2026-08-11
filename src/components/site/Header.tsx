@@ -134,8 +134,9 @@ function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
         aria-label="Specialties Menu"
         onMouseLeave={() => setIsOpen(false)}
         className={cn(
-          "fixed left-0 right-0 top-[90px] z-50 flex justify-center transition-all duration-500 ease-out",
-          isScrolled && "top-[75px]",
+          "fixed left-0 right-0 z-50 flex justify-center transition-all duration-500 ease-out",
+          // Calculate top based on dynamic header height and scroll state
+          isScrolled ? "top-[var(--header-height-scrolled,75px)]" : "top-[var(--header-height,135px)]",
           isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-4 opacity-0"
         )}
       >
@@ -255,17 +256,39 @@ function StarIcon(props: any) {
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 45);
+      const scrolled = window.scrollY > 45;
+      setIsScrolled(scrolled);
+      
+      if (headerRef.current) {
+        const height = headerRef.current.offsetHeight;
+        if (scrolled) {
+          document.documentElement.style.setProperty('--header-height-scrolled', `${height}px`);
+        } else {
+          document.documentElement.style.setProperty('--header-height', `${height}px`);
+        }
+      }
     };
+    
+    // Initial measurement
+    handleScroll();
+    
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
-    <header className="fixed top-0 z-50 w-full transition-all duration-300 border-b border-[#EAF4FF]/30">
+    <header 
+      ref={headerRef}
+      className="fixed top-0 z-50 w-full transition-all duration-300 border-b border-[#EAF4FF]/30"
+    >
       {/* ROW 1: TOP INFO BAR */}
       <div
         className={cn(
