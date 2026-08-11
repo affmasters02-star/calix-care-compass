@@ -14,7 +14,7 @@ import {
   MessageCircle,
   Calendar,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import logoAsset from "@/assets/calix-logo-full.png.asset.json";
 
 import { Button } from "@/components/ui/button";
@@ -55,43 +55,102 @@ export function Logo({ className, inverted = false }: { className?: string; inve
 function SpecialtiesMegaMenu() {
   const location = useLocation();
   const isActive = location.pathname.startsWith("/specialties");
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setIsOpen(false);
+      triggerRef.current?.focus();
+    }
+    
+    if (e.key === "Tab" && isOpen && containerRef.current) {
+      const focusableElements = containerRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          lastElement.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          firstElement.focus();
+          e.preventDefault();
+        }
+      }
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node) && 
+          triggerRef.current && !triggerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <div className="group/mega">
+    <div className="group/mega relative" onKeyDown={handleKeyDown}>
       <button 
+        ref={triggerRef}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        aria-controls="specialties-mega-menu"
+        onClick={() => setIsOpen(!isOpen)}
+        onMouseEnter={() => setIsOpen(true)}
         className={cn(
-          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100",
-          isActive && "text-[#003A8C] after:scale-x-100"
+          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
+          isActive && "text-[#003A8C] after:scale-x-100",
+          isOpen && "text-[#003A8C] after:scale-x-100"
         )}
       >
         SPECIALTIES
-        <ChevronDown className="size-4 transition-transform duration-300 group-hover/mega:rotate-180" />
+        <ChevronDown className={cn("size-4 transition-transform duration-300", isOpen && "rotate-180")} />
       </button>
-      <div className="invisible absolute left-0 right-0 top-[calc(100%-10px)] z-50 flex justify-center opacity-0 transition-all duration-500 ease-out group-hover/mega:visible group-hover/mega:top-full group-hover/mega:opacity-100">
+      
+      <div 
+        ref={containerRef}
+        id="specialties-mega-menu"
+        role="region"
+        aria-label="Specialties Menu"
+        onMouseLeave={() => setIsOpen(false)}
+        className={cn(
+          "absolute left-0 right-0 top-[calc(100%-10px)] z-50 flex justify-center transition-all duration-500 ease-out",
+          isOpen ? "visible top-full opacity-100" : "invisible opacity-0"
+        )}
+      >
         <div className="mx-auto w-[1200px] overflow-hidden rounded-[24px] border border-[#EAF4FF] bg-white p-8 shadow-[0_25px_80px_rgba(0,0,0,0.08)]">
           <div className="grid grid-cols-5 gap-8">
             <div className="col-span-4 grid grid-cols-3 gap-x-12 gap-y-4">
-              {/* Column 1 */}
               <div className="space-y-1">
                 {specialties.slice(0, 3).map((s) => (
-                  <SpecialtyItem key={s.slug} specialty={s} />
+                  <SpecialtyItem key={s.slug} specialty={s} onSelect={() => setIsOpen(false)} />
                 ))}
               </div>
-              {/* Column 2 */}
               <div className="space-y-1">
                 {specialties.slice(3, 6).map((s) => (
-                  <SpecialtyItem key={s.slug} specialty={s} />
+                  <SpecialtyItem key={s.slug} specialty={s} onSelect={() => setIsOpen(false)} />
                 ))}
               </div>
-              {/* Column 3 */}
               <div className="space-y-1">
                 {specialties.slice(6, 10).map((s) => (
-                  <SpecialtyItem key={s.slug} specialty={s} />
+                  <SpecialtyItem key={s.slug} specialty={s} onSelect={() => setIsOpen(false)} />
                 ))}
               </div>
             </div>
 
-            {/* Featured Card */}
             <div className="rounded-2xl bg-gradient-to-br from-[#003A8C] to-[#E83E8C] p-6 text-white shadow-lift">
               <h4 className="font-display text-lg font-bold">Comprehensive Care</h4>
               <ul className="mt-4 space-y-2 text-sm text-white/90">
@@ -100,8 +159,8 @@ function SpecialtiesMegaMenu() {
                 <li className="flex items-center gap-2">✓ Modern Infrastructure</li>
                 <li className="flex items-center gap-2">✓ 24×7 Emergency Care</li>
               </ul>
-              <Button asChild variant="secondary" size="sm" className="mt-6 w-full rounded-full bg-white text-[#003A8C] hover:bg-white/90">
-                <Link to="/book-appointment">Book Now</Link>
+              <Button asChild variant="secondary" size="sm" className="mt-6 w-full rounded-full bg-white text-[#003A8C] hover:bg-white/90 focus-visible:ring-white">
+                <Link to="/book-appointment" onClick={() => setIsOpen(false)}>Book Now</Link>
               </Button>
             </div>
           </div>
@@ -111,13 +170,14 @@ function SpecialtiesMegaMenu() {
   );
 }
 
-function SpecialtyItem({ specialty }: { specialty: (typeof specialties)[0] }) {
+function SpecialtyItem({ specialty, onSelect }: { specialty: (typeof specialties)[0]; onSelect?: () => void }) {
   return (
     <Link
       to="/specialties/$slug"
       params={{ slug: specialty.slug }}
+      onClick={onSelect}
       activeProps={{ className: "bg-[#EAF4FF]" }}
-      className="group/item flex items-center justify-between gap-3 rounded-xl px-3 py-2 transition-all hover:bg-[#EAF4FF]"
+      className="group/item flex items-center justify-between gap-3 rounded-xl px-3 py-2 transition-all hover:bg-[#EAF4FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C]"
     >
       <div className="flex items-center gap-4">
         <div className="size-10 rounded-full bg-[#EAF4FF] group-hover/item:bg-white transition-colors flex items-center justify-center text-[#003A8C]">
@@ -180,10 +240,10 @@ export function Header() {
             <span className="flex items-center gap-2">
               <span className="text-lg">🚑</span> 24×7 Emergency Care
             </span>
-            <a href={`tel:${HOSPITAL.phone}`} className="flex items-center gap-2 hover:text-white/80 transition-colors">
+            <a href={`tel:${HOSPITAL.phone}`} className="flex items-center gap-2 hover:text-white/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#003A8C] rounded-sm">
               <Phone className="size-3.5" /> {HOSPITAL.phone}
             </a>
-            <a href={`mailto:${HOSPITAL.email}`} className="hidden items-center gap-2 sm:flex hover:text-white/80 transition-colors">
+            <a href={`mailto:${HOSPITAL.email}`} className="hidden items-center gap-2 sm:flex hover:text-white/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#003A8C] rounded-sm">
               <Mail className="size-3.5" /> {HOSPITAL.email}
             </a>
           </div>
@@ -193,7 +253,7 @@ export function Header() {
                 <a
                   key={social.label}
                   href={social.href}
-                  className="flex size-7 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110"
+                  className="flex size-7 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#003A8C]"
                   aria-label={social.label}
                 >
                   <social.icon className="size-3" />
@@ -284,7 +344,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
       onClick={onClick}
       activeOptions={{ exact: to === "/" }}
       activeProps={{ className: "text-[#003A8C] after:scale-x-100" }}
-      className="relative py-2 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 uppercase whitespace-nowrap"
+      className="relative py-2 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 uppercase whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md"
     >
       {children}
     </Link>
@@ -294,19 +354,77 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
 function NavDropdown({ label, children, activePaths }: { label: string; children: React.ReactNode; activePaths?: string[] }) {
   const location = useLocation();
   const isActive = activePaths?.some(path => location.pathname === path);
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setIsOpen(false);
+      triggerRef.current?.focus();
+    }
+    
+    if (e.key === "Tab" && isOpen && containerRef.current) {
+      const focusableElements = containerRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          lastElement.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          firstElement.focus();
+          e.preventDefault();
+        }
+      }
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node) && 
+          triggerRef.current && !triggerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <div className="group relative">
+    <div className="group relative" onKeyDown={handleKeyDown}>
       <button 
+        ref={triggerRef}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        onClick={() => setIsOpen(!isOpen)}
+        onMouseEnter={() => setIsOpen(true)}
         className={cn(
-          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100",
-          isActive && "text-[#003A8C] after:scale-x-100"
+          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
+          isActive && "text-[#003A8C] after:scale-x-100",
+          isOpen && "text-[#003A8C] after:scale-x-100"
         )}
       >
         {label}
-        <ChevronDown className="size-4 transition-transform duration-300 group-hover:rotate-180" />
+        <ChevronDown className={cn("size-4 transition-transform duration-300", isOpen && "rotate-180")} />
       </button>
-      <div className="invisible absolute left-0 top-[calc(100%-10px)] z-50 w-64 pt-2 opacity-0 transition-all duration-300 group-hover:visible group-hover:top-full group-hover:opacity-100">
+      <div 
+        ref={containerRef}
+        onMouseLeave={() => setIsOpen(false)}
+        className={cn(
+          "absolute left-0 top-[calc(100%-10px)] z-50 w-64 pt-2 transition-all duration-300",
+          isOpen ? "visible top-full opacity-100" : "invisible opacity-0"
+        )}
+      >
         <div className="overflow-hidden rounded-2xl border border-[#EAF4FF] bg-white py-3 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
           {children}
         </div>
@@ -321,7 +439,7 @@ function DropdownLink({ to, children, onClick }: { to: string; children: React.R
       to={to}
       onClick={onClick}
       activeProps={{ className: "bg-[#EAF4FF] text-[#003A8C]" }}
-      className="block px-6 py-2.5 text-sm font-semibold text-[#0f172a] transition-colors hover:bg-[#EAF4FF] hover:text-[#003A8C]"
+      className="block px-6 py-2.5 text-sm font-semibold text-[#0f172a] transition-colors hover:bg-[#EAF4FF] hover:text-[#003A8C] focus-visible:outline-none focus-visible:bg-[#EAF4FF] focus-visible:text-[#003A8C]"
     >
       {children}
     </Link>
