@@ -76,11 +76,11 @@ function Home() {
               <span className="flex size-2 rounded-full bg-accent animate-pulse" />
               24/7 EMERGENCY & CRITICAL CARE
             </div>
-            <h1 className="text-[2.75rem] font-extrabold leading-[1.05] tracking-tight text-white drop-shadow-2xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.25rem]">
+            <h1 className="text-[2.75rem] font-[800] leading-[1.05] tracking-tight text-white drop-shadow-2xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.25rem]">
               World-Class Multispeciality <br className="hidden sm:block" /> 
-              Healthcare <span className="text-accent">Under One Roof</span>
+              Healthcare <span className="bg-gradient-cta bg-clip-text text-transparent">Under One Roof</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/95 drop-shadow-md sm:mt-8 sm:text-lg lg:text-xl">
+            <p className="mt-6 max-w-2xl text-base font-semibold leading-relaxed text-white/95 drop-shadow-md sm:mt-8 sm:text-lg lg:text-xl">
               Experience advanced diagnostics, expert specialists, and compassionate family care 
               delivered with world-class excellence in the heart of Hyderabad.
             </p>
