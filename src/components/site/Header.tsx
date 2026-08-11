@@ -247,7 +247,7 @@ export function Header() {
 
           {/* MOBILE TOGGLE */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild className="xl:hidden">
+            <SheetTrigger asChild className="lg:hidden">
               <Button variant="ghost" size="icon" className="size-10 rounded-xl text-[#001F5B]">
                 <Menu className="size-7" />
               </Button>
