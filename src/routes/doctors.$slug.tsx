@@ -181,7 +181,7 @@ function DoctorProfile() {
       <Section className="bg-muted/30">
         <div className="mx-auto max-w-4xl rounded-[2.5rem] bg-gradient-brand p-12 text-center text-primary-foreground shadow-lift">
           <Calendar className="mx-auto size-12 text-accent" />
-          <h2 className="mt-6 font-display text-3xl font-extrabold sm:text-4xl">
+          <h2 className="mt-6 font-display text-3xl font-black sm:text-4xl text-white">
             Ready to Consult {doctor.name}?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-primary-foreground/80">

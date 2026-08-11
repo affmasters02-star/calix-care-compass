@@ -77,7 +77,7 @@ function PatientServices() {
         <div className="rounded-3xl border border-primary/25 bg-gradient-soft p-10 lg:p-14">
           <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h2 className="font-display text-2xl font-bold text-foreground sm:text-3xl">
+              <h2 className="font-display text-2xl font-black text-primary sm:text-3xl">
                 Need help with insurance or admission?
               </h2>
               <p className="mt-3 max-w-xl text-sm text-muted-foreground">
