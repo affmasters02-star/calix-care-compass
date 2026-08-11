@@ -120,6 +120,7 @@ export type Doctor = {
   description: string;
   expertise: string[];
   education: string[];
+  availability: { days: string; timings: string; slots: string[] };
 };
 
 export const doctors: Doctor[] = [
@@ -132,6 +133,7 @@ export const doctors: Doctor[] = [
     description: "Dr. Arvind Menon is a dedicated internal medicine specialist focused on evidence-based treatment of complex lifestyle disorders and infectious diseases. He has a patient-centric approach that emphasizes early diagnosis and preventive care.",
     expertise: ["Lifestyle medicine", "Infectious disease management", "Chronic illness coordination", "Adult immunization"],
     education: ["MD General Medicine - Madras Medical College", "MBBS - Stanley Medical College"],
+    availability: { days: "Mon – Sat", timings: "09:30 AM – 04:00 PM", slots: ["09:30 AM", "11:00 AM", "12:30 PM", "03:00 PM"] }
   },
   {
     slug: "dr-kavitha-raghavan",
@@ -142,6 +144,7 @@ export const doctors: Doctor[] = [
     description: "Dr. Kavitha specializes in holistic diabetes management, focusing on preventing long-term complications through metabolic control and lifestyle modifications.",
     expertise: ["Type 1 & Type 2 Diabetes", "Gestational Diabetes", "Insulin pump therapy", "Metabolic syndrome"],
     education: ["Fellowship in Diabetology - Dr. Mohans Diabetes Specialities Centre", "MD - Kilpauk Medical College"],
+    availability: { days: "Mon – Fri", timings: "10:00 AM – 05:00 PM", slots: ["10:00 AM", "11:30 AM", "02:00 PM", "04:30 PM"] }
   },
   {
     slug: "dr-suresh-iyer",
@@ -152,6 +155,7 @@ export const doctors: Doctor[] = [
     description: "A veteran in kidney care, Dr. Suresh Iyer has pioneered several protocols in dialysis management and chronic kidney disease slowing techniques.",
     expertise: ["Renal replacement therapy", "Glomerular diseases", "Hypertension management", "Pre-transplant evaluation"],
     education: ["DM Nephrology - AIIMS, New Delhi", "MD Internal Medicine - JIPMER"],
+    availability: { days: "Mon, Wed, Fri", timings: "10:00 AM – 03:00 PM", slots: ["10:00 AM", "11:15 AM", "01:00 PM", "02:30 PM"] }
   },
   {
     slug: "dr-nikhil-sharma",
@@ -162,6 +166,7 @@ export const doctors: Doctor[] = [
     description: "Dr. Nikhil leads our intensive care units with a focus on advanced hemodynamic monitoring and sepsis management protocols.",
     expertise: ["Mechanical ventilation", "Advanced life support", "Neuro-critical care", "Hemodynamic monitoring"],
     education: ["IDCCM - Indian Society of Critical Care Medicine", "MD - Armed Forces Medical College"],
+    availability: { days: "Tue – Sat", timings: "11:00 AM – 06:00 PM", slots: ["11:00 AM", "12:30 PM", "03:30 PM", "05:00 PM"] }
   },
   {
     slug: "dr-rahul-deshpande",
@@ -172,6 +177,7 @@ export const doctors: Doctor[] = [
     description: "Dr. Rahul Deshpande is an expert in minimally invasive urological procedures, specializing in laser treatments for stones and prostate health.",
     expertise: ["Laser lithotripsy", "Endourology", "Prostate surgery (TURP)", "Laparoscopic urology"],
     education: ["MCh Urology - Grant Medical College", "MS General Surgery - KEM Hospital"],
+    availability: { days: "Mon – Sat", timings: "09:00 AM – 02:00 PM", slots: ["09:00 AM", "10:30 AM", "12:00 PM", "01:30 PM"] }
   },
   {
     slug: "dr-praveen-kumar",
@@ -182,6 +188,7 @@ export const doctors: Doctor[] = [
     description: "Specializing in joint replacements and trauma, Dr. Praveen focuses on rapid recovery protocols and minimally invasive orthopedic surgery.",
     expertise: ["Total knee replacement", "Total hip replacement", "Sports medicine", "Complex trauma surgery"],
     education: ["Fellowship in Arthroplasty - Germany", "MS Orthopedics - Kasturba Medical College"],
+    availability: { days: "Mon – Sat", timings: "24x7 On-Call", slots: ["10:00 AM", "12:00 PM", "04:00 PM", "06:00 PM"] }
   },
   {
     slug: "dr-anitha-raj",
@@ -192,6 +199,7 @@ export const doctors: Doctor[] = [
     description: "Dr. Anitha Raj provides compassionate care for women across all life stages, with special expertise in high-risk obstetrics and laparoscopic gynecology.",
     expertise: ["High-risk pregnancy care", "Laparoscopic hysterectomy", "Adolescent gynecology", "Menopausal health"],
     education: ["MS OBG - Madras Medical College", "MBBS - Coimbatore Medical College"],
+    availability: { days: "Mon – Sat", timings: "10:00 AM – 04:30 PM", slots: ["10:00 AM", "11:30 AM", "01:30 PM", "04:00 PM"] }
   },
   {
     slug: "dr-vivek-nair",
@@ -202,6 +210,7 @@ export const doctors: Doctor[] = [
     description: "Dr. Vivek Nair is an interventional gastroenterologist specializing in therapeutic endoscopy and liver health management.",
     expertise: ["Diagnostic & therapeutic endoscopy", "Liver disease management", "Inflammatory bowel disease", "ERCP"],
     education: ["DM Gastroenterology - PGI Chandigarh", "MD - Government Medical College"],
+    availability: { days: "Tue, Thu, Sat", timings: "10:30 AM – 05:00 PM", slots: ["10:30 AM", "12:00 PM", "02:30 PM", "04:30 PM"] }
   },
   {
     slug: "dr-meera-krishnan",
@@ -212,6 +221,7 @@ export const doctors: Doctor[] = [
     description: "Dr. Meera focuses on neurological disorders with a special interest in stroke management, epilepsy, and headache clinics.",
     expertise: ["Stroke rehabilitation", "Epilepsy management", "Movement disorders", "Electro-physiology"],
     education: ["DM Neurology - NIMHANS", "MD - Christian Medical College, Vellore"],
+    availability: { days: "Mon – Fri", timings: "09:30 AM – 03:30 PM", slots: ["09:30 AM", "11:00 AM", "01:00 PM", "03:00 PM"] }
   },
   {
     slug: "dr-sandeep-verma",
@@ -222,6 +232,7 @@ export const doctors: Doctor[] = [
     description: "Dr. Sandeep Verma is a versatile general and laparoscopic surgeon known for precise surgical techniques in hernia and gallbladder procedures.",
     expertise: ["Laparoscopic cholecystectomy", "Hernia repair", "Proctology (Piles/Fissure)", "Acute surgical emergencies"],
     education: ["MS General Surgery - Maulana Azad Medical College", "MBBS - University of Delhi"],
+    availability: { days: "Mon – Sat", timings: "11:00 AM – 05:30 PM", slots: ["11:00 AM", "12:30 PM", "03:00 PM", "05:00 PM"] }
   },
 ];
 
