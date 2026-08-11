@@ -253,7 +253,7 @@ export function Header() {
                 <a
                   key={social.label}
                   href={social.href}
-                  className="flex size-7 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110"
+                  className="flex size-7 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#003A8C]"
                   aria-label={social.label}
                 >
                   <social.icon className="size-3" />
