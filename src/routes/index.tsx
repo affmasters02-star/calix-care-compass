@@ -112,19 +112,19 @@ function Home() {
           title="Expert Care Across Every Specialty"
           subtitle="Ten core departments working together so your diagnosis, treatment and follow-up happen in one place."
         />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {specialties.map((s) => (
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {specialties.slice(0, 9).map((s) => (
             <Link
               key={s.slug}
               to="/specialties/$slug"
               params={{ slug: s.slug }}
-              className="group relative flex flex-col items-center overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white p-7 sm:p-9 text-center shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-premium focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
+              className="group relative flex flex-col items-center overflow-hidden rounded-[2.5rem] border border-[#003A8C]/10 bg-gradient-to-br from-white to-[#EAF4FF]/50 p-7 sm:p-9 text-center shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-premium focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
             >
               {/* Background Glows */}
-              <div className="absolute -right-20 -top-20 size-64 rounded-full bg-primary/5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:bg-primary/15 group-hover:opacity-100 opacity-0" aria-hidden="true" />
+              <div className="absolute -right-20 -top-20 size-64 rounded-full bg-[#003A8C]/5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:bg-[#003A8C]/15 group-hover:opacity-100 opacity-0" aria-hidden="true" />
               <div className="absolute -bottom-20 -left-20 size-64 rounded-full bg-accent/5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:bg-accent/15 group-hover:opacity-100 opacity-0" aria-hidden="true" />
               
-              <div className="relative z-10 grid size-28 place-items-center rounded-[2.5rem] bg-slate-50 text-primary shadow-inner transition-all duration-500 group-hover:bg-gradient-brand group-hover:text-white group-hover:shadow-premium group-hover:shadow-primary/40 group-hover:-translate-y-1">
+              <div className="relative z-10 grid size-28 place-items-center rounded-[2.5rem] bg-[#EAF4FF] text-primary shadow-inner transition-all duration-500 group-hover:bg-gradient-brand group-hover:text-white group-hover:shadow-premium group-hover:shadow-primary/40 group-hover:-translate-y-1">
                 <SpecialtyIcon slug={s.slug} className="size-12 transition-transform duration-500 group-hover:scale-110" />
                 {/* Dual Glass stroke effect */}
                 <div className="absolute inset-0 rounded-[2.5rem] border border-white/0 transition-colors duration-500 group-hover:border-white/20" />
@@ -132,7 +132,7 @@ function Home() {
               </div>
               
               <div className="relative z-10 mt-8">
-                <h3 className="font-display text-2xl font-[900] tracking-tight text-primary transition-all duration-500 group-hover:text-primary-deep group-hover:scale-[1.02]">{s.name}</h3>
+                <h3 className="font-display text-2xl font-[900] tracking-tight text-[#003A8C] transition-all duration-500 group-hover:text-primary-deep group-hover:scale-[1.02]">{s.name}</h3>
                 <div className="mx-auto mt-3 flex items-center justify-center gap-2">
                   <div className="h-1 w-6 rounded-full bg-accent/20 transition-all duration-500 group-hover:w-12 group-hover:bg-accent" />
                   <div className="size-1 rounded-full bg-accent/20 transition-all duration-500 group-hover:bg-accent" />
@@ -143,9 +143,9 @@ function Home() {
                 {s.tagline}
               </p>
 
-              {/* Quick View Summary (Hidden by default, shown on hover/large screens) */}
+              {/* Quick View Summary */}
               <div className="relative z-10 mt-4 overflow-hidden transition-all duration-500 max-h-0 opacity-0 group-hover:max-h-20 group-hover:opacity-100">
-                 <p className="text-[0.8rem] font-medium text-slate-400 italic">
+                 <p className="text-[0.8rem] font-medium text-[#003A8C]/60 italic">
                    Advanced clinical care & surgical expertise.
                  </p>
               </div>
@@ -162,6 +162,17 @@ function Home() {
             </Link>
           ))}
         </div>
+        
+        {specialties.length > 9 && (
+          <div className="mt-14 flex justify-center">
+            <Button asChild size="xl" className="rounded-full bg-[#003A8C] px-10 text-white shadow-xl transition-all hover:-translate-y-1 hover:bg-[#001F5B] hover:shadow-2xl">
+              <Link to="/specialties">
+                See More Specialties <ArrowRight className="ml-3 size-5" />
+              </Link>
+            </Button>
+          </div>
+        )}
+      </Section>
       </Section>
 
       {/* About */}
