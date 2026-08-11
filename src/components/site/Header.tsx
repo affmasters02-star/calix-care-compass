@@ -542,15 +542,7 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
             </div>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="services" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">SERVICES</AccordionTrigger>
-          <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/book-appointment" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Plan Your Visit</Link>
-             <Link to="/health-packages" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Checkup Packages</Link>
-             <Link to="/patient-services" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Insurance & TPA</Link>
-             <Link to="/contact" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Tele-Consultation</Link>
-          </AccordionContent>
-        </AccordionItem>
+        <NavLink to="/patient-services" onClick={closeMenu}>SERVICES</NavLink>
       </Accordion>
       <NavLink to="/doctors" onClick={closeMenu}>DOCTORS</NavLink>
       <NavLink to="/facilities" onClick={closeMenu}>FACILITIES</NavLink>
