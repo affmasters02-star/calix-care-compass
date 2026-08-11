@@ -59,6 +59,8 @@ function SpecialtiesMegaMenu() {
   const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLAnchorElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const escapedRef = useRef(false);
+
 
   const cancelClose = useCallback(() => {
     if (closeTimer.current) {
