@@ -55,7 +55,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
 function SpecialtiesMegaMenu() {
   return (
     <div className="group/mega">
-      <button className="flex items-center gap-1.5 py-5 text-[0.9rem] font-bold tracking-wide text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] hover:scale-105 active:scale-95">
+      <button className="flex items-center gap-1.5 py-5 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
         SPECIALTIES
         <ChevronDown className="size-4 transition-transform duration-300 group-hover/mega:rotate-180" />
       </button>
@@ -230,7 +230,7 @@ export function Header() {
           </div>
           
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild className="md:hidden">
+            <SheetTrigger asChild className="xl:hidden">
               <Button variant="ghost" size="icon" className="size-12 rounded-xl text-[#001F5B]">
                 <Menu className="size-8" />
               </Button>
@@ -246,7 +246,7 @@ export function Header() {
       <nav
         className={cn(
           "h-[65px] border-t border-[#EAF4FF] bg-white transition-all duration-300 shadow-sm",
-          isScrolled && "fixed top-0 left-0 right-0 h-[70px] bg-white/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.05)] border-b border-[#EAF4FF]/50"
+          isScrolled && "fixed top-0 left-0 right-0 h-[65px] bg-white/95 backdrop-blur-xl shadow-md border-b border-[#EAF4FF]/50"
         )}
       >
         <div className="container-page flex h-full items-center justify-center relative">
@@ -260,7 +260,7 @@ export function Header() {
             </div>
           )}
 
-          <div className="hidden items-center gap-10 xl:flex">
+          <div className="hidden items-center gap-6 2xl:gap-10 xl:flex">
             <NavLink to="/">HOME</NavLink>
             <NavDropdown label="ABOUT US">
               <DropdownLink to="/about">Overview</DropdownLink>
@@ -282,7 +282,7 @@ export function Header() {
           </div>
 
           {isScrolled && (
-             <div className="absolute right-5 hidden md:flex">
+             <div className="absolute right-5 hidden 2xl:flex">
                 <Button asChild size="sm" className="rounded-full bg-[#E83E8C] px-6 text-white hover:bg-[#D81B60]">
                    <Link to="/book-appointment">Book Appointment</Link>
                 </Button>
@@ -314,7 +314,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
       onClick={onClick}
       activeOptions={{ exact: to === "/" }}
       activeProps={{ className: "text-[#003A8C] after:scale-x-100" }}
-      className="relative py-2 text-[0.9rem] font-bold tracking-wide text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] hover:scale-105 active:scale-95 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+      className="relative py-2 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
     >
       {children}
     </Link>
@@ -324,7 +324,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
 function NavDropdown({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="group relative">
-      <button className="flex items-center gap-1 py-5 text-[0.9rem] font-bold tracking-wide text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] hover:scale-105 active:scale-95">
+      <button className="flex items-center gap-1 py-5 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C]">
         {label}
         <ChevronDown className="size-4 transition-transform duration-300 group-hover:rotate-180" />
       </button>
