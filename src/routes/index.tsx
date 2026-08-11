@@ -24,7 +24,7 @@ import {
   testimonials,
   HOSPITAL,
 } from "@/lib/site-data";
-import heroImage from "@/assets/hero-hospital.jpg";
+import heroImageAsset from "@/assets/hero-hospital.avif.asset.json";
 import teamImage from "@/assets/care-team.jpg";
 
 export const Route = createFileRoute("/")({
