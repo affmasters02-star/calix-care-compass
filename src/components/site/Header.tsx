@@ -282,7 +282,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
       onClick={onClick}
       activeOptions={{ exact: to === "/" }}
       activeProps={{ className: "text-[#003A8C] after:scale-x-100" }}
-      className="relative py-2 text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+      className="relative py-2 text-[0.7rem] xl:text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
     >
       {children}
     </Link>
