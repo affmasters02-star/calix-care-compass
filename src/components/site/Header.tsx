@@ -458,7 +458,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
       to={to}
       onClick={(e) => {
         if (isHomeSection && location.pathname === "/") {
-          scrollToSection(e, sectionId);
+          scrollToSection(e, sectionId ?? "home");
         } else if (onClick) {
           onClick();
         }
