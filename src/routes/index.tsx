@@ -304,14 +304,26 @@ function Home() {
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {testimonials.slice(0, 3).map((t) => (
-            <figure key={t.name} className="rounded-3xl border border-border bg-card p-8 shadow-card">
-              <Quote className="size-7 text-accent" />
-              <blockquote className="mt-5 text-sm leading-relaxed text-foreground/80">
-                {t.quote}
+            <figure key={t.name} className="group relative flex flex-col rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] lg:p-10">
+              {/* Quote Mark Background */}
+              <Quote className="absolute -right-4 top-8 size-32 -rotate-12 text-slate-50 opacity-[0.03] transition-transform duration-700 group-hover:scale-110" aria-hidden="true" />
+              
+              <div className="relative z-10 flex size-12 items-center justify-center rounded-2xl bg-accent-soft text-accent shadow-sm">
+                <Quote className="size-6" />
+              </div>
+
+              <blockquote className="relative z-10 mt-6 text-base font-medium leading-relaxed text-slate-600 italic">
+                "{t.quote}"
               </blockquote>
-              <figcaption className="mt-6 border-t border-border pt-4">
-                <span className="block text-sm font-bold text-foreground">{t.name}</span>
-                <span className="block text-xs text-muted-foreground">{t.context}</span>
+
+              <figcaption className="relative z-10 mt-8 flex items-center gap-4 border-t border-slate-100 pt-6">
+                <div className="grid size-12 place-items-center rounded-full bg-primary-soft font-display text-sm font-black text-primary ring-2 ring-white shadow-md">
+                  {t.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <span className="block text-sm font-[900] tracking-tight text-primary">{t.name}</span>
+                  <span className="block text-[0.7rem] font-bold uppercase tracking-widest text-slate-400">{t.context}</span>
+                </div>
               </figcaption>
             </figure>
           ))}
