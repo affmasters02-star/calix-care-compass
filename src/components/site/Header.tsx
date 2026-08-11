@@ -349,12 +349,7 @@ export function Header() {
             <NavLink to="/">HOME</NavLink>
             <NavLink to="/about">ABOUT US</NavLink>
             <SpecialtiesMegaMenu isScrolled={isScrolled} />
-            <NavDropdown label="SERVICES" activePaths={["/book-appointment", "/health-packages", "/patient-services", "/contact"]}>
-              <DropdownLink to="/book-appointment">Plan Your Visit</DropdownLink>
-              <DropdownLink to="/health-packages">Checkup Packages</DropdownLink>
-              <DropdownLink to="/patient-services">Insurance & TPA</DropdownLink>
-              <DropdownLink to="/contact">Tele-Consultation</DropdownLink>
-            </NavDropdown>
+            <NavLink to="/patient-services">SERVICES</NavLink>
             <NavLink to="/doctors">DOCTORS</NavLink>
             <NavLink to="/facilities">FACILITIES</NavLink>
             <NavLink to="/testimonials">TESTIMONIALS</NavLink>
