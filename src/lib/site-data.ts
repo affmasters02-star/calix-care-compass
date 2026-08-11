@@ -89,17 +89,118 @@ export const specialties: Specialty[] = [
   },
 ];
 
-export const doctors = [
-  { name: "Dr. Arvind Menon", specialty: "General Medicine", qualification: "MBBS, MD (General Medicine)", experience: "18 years" },
-  { name: "Dr. Kavitha Raghavan", specialty: "Diabetology", qualification: "MBBS, MD, Fellowship in Diabetology", experience: "15 years" },
-  { name: "Dr. Suresh Iyer", specialty: "Nephrology", qualification: "MBBS, MD, DM (Nephrology)", experience: "20 years" },
-  { name: "Dr. Nikhil Sharma", specialty: "Critical Care", qualification: "MBBS, MD, IDCCM", experience: "12 years" },
-  { name: "Dr. Rahul Deshpande", specialty: "Urology", qualification: "MBBS, MS, MCh (Urology)", experience: "16 years" },
-  { name: "Dr. Praveen Kumar", specialty: "Orthopedics", qualification: "MBBS, MS (Ortho), Fellowship in Arthroplasty", experience: "17 years" },
-  { name: "Dr. Anitha Raj", specialty: "Obstetrics & Gynecology", qualification: "MBBS, MS (OBG)", experience: "19 years" },
-  { name: "Dr. Vivek Nair", specialty: "Gastroenterology", qualification: "MBBS, MD, DM (Gastroenterology)", experience: "14 years" },
-  { name: "Dr. Meera Krishnan", specialty: "Neurology", qualification: "MBBS, MD, DM (Neurology)", experience: "13 years" },
-  { name: "Dr. Sandeep Verma", specialty: "General Surgery", qualification: "MBBS, MS (General Surgery)", experience: "15 years" },
+export type Doctor = {
+  slug: string;
+  name: string;
+  specialty: string;
+  qualification: string;
+  experience: string;
+  description: string;
+  expertise: string[];
+  education: string[];
+};
+
+export const doctors: Doctor[] = [
+  {
+    slug: "dr-arvind-menon",
+    name: "Dr. Arvind Menon",
+    specialty: "General Medicine",
+    qualification: "MBBS, MD (General Medicine)",
+    experience: "18 years",
+    description: "Dr. Arvind Menon is a dedicated internal medicine specialist focused on evidence-based treatment of complex lifestyle disorders and infectious diseases. He has a patient-centric approach that emphasizes early diagnosis and preventive care.",
+    expertise: ["Lifestyle medicine", "Infectious disease management", "Chronic illness coordination", "Adult immunization"],
+    education: ["MD General Medicine - Madras Medical College", "MBBS - Stanley Medical College"],
+  },
+  {
+    slug: "dr-kavitha-raghavan",
+    name: "Dr. Kavitha Raghavan",
+    specialty: "Diabetology",
+    qualification: "MBBS, MD, Fellowship in Diabetology",
+    experience: "15 years",
+    description: "Dr. Kavitha specializes in holistic diabetes management, focusing on preventing long-term complications through metabolic control and lifestyle modifications.",
+    expertise: ["Type 1 & Type 2 Diabetes", "Gestational Diabetes", "Insulin pump therapy", "Metabolic syndrome"],
+    education: ["Fellowship in Diabetology - Dr. Mohans Diabetes Specialities Centre", "MD - Kilpauk Medical College"],
+  },
+  {
+    slug: "dr-suresh-iyer",
+    name: "Dr. Suresh Iyer",
+    specialty: "Nephrology",
+    qualification: "MBBS, MD, DM (Nephrology)",
+    experience: "20 years",
+    description: "A veteran in kidney care, Dr. Suresh Iyer has pioneered several protocols in dialysis management and chronic kidney disease slowing techniques.",
+    expertise: ["Renal replacement therapy", "Glomerular diseases", "Hypertension management", "Pre-transplant evaluation"],
+    education: ["DM Nephrology - AIIMS, New Delhi", "MD Internal Medicine - JIPMER"],
+  },
+  {
+    slug: "dr-nikhil-sharma",
+    name: "Dr. Nikhil Sharma",
+    specialty: "Critical Care",
+    qualification: "MBBS, MD, IDCCM",
+    experience: "12 years",
+    description: "Dr. Nikhil leads our intensive care units with a focus on advanced hemodynamic monitoring and sepsis management protocols.",
+    expertise: ["Mechanical ventilation", "Advanced life support", "Neuro-critical care", "Hemodynamic monitoring"],
+    education: ["IDCCM - Indian Society of Critical Care Medicine", "MD - Armed Forces Medical College"],
+  },
+  {
+    slug: "dr-rahul-deshpande",
+    name: "Dr. Rahul Deshpande",
+    specialty: "Urology",
+    qualification: "MBBS, MS, MCh (Urology)",
+    experience: "16 years",
+    description: "Dr. Rahul Deshpande is an expert in minimally invasive urological procedures, specializing in laser treatments for stones and prostate health.",
+    expertise: ["Laser lithotripsy", "Endourology", "Prostate surgery (TURP)", "Laparoscopic urology"],
+    education: ["MCh Urology - Grant Medical College", "MS General Surgery - KEM Hospital"],
+  },
+  {
+    slug: "dr-praveen-kumar",
+    name: "Dr. Praveen Kumar",
+    specialty: "Orthopedics",
+    qualification: "MBBS, MS (Ortho), Fellowship in Arthroplasty",
+    experience: "17 years",
+    description: "Specializing in joint replacements and trauma, Dr. Praveen focuses on rapid recovery protocols and minimally invasive orthopedic surgery.",
+    expertise: ["Total knee replacement", "Total hip replacement", "Sports medicine", "Complex trauma surgery"],
+    education: ["Fellowship in Arthroplasty - Germany", "MS Orthopedics - Kasturba Medical College"],
+  },
+  {
+    slug: "dr-anitha-raj",
+    name: "Dr. Anitha Raj",
+    specialty: "Obstetrics & Gynecology",
+    qualification: "MBBS, MS (OBG)",
+    experience: "19 years",
+    description: "Dr. Anitha Raj provides compassionate care for women across all life stages, with special expertise in high-risk obstetrics and laparoscopic gynecology.",
+    expertise: ["High-risk pregnancy care", "Laparoscopic hysterectomy", "Adolescent gynecology", "Menopausal health"],
+    education: ["MS OBG - Madras Medical College", "MBBS - Coimbatore Medical College"],
+  },
+  {
+    slug: "dr-vivek-nair",
+    name: "Dr. Vivek Nair",
+    specialty: "Gastroenterology",
+    qualification: "MBBS, MD, DM (Gastroenterology)",
+    experience: "14 years",
+    description: "Dr. Vivek Nair is an interventional gastroenterologist specializing in therapeutic endoscopy and liver health management.",
+    expertise: ["Diagnostic & therapeutic endoscopy", "Liver disease management", "Inflammatory bowel disease", "ERCP"],
+    education: ["DM Gastroenterology - PGI Chandigarh", "MD - Government Medical College"],
+  },
+  {
+    slug: "dr-meera-krishnan",
+    name: "Dr. Meera Krishnan",
+    specialty: "Neurology",
+    qualification: "MBBS, MD, DM (Neurology)",
+    experience: "13 years",
+    description: "Dr. Meera focuses on neurological disorders with a special interest in stroke management, epilepsy, and headache clinics.",
+    expertise: ["Stroke rehabilitation", "Epilepsy management", "Movement disorders", "Electro-physiology"],
+    education: ["DM Neurology - NIMHANS", "MD - Christian Medical College, Vellore"],
+  },
+  {
+    slug: "dr-sandeep-verma",
+    name: "Dr. Sandeep Verma",
+    specialty: "General Surgery",
+    qualification: "MBBS, MS (General Surgery)",
+    experience: "15 years",
+    description: "Dr. Sandeep Verma is a versatile general and laparoscopic surgeon known for precise surgical techniques in hernia and gallbladder procedures.",
+    expertise: ["Laparoscopic cholecystectomy", "Hernia repair", "Proctology (Piles/Fissure)", "Acute surgical emergencies"],
+    education: ["MS General Surgery - Maulana Azad Medical College", "MBBS - University of Delhi"],
+  },
 ];
 
 export const healthPackages = [
