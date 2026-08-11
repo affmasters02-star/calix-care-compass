@@ -354,19 +354,77 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
 function NavDropdown({ label, children, activePaths }: { label: string; children: React.ReactNode; activePaths?: string[] }) {
   const location = useLocation();
   const isActive = activePaths?.some(path => location.pathname === path);
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setIsOpen(false);
+      triggerRef.current?.focus();
+    }
+    
+    if (e.key === "Tab" && isOpen && containerRef.current) {
+      const focusableElements = containerRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          lastElement.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          firstElement.focus();
+          e.preventDefault();
+        }
+      }
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node) && 
+          triggerRef.current && !triggerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <div className="group relative">
+    <div className="group relative" onKeyDown={handleKeyDown}>
       <button 
+        ref={triggerRef}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        onClick={() => setIsOpen(!isOpen)}
+        onMouseEnter={() => setIsOpen(true)}
         className={cn(
-          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100",
-          isActive && "text-[#003A8C] after:scale-x-100"
+          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-[#0f172a] transition-all duration-300 hover:text-[#003A8C] uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
+          isActive && "text-[#003A8C] after:scale-x-100",
+          isOpen && "text-[#003A8C] after:scale-x-100"
         )}
       >
         {label}
-        <ChevronDown className="size-4 transition-transform duration-300 group-hover:rotate-180" />
+        <ChevronDown className={cn("size-4 transition-transform duration-300", isOpen && "rotate-180")} />
       </button>
-      <div className="invisible absolute left-0 top-[calc(100%-10px)] z-50 w-64 pt-2 opacity-0 transition-all duration-300 group-hover:visible group-hover:top-full group-hover:opacity-100">
+      <div 
+        ref={containerRef}
+        onMouseLeave={() => setIsOpen(false)}
+        className={cn(
+          "absolute left-0 top-[calc(100%-10px)] z-50 w-64 pt-2 transition-all duration-300",
+          isOpen ? "visible top-full opacity-100" : "invisible opacity-0"
+        )}
+      >
         <div className="overflow-hidden rounded-2xl border border-[#EAF4FF] bg-white py-3 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
           {children}
         </div>
