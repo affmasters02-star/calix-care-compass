@@ -111,9 +111,9 @@ function SpecialtiesMegaMenu({ isScrolled }: { isScrolled: boolean }) {
         aria-controls="specialties-mega-menu"
         onMouseEnter={() => setIsOpen(true)}
         className={cn(
-          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
-          isActive && "text-brand-blue after:scale-x-100",
-          isOpen && "text-brand-blue after:scale-x-100"
+          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#003A8C] after:transition-[width] after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
+          isActive && "text-brand-blue after:w-full",
+          isOpen && "text-brand-blue after:w-full"
         )}
       >
         SPECIALTIES
@@ -464,10 +464,10 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
         }
       }}
       activeOptions={{ exact: to === "/" }}
-      activeProps={{ className: "text-brand-blue after:scale-x-100" }}
+      activeProps={{ className: "text-brand-blue after:w-full" }}
       className={cn(
-        "relative py-2 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 uppercase whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
-        isActiveSection && "text-brand-blue after:scale-x-100"
+        "relative py-2 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#003A8C] after:transition-[width] after:duration-300 hover:after:w-full uppercase whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
+        isActiveSection && "text-brand-blue after:w-full"
       )}
     >
       {children}
@@ -533,9 +533,9 @@ function NavDropdown({ label, children, activePaths }: { label: string; children
         onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsOpen(true)}
         className={cn(
-          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-[#003A8C] after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
-          isActive && "text-brand-blue after:scale-x-100",
-          isOpen && "text-brand-blue after:scale-x-100"
+          "flex items-center gap-1 py-4 text-[0.8rem] 2xl:text-[0.85rem] font-bold tracking-tight text-foreground transition-all duration-300 hover:text-brand-blue uppercase whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#003A8C] after:transition-[width] after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003A8C] focus-visible:ring-offset-2 rounded-md",
+          isActive && "text-brand-blue after:w-full",
+          isOpen && "text-brand-blue after:w-full"
         )}
       >
         {label}
