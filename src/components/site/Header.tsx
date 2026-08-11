@@ -450,8 +450,8 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
   };
 
   const isHomeSection = to.startsWith("/#") || (to === "/" && location.pathname === "/");
-  const sectionId = to.startsWith("/#") ? to.substring(2) : "home";
-  const isActiveSection = activeSection === sectionId;
+  const sectionId = to.startsWith("/#") ? to.substring(2) : to === "/" ? "home" : null;
+  const isActiveSection = !!sectionId && location.pathname === "/" && activeSection === sectionId;
 
   return (
     <Link
