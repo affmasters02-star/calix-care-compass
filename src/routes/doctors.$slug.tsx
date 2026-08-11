@@ -13,15 +13,17 @@ export const Route = createFileRoute("/doctors/$slug")({
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: `${loaderData.doctor.name} | ${loaderData.doctor.specialty} at Calix Hospital` },
+      { title: loaderData?.doctor ? `${loaderData.doctor.name} | ${loaderData.doctor.specialty} at Calix Hospital` : "Doctor Profile | Calix Hospital" },
       {
         name: "description",
-        content: `Consult ${loaderData.doctor.name}, a specialist in ${loaderData.doctor.specialty} with ${loaderData.doctor.experience} experience at Calix Multispeciality Hospital.`,
+        content: loaderData?.doctor 
+          ? `Consult ${loaderData.doctor.name}, a specialist in ${loaderData.doctor.specialty} with ${loaderData.doctor.experience} experience at Calix Multispeciality Hospital.`
+          : "Consult our specialists at Calix Multispeciality Hospital.",
       },
-      { property: "og:title", content: `${loaderData.doctor.name} | Specialist Profile` },
+      { property: "og:title", content: loaderData?.doctor ? `${loaderData.doctor.name} | Specialist Profile` : "Specialist Profile" },
       {
         property: "og:description",
-        content: `Expert care by ${loaderData.doctor.name}. ${loaderData.doctor.qualification}.`,
+        content: loaderData?.doctor ? `Expert care by ${loaderData.doctor.name}. ${loaderData.doctor.qualification}.` : "Expert healthcare specialists.",
       },
     ],
   }),
@@ -69,7 +71,7 @@ function DoctorProfile() {
                   <h3 className="font-display text-xl font-bold">Areas of Expertise</h3>
                 </div>
                 <ul className="mt-6 space-y-3">
-                  {doctor.expertise.map((item) => (
+                  {doctor.expertise.map((item: string) => (
                     <li key={item} className="flex items-start gap-3 text-muted-foreground">
                       <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent" />
                       {item}
@@ -84,7 +86,7 @@ function DoctorProfile() {
                   <h3 className="font-display text-xl font-bold">Education & Training</h3>
                 </div>
                 <ul className="mt-6 space-y-3">
-                  {doctor.education.map((item) => (
+                  {doctor.education.map((item: string) => (
                     <li key={item} className="flex items-start gap-3 text-muted-foreground">
                       <BookOpen className="size-4 mt-1 shrink-0 text-accent/60" />
                       {item}
