@@ -118,44 +118,48 @@ function Home() {
               key={s.slug}
               to="/specialties/$slug"
               params={{ slug: s.slug }}
-              className="group relative flex flex-col items-center overflow-hidden rounded-[2.5rem] border border-[#003A8C]/10 bg-gradient-to-br from-white to-[#EAF4FF]/50 p-7 sm:p-9 text-center shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/20 hover:shadow-premium focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
+              className="group relative flex flex-col items-center overflow-hidden rounded-[2.5rem] border border-[#003A8C]/20 bg-gradient-to-br from-[#003A8C] to-[#001F5B] p-7 sm:p-9 text-center shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-premium focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
             >
               {/* Background Glows */}
               <div className="absolute -right-20 -top-20 size-64 rounded-full bg-[#003A8C]/5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:bg-[#003A8C]/15 group-hover:opacity-100 opacity-0" aria-hidden="true" />
               <div className="absolute -bottom-20 -left-20 size-64 rounded-full bg-accent/5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:bg-accent/15 group-hover:opacity-100 opacity-0" aria-hidden="true" />
               
-              <div className="relative z-10 grid size-28 place-items-center rounded-[2.5rem] bg-[#EAF4FF] text-primary shadow-inner transition-all duration-500 group-hover:bg-gradient-brand group-hover:text-white group-hover:shadow-premium group-hover:shadow-primary/40 group-hover:-translate-y-1">
+              <div className="relative z-10 grid size-28 place-items-center rounded-[2.5rem] bg-white/10 text-white shadow-inner transition-all duration-500 group-hover:bg-white group-hover:text-primary group-hover:shadow-premium group-hover:shadow-white/20 group-hover:-translate-y-1 backdrop-blur-md ring-1 ring-white/20">
                 <SpecialtyIcon slug={s.slug} className="size-12 transition-transform duration-500 group-hover:scale-110" />
                 {/* Dual Glass stroke effect */}
-                <div className="absolute inset-0 rounded-[2.5rem] border border-white/0 transition-colors duration-500 group-hover:border-white/20" />
-                <div className="absolute inset-[2px] rounded-[calc(2.5rem-2px)] border border-white/0 transition-colors duration-700 group-hover:border-white/10" />
+                <div className="absolute inset-0 rounded-[2.5rem] border border-white/20 transition-colors duration-500 group-hover:border-primary/20" />
+                <div className="absolute inset-[2px] rounded-[calc(2.5rem-2px)] border border-white/10 transition-colors duration-700 group-hover:border-primary/10" />
               </div>
               
               <div className="relative z-10 mt-8">
-                <h3 className="font-display text-2xl font-[900] tracking-tight text-[#003A8C] transition-all duration-500 group-hover:text-primary-deep group-hover:scale-[1.02]">{s.name}</h3>
+                <h3 className="font-display text-2xl font-[900] tracking-tight text-white transition-all duration-500 group-hover:scale-[1.02]">{s.name}</h3>
+
                 <div className="mx-auto mt-3 flex items-center justify-center gap-2">
-                  <div className="h-1 w-6 rounded-full bg-accent/20 transition-all duration-500 group-hover:w-12 group-hover:bg-accent" />
-                  <div className="size-1 rounded-full bg-accent/20 transition-all duration-500 group-hover:bg-accent" />
+                  <div className="h-1 w-6 rounded-full bg-white/20 transition-all duration-500 group-hover:w-12 group-hover:bg-accent" />
+                  <div className="size-1 rounded-full bg-white/20 transition-all duration-500 group-hover:bg-accent" />
+
                 </div>
               </div>
               
-              <p className="relative z-10 mt-5 text-[0.9375rem] font-semibold leading-relaxed text-slate-500 transition-colors duration-500 group-hover:text-slate-700 line-clamp-2 px-2">
+              <p className="relative z-10 mt-5 text-[0.9375rem] font-semibold leading-relaxed text-white/70 transition-colors duration-500 group-hover:text-white line-clamp-2 px-2">
                 {s.tagline}
+
               </p>
 
               {/* Quick View Summary */}
               <div className="relative z-10 mt-4 overflow-hidden transition-all duration-500 max-h-0 opacity-0 group-hover:max-h-20 group-hover:opacity-100">
-                 <p className="text-[0.8rem] font-medium text-[#003A8C]/60 italic">
+                 <p className="text-[0.8rem] font-medium text-white/50 italic">
                    Advanced clinical care & surgical expertise.
                  </p>
               </div>
               
-              <div className="relative z-10 mt-auto pt-10 flex items-center gap-3 text-[0.7rem] font-black uppercase tracking-[0.3em] text-primary/60 transition-all duration-500 group-hover:text-accent group-hover:gap-6 group-hover:translate-x-1">
+              <div className="relative z-10 mt-auto pt-10 flex items-center gap-3 text-[0.7rem] font-black uppercase tracking-[0.3em] text-white/50 transition-all duration-500 group-hover:text-white group-hover:gap-6 group-hover:translate-x-1">
                 <span className="relative">
                   Explore
-                  <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-accent transition-all duration-500 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-white transition-all duration-500 group-hover:w-full" />
                 </span>
-                <div className="flex size-9 items-center justify-center rounded-full bg-primary/5 transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:shadow-premium group-hover:shadow-accent/40 group-hover:rotate-[360deg]" aria-hidden="true">
+                <div className="flex size-9 items-center justify-center rounded-full bg-white/10 transition-all duration-500 group-hover:bg-white group-hover:text-primary group-hover:shadow-premium group-hover:shadow-white/40 group-hover:rotate-[360deg]" aria-hidden="true">
+
                   <ArrowRight className="size-4.5" />
                 </div>
               </div>
