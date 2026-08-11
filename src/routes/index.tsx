@@ -359,24 +359,30 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
 
   return (
     <div className="mt-10">
-      <div className="relative mb-12 flex items-center gap-4">
+      <div className="relative mb-12 flex items-center gap-4" role="region" aria-label="Specialty filtering controls">
         {/* Navigation Arrows */}
         <button
           onClick={() => scroll("left")}
-          className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-card text-primary shadow-sm transition-all hover:bg-primary hover:text-white"
-          aria-label="Scroll left"
+          className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-card text-primary shadow-sm transition-all hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          aria-label="Scroll specialty tabs left"
         >
           <ChevronLeft className="size-5" />
         </button>
         
         <div 
           ref={scrollContainerRef}
-          className="no-scrollbar flex w-full justify-start gap-3 overflow-x-auto py-2"
+          className="no-scrollbar flex w-full justify-start gap-3 overflow-x-auto py-2 outline-none"
+          role="tablist"
+          aria-label="Filter doctors by specialty"
+          tabIndex={0}
         >
           <button
+            role="tab"
+            aria-selected={activeTab === "all"}
+            aria-controls="doctor-grid"
             onClick={() => setActiveTab("all")}
             className={cn(
-              "h-11 shrink-0 whitespace-nowrap rounded-full px-8 text-sm font-bold transition-all",
+              "h-11 shrink-0 whitespace-nowrap rounded-full px-8 text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
               activeTab === "all"
                 ? "bg-primary text-primary-foreground shadow-md ring-4 ring-primary/20"
                 : "bg-primary-soft text-primary hover:bg-primary/10"
@@ -387,9 +393,12 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
           {specialties.map((s) => (
             <button
               key={s.slug}
+              role="tab"
+              aria-selected={activeTab === s.name}
+              aria-controls="doctor-grid"
               onClick={() => setActiveTab(s.name)}
               className={cn(
-                "h-11 shrink-0 whitespace-nowrap rounded-full px-8 text-sm font-bold transition-all",
+                "h-11 shrink-0 whitespace-nowrap rounded-full px-8 text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
                 activeTab === s.name
                   ? "bg-primary text-primary-foreground shadow-md ring-4 ring-primary/20"
                   : "bg-primary-soft text-primary hover:bg-primary/10"
@@ -402,14 +411,19 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
 
         <button
           onClick={() => scroll("right")}
-          className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-card text-primary shadow-sm transition-all hover:bg-primary hover:text-white"
-          aria-label="Scroll right"
+          className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-card text-primary shadow-sm transition-all hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          aria-label="Scroll specialty tabs right"
         >
           <ChevronRight className="size-5" />
         </button>
       </div>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+      <div 
+        id="doctor-grid" 
+        role="tabpanel" 
+        aria-labelledby="specialty-tabs"
+        className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2"
+      >
         {filteredDoctors.map((d) => (
           <div key={d.name} className="group relative overflow-hidden rounded-[3rem] border border-border bg-card p-10 shadow-card transition-all duration-300 hover:shadow-lift lg:p-12">
             <div className="flex flex-col items-center gap-10 md:flex-row md:items-start">
