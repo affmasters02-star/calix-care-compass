@@ -301,7 +301,7 @@ function Home() {
         />
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {testimonials.slice(0, 3).map((t) => (
-            <figure key={t.name} className="rounded-2xl border border-border bg-card p-8 shadow-card">
+            <figure key={t.name} className="rounded-3xl border border-border bg-card p-8 shadow-card">
               <Quote className="size-7 text-accent" />
               <blockquote className="mt-5 text-sm leading-relaxed text-foreground/80">
                 {t.quote}
