@@ -216,24 +216,24 @@ export function Header() {
 
           {/* CENTER: NAVIGATION */}
           <div className="hidden items-center gap-4 2xl:gap-8 xl:flex">
-            <NavLink to="/">HOME</NavLink>
-            <NavDropdown label="ABOUT US">
-              <DropdownLink to="/about">Overview</DropdownLink>
-              <DropdownLink to="/about">Mission & Vision</DropdownLink>
-              <DropdownLink to="/about">Why Choose Calix</DropdownLink>
-              <DropdownLink to="/facilities">Facilities</DropdownLink>
+            <NavLink to="/">Home</NavLink>
+            <NavDropdown label="About Us">
+              <DropdownLink to="/about">Our Story</DropdownLink>
+              <DropdownLink to="/about">Mission & Values</DropdownLink>
+              <DropdownLink to="/about">Why Choose Us</DropdownLink>
+              <DropdownLink to="/facilities">Our Facilities</DropdownLink>
             </NavDropdown>
             <SpecialtiesMegaMenu />
-            <NavLink to="/doctors">DOCTORS</NavLink>
-            <NavLink to="/facilities">FACILITIES</NavLink>
-            <NavDropdown label="PATIENT SERVICES">
-              <DropdownLink to="/book-appointment">Book Appointment</DropdownLink>
-              <DropdownLink to="/health-packages">Health Packages</DropdownLink>
-              <DropdownLink to="/patient-services">Insurance & Cashless</DropdownLink>
-              <DropdownLink to="/contact">Online Consultation</DropdownLink>
+            <NavLink to="/doctors">Find a Doctor</NavLink>
+            <NavLink to="/facilities">Infrastructure</NavLink>
+            <NavDropdown label="Patient Care">
+              <DropdownLink to="/book-appointment">Plan Your Visit</DropdownLink>
+              <DropdownLink to="/health-packages">Checkup Packages</DropdownLink>
+              <DropdownLink to="/patient-services">Insurance & TPA</DropdownLink>
+              <DropdownLink to="/contact">Tele-Consultation</DropdownLink>
             </NavDropdown>
-            <NavLink to="/testimonials">TESTIMONIALS</NavLink>
-            <NavLink to="/contact">CONTACT</NavLink>
+            <NavLink to="/testimonials">Patient Stories</NavLink>
+            <NavLink to="/contact">Reach Us</NavLink>
           </div>
 
           {/* RIGHT: SOCIAL + BUTTONS */}
