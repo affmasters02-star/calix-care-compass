@@ -120,24 +120,6 @@ function Home() {
           </div>
         </div>
 
-        {/* Hero Bottom Trust Indicators */}
-        <div className="relative z-10 mt-auto border-t border-white/10 bg-[#001F5B]/40 backdrop-blur-xl animate-in fade-in slide-in-from-bottom duration-1000 delay-500">
-          <div className="container-page py-8">
-            <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:gap-12">
-              {stats.map((s, idx) => (
-                <div key={s.label} className={cn(
-                  "flex flex-col border-white/10",
-                  idx !== 0 && "sm:border-l sm:pl-8 lg:pl-12"
-                )}>
-                  <div className="flex items-baseline gap-1">
-                    <span className="font-display text-3xl font-[900] text-white lg:text-4xl">{s.value}</span>
-                  </div>
-                  <span className="mt-1 text-[0.7rem] font-black uppercase tracking-[0.2em] text-white/50">{s.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
 
