@@ -68,18 +68,18 @@ function Home() {
           height={1104}
           className="absolute inset-0 size-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B] via-[#001F5B]/85 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001F5B]/90 via-[#001F5B]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#001F5B]/80 via-transparent to-transparent" />
         <div className="container-page relative flex min-h-[70vh] flex-col justify-center py-16 text-primary-foreground sm:min-h-[85vh] lg:py-32">
           <div className="max-w-4xl">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold tracking-wide backdrop-blur-md sm:mb-6 sm:px-4 sm:py-1.5 sm:text-sm">
               <span className="flex size-2 rounded-full bg-accent animate-pulse" />
               24/7 EMERGENCY & CRITICAL CARE
             </div>
-            <h1 className="text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-8xl">
-              World-Class Multispeciality Healthcare <span className="text-accent drop-shadow-sm">Under One Roof</span>
+            <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-md sm:text-7xl lg:text-8xl">
+              World-Class Multispeciality <br className="hidden lg:block" /> Healthcare <span className="text-accent">Under One Roof</span>
             </h1>
-            <p className="mt-4 text-base font-medium leading-relaxed text-primary-foreground/90 sm:mt-8 sm:text-xl lg:text-2xl">
+            <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/95 sm:mt-8 sm:text-xl lg:text-2xl">
               Combining expert specialists, advanced diagnostics, and compassionate family care to provide you with a seamless healthcare experience.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 sm:mt-12 sm:gap-5">
