@@ -68,31 +68,24 @@ function Home() {
           height={1104}
           className="absolute inset-0 size-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-hero" />
+        <div className="absolute inset-0 bg-gradient-hero/90 mix-blend-multiply" />
         <div className="container-page relative py-20 text-primary-foreground lg:py-32">
           <div className="max-w-3xl">
-            <p className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] backdrop-blur">
-              Complete multispeciality healthcare for the entire family
-            </p>
-            <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-7xl">
               Comprehensive Multispeciality Healthcare You Can Trust
             </h1>
-            <p className="mt-4 text-lg font-semibold text-primary-foreground/90">
-              Advanced Healthcare. Trusted Specialists. Compassionate Care.
+            <p className="mt-6 text-xl font-medium text-primary-foreground/90">
+              Expert doctors, advanced technology, and compassionate care—all under one roof.
             </p>
-            <p className="mt-5 max-w-2xl text-base text-primary-foreground/80 lg:text-lg">
-              Providing expert medical care across multiple specialties with modern technology,
-              experienced doctors, and a patient-first approach.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button asChild variant="brand" size="xl">
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Button asChild variant="accent" size="xl" className="bg-gradient-cta hover:brightness-110">
                 <Link to="/book-appointment">
-                  Book Appointment <ArrowRight className="size-4" />
+                  Book Appointment <ArrowRight className="size-5" />
                 </Link>
               </Button>
-              <Button asChild variant="onDark" size="xl">
+              <Button asChild variant="brand" size="xl" className="bg-primary-deep hover:brightness-110">
                 <a href={`tel:${HOSPITAL.emergency}`}>
-                  <Phone className="size-4" /> Emergency {HOSPITAL.emergency}
+                  <Phone className="size-5" /> Emergency Care
                 </a>
               </Button>
             </div>
