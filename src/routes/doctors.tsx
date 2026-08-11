@@ -93,51 +93,58 @@ function Doctors() {
           {filteredDoctors.map((d) => (
             <div
               key={d.name}
-              className="group relative flex flex-col rounded-3xl border border-slate-100 bg-white p-7 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] sm:p-8"
+              className="group relative flex flex-col rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-md sm:p-6 md:p-8"
             >
-              {/* Decorative Glow */}
-              <div className="absolute right-0 top-0 size-24 translate-x-8 -translate-y-8 rounded-full bg-primary/5 blur-2xl transition-transform duration-500 group-hover:scale-150" aria-hidden="true" />
-              
-              <div className="relative z-10 flex items-center gap-4 sm:gap-5">
-                <div className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#001F5B] via-[#003A8C] to-[#E83E8C] font-display text-xl font-black text-white shadow-lg transition-transform duration-500 group-hover:scale-105 group-hover:rounded-[1.5rem] sm:size-20 sm:text-2xl">
-                  <span className="drop-shadow-lg">{initials(d.name)}</span>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-display text-lg font-[800] leading-tight text-primary transition-colors group-hover:text-primary-deep sm:text-xl">{d.name}</h3>
-                  <div className="mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-slate-50 px-2.5 py-1 text-[0.65rem] font-bold text-slate-600 ring-1 ring-inset ring-slate-200/50 sm:mt-2 sm:gap-2 sm:px-3 sm:text-[0.7rem]">
-                    <div className="size-1 rounded-full bg-[#00857A] sm:size-1.5" />
-                    <span className="truncate">{d.specialty} Specialist</span>
+              <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-start">
+                {/* Image section */}
+                <div className="relative shrink-0 self-center md:self-start">
+                  <div className="grid size-32 place-items-center overflow-hidden rounded-lg bg-slate-100 font-display text-3xl font-black text-slate-300 sm:size-40 md:size-48 lg:size-56">
+                    <span className="opacity-50">{initials(d.name)}</span>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent" />
                   </div>
                 </div>
-              </div>
-              
-              <div className="relative z-10 mt-6 flex-1">
-                <p className="text-[0.85rem] font-bold uppercase tracking-widest text-[#E83E8C]">{d.qualification}</p>
-                <p className="mt-3 text-sm font-medium leading-relaxed text-slate-600 line-clamp-3">
-                  {d.description}
-                </p>
-                <div className="mt-4 flex items-center gap-2 text-[0.65rem] font-black uppercase tracking-widest text-primary/60 lg:text-[0.7rem]">
-                  <div className="size-1.5 rounded-full bg-accent animate-pulse" />
-                  {d.experience} Experience
-                </div>
-              </div>
 
-              <div className="relative z-10 mt-8 grid grid-cols-2 gap-3 sm:mt-10">
-                <Button asChild className="h-10 rounded-full bg-[#003A8C] px-3 text-[0.65rem] font-black uppercase tracking-wider text-white shadow-lg shadow-[#003A8C]/20 transition-all hover:bg-[#001F5B] hover:shadow-xl sm:h-11 sm:px-4 sm:text-[0.7rem]">
-                  <Link
-                    to="/book-appointment"
-                    search={{
-                      specialty: d.specialty.toLowerCase().replace(/\s+/g, '-').replace('&', 'and'),
-                      doctor: d.slug,
-                    }}
-                  >
-                    Book Appointment
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" className="h-10 rounded-full border-slate-200 bg-white px-3 text-[0.65rem] font-black uppercase tracking-wider text-[#0f172a] shadow-sm transition-all hover:bg-slate-50 hover:text-primary sm:h-11 sm:px-4 sm:text-[0.7rem]">
-                  <Link to="/doctors/$slug" params={{ slug: d.slug }}>View Profile</Link>
-                </Button>
+                {/* Content section */}
+                <div className="flex-1 text-center md:text-left">
+                  <div className="space-y-1">
+                    <h3 className="font-display text-lg font-bold tracking-tight text-[#2d1b14] sm:text-xl lg:text-2xl uppercase">
+                      {d.name}
+                    </h3>
+                    <p className="text-sm font-medium text-[#b5986d] sm:text-base">
+                      {d.qualification}
+                    </p>
+                  </div>
+
+                  <ul className="mt-4 space-y-2 text-sm text-[#4a4a4a] md:mt-6">
+                    <li className="flex items-start justify-center gap-2 md:justify-start">
+                      <span className="mt-1.5 size-1.5 shrink-0 bg-black" />
+                      <span className="font-bold">Sr. Consultant</span>
+                    </li>
+                    <li className="flex items-start justify-center gap-2 md:justify-start">
+                      <span className="mt-1.5 size-1.5 shrink-0 bg-black" />
+                      <span>{d.specialty}</span>
+                    </li>
+                  </ul>
+
+                  <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-start">
+                    <Button asChild className="h-10 w-full rounded-none bg-[#7a3e3e] px-6 text-[0.7rem] font-bold text-white transition-all hover:bg-[#5a2e2e] sm:w-auto sm:text-xs">
+                      <Link
+                        to="/book-appointment"
+                        search={{
+                          specialty: d.specialty.toLowerCase().replace(/\s+/g, "-").replace("&", "and"),
+                          doctor: d.slug,
+                        }}
+                      >
+                        Book An Appointment
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" className="h-10 w-full rounded-none border-[#b5986d] bg-white px-6 text-[0.7rem] font-bold text-[#b5986d] transition-all hover:bg-slate-50 sm:w-auto sm:text-xs">
+                      <Link to="/doctors/$slug" params={{ slug: d.slug }}>
+                        View Profile
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
