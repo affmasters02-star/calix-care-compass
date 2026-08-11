@@ -118,13 +118,13 @@ function Home() {
 
 
       {/* Specialties */}
-      <Section tone="soft" className="bg-slate-50 pt-10 lg:pt-14">
+      <Section tone="soft" className="bg-slate-50 pt-8 lg:pt-10">
         <SectionHeading
           eyebrow="Our Specialties"
           title="Expert Care Across Every Specialty"
           subtitle="Ten core departments working together so your diagnosis, treatment and follow-up happen in one place."
         />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {specialties.map((s) => (
             <Link
               key={s.slug}
@@ -207,7 +207,7 @@ function Home() {
       </Section>
 
       {/* Stats */}
-      <section className="bg-primary-deep py-14 text-primary-foreground">
+      <section className="bg-primary-deep py-10 text-primary-foreground lg:py-12">
         <div className="container-page grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
@@ -260,7 +260,7 @@ function Home() {
           title="Preventive Checks Built Around Your Life Stage"
           subtitle="Structured screening panels with consultation included — reports on the same day for most tests."
         />
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
           {healthPackages.slice(0, 2).map((p) => (
             <div
               key={p.name}
@@ -304,7 +304,7 @@ function Home() {
           title="Trusted by Families Across the Region"
           subtitle="Real experiences from patients treated across our specialties."
         />
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {testimonials.slice(0, 3).map((t) => (
             <figure key={t.name} className="rounded-3xl border border-border bg-card p-8 shadow-card">
               <Quote className="size-7 text-accent" />
@@ -328,7 +328,7 @@ function Home() {
       </Section>
 
       {/* CTA */}
-      <section className="bg-primary py-16 text-primary-foreground lg:py-20">
+      <section className="bg-primary py-12 text-primary-foreground lg:py-16">
         <div className="container-page flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
           <div>
             <h2 className="text-2xl font-bold sm:text-3xl">
