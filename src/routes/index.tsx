@@ -118,7 +118,7 @@ function Home() {
 
 
       {/* Specialties */}
-      <Section tone="soft" className="bg-slate-50 pt-10 lg:pt-14">
+      <Section tone="soft" className="bg-slate-50 pt-8 lg:pt-10">
         <SectionHeading
           eyebrow="Our Specialties"
           title="Expert Care Across Every Specialty"
@@ -207,7 +207,7 @@ function Home() {
       </Section>
 
       {/* Stats */}
-      <section className="bg-primary-deep py-14 text-primary-foreground">
+      <section className="bg-primary-deep py-10 text-primary-foreground lg:py-12">
         <div className="container-page grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
@@ -328,7 +328,7 @@ function Home() {
       </Section>
 
       {/* CTA */}
-      <section className="bg-primary py-16 text-primary-foreground lg:py-20">
+      <section className="bg-primary py-12 text-primary-foreground lg:py-16">
         <div className="container-page flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
           <div>
             <h2 className="text-2xl font-bold sm:text-3xl">
