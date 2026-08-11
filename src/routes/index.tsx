@@ -124,7 +124,7 @@ function Home() {
           title="Expert Care Across Every Specialty"
           subtitle="Ten core departments working together so your diagnosis, treatment and follow-up happen in one place."
         />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {specialties.map((s) => (
             <Link
               key={s.slug}
@@ -260,7 +260,7 @@ function Home() {
           title="Preventive Checks Built Around Your Life Stage"
           subtitle="Structured screening panels with consultation included — reports on the same day for most tests."
         />
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
           {healthPackages.slice(0, 2).map((p) => (
             <div
               key={p.name}
@@ -304,7 +304,7 @@ function Home() {
           title="Trusted by Families Across the Region"
           subtitle="Real experiences from patients treated across our specialties."
         />
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {testimonials.slice(0, 3).map((t) => (
             <figure key={t.name} className="rounded-3xl border border-border bg-card p-8 shadow-card">
               <Quote className="size-7 text-accent" />
