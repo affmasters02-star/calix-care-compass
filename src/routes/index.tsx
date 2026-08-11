@@ -359,11 +359,11 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
 
   return (
     <div className="mt-10">
-      <div className="relative mb-10 group/tabs">
+      <div className="relative mb-12 flex items-center gap-4">
         {/* Navigation Arrows */}
         <button
           onClick={() => scroll("left")}
-          className="absolute -left-4 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-border bg-card text-primary shadow-md transition-all hover:bg-primary-soft hover:text-primary md:flex"
+          className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-card text-primary shadow-sm transition-all hover:bg-primary hover:text-white"
           aria-label="Scroll left"
         >
           <ChevronLeft className="size-5" />
@@ -371,12 +371,12 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
         
         <div 
           ref={scrollContainerRef}
-          className="no-scrollbar flex w-full justify-start gap-2 overflow-x-auto px-2 pb-2 md:justify-center"
+          className="no-scrollbar flex w-full justify-start gap-3 overflow-x-auto py-2"
         >
           <button
             onClick={() => setActiveTab("all")}
             className={cn(
-              "h-10 shrink-0 whitespace-nowrap rounded-full px-6 text-sm font-bold transition-all",
+              "h-11 shrink-0 whitespace-nowrap rounded-full px-8 text-sm font-bold transition-all",
               activeTab === "all"
                 ? "bg-primary text-primary-foreground shadow-md"
                 : "bg-primary-soft text-primary hover:bg-primary/10"
@@ -389,7 +389,7 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
               key={s.slug}
               onClick={() => setActiveTab(s.name)}
               className={cn(
-                "h-10 shrink-0 whitespace-nowrap rounded-full px-6 text-sm font-bold transition-all",
+                "h-11 shrink-0 whitespace-nowrap rounded-full px-8 text-sm font-bold transition-all",
                 activeTab === s.name
                   ? "bg-primary text-primary-foreground shadow-md"
                   : "bg-primary-soft text-primary hover:bg-primary/10"
@@ -402,7 +402,7 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
 
         <button
           onClick={() => scroll("right")}
-          className="absolute -right-4 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-border bg-card text-primary shadow-md transition-all hover:bg-primary-soft hover:text-primary md:flex"
+          className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-card text-primary shadow-sm transition-all hover:bg-primary hover:text-white"
           aria-label="Scroll right"
         >
           <ChevronRight className="size-5" />
@@ -411,41 +411,41 @@ function DoctorFilters({ doctors: allDoctors }: { doctors: typeof doctors }) {
 
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
         {filteredDoctors.map((d) => (
-          <div key={d.name} className="group relative overflow-hidden rounded-[2.5rem] border border-border bg-card p-8 shadow-card transition-all duration-300 hover:shadow-lift lg:p-10">
-            <div className="flex flex-col items-center gap-8 md:flex-row md:items-start">
+          <div key={d.name} className="group relative overflow-hidden rounded-[3rem] border border-border bg-card p-10 shadow-card transition-all duration-300 hover:shadow-lift lg:p-12">
+            <div className="flex flex-col items-center gap-10 md:flex-row md:items-start">
               <div className="relative shrink-0">
-                <div className="grid size-40 place-items-center rounded-3xl bg-gradient-brand font-display text-4xl font-extrabold text-primary-foreground shadow-lg transition-transform duration-500 group-hover:scale-105 md:size-48">
+                <div className="grid size-44 place-items-center rounded-[2.5rem] bg-gradient-brand font-display text-5xl font-extrabold text-primary-foreground shadow-xl transition-transform duration-500 group-hover:scale-105 md:size-56">
                   {d.name.split(" ")[1]?.[0] ?? "C"}
                   {d.name.split(" ")[2]?.[0] ?? ""}
                 </div>
               </div>
               
               <div className="flex-1 text-center md:text-left">
-                <h3 className="font-display text-2xl font-[800] tracking-tight text-primary lg:text-3xl">
+                <h3 className="font-display text-3xl font-[800] tracking-tight text-primary lg:text-4xl">
                   {d.name}
                 </h3>
-                <p className="mt-2 text-lg font-bold text-accent/80">
+                <p className="mt-3 text-lg font-bold text-accent">
                   {d.qualification}
                 </p>
                 
-                <ul className="mt-6 space-y-2">
-                  <li className="flex items-center justify-center gap-2 text-slate-600 md:justify-start">
-                    <div className="size-1.5 rounded-full bg-accent" />
-                    <span className="text-sm font-semibold">{d.specialty} Specialist</span>
+                <ul className="mt-8 space-y-3">
+                  <li className="flex items-center justify-center gap-3 text-slate-600 md:justify-start">
+                    <div className="size-2 rounded-full bg-accent" />
+                    <span className="text-base font-semibold">{d.specialty} Specialist</span>
                   </li>
-                  <li className="flex items-center justify-center gap-2 text-slate-600 md:justify-start">
-                    <div className="size-1.5 rounded-full bg-accent" />
-                    <span className="text-sm font-semibold">{d.experience} Experience</span>
+                  <li className="flex items-center justify-center gap-3 text-slate-600 md:justify-start">
+                    <div className="size-2 rounded-full bg-accent" />
+                    <span className="text-base font-semibold">{d.experience} Experience</span>
                   </li>
                 </ul>
 
-                <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
-                  <Button asChild variant="accent" className="h-12 rounded-xl bg-primary px-6 font-bold text-white transition-all hover:brightness-110">
+                <div className="mt-10 flex flex-col gap-3 sm:flex-row justify-center md:justify-start">
+                  <Button asChild variant="accent" className="h-14 rounded-full bg-primary px-8 text-base font-bold text-white transition-all hover:brightness-110 shadow-lg shadow-primary/20">
                     <Link to="/book-appointment" search={{ doctor: d.slug }}>
                       Book An Appointment
                     </Link>
                   </Button>
-                  <Button asChild variant="outlineBrand" className="h-12 rounded-xl border-primary/20 px-6 font-bold text-primary hover:bg-primary/5">
+                  <Button asChild variant="outlineBrand" className="h-14 rounded-full border-primary/10 bg-slate-50/50 px-8 text-base font-bold text-primary hover:bg-primary hover:text-white transition-all">
                     <Link to="/doctors/$slug" params={{ slug: d.slug }}>
                       View Profile
                     </Link>
