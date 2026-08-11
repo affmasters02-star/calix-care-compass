@@ -347,12 +347,12 @@ export function Header() {
           {/* CENTER: NAVIGATION */}
           <div className="hidden items-center gap-2 2xl:gap-6 xl:flex">
             <NavLink to="/">HOME</NavLink>
-            <NavLink to="/#about">ABOUT US</NavLink>
+            <NavLink to="/about">ABOUT US</NavLink>
             <SpecialtiesMegaMenu isScrolled={isScrolled} />
             <NavLink to="/patient-services">SERVICES</NavLink>
-            <NavLink to="/#doctors">DOCTORS</NavLink>
+            <NavLink to="/doctors">DOCTORS</NavLink>
             <NavLink to="/facilities">FACILITIES</NavLink>
-            <NavLink to="/#testimonials">TESTIMONIALS</NavLink>
+            <NavLink to="/testimonials">TESTIMONIALS</NavLink>
             <NavLink to="/contact">CONTACT</NavLink>
           </div>
 
@@ -420,7 +420,7 @@ function NavLink({ to, children, onClick }: { to: string; children: React.ReactN
     };
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
-    const sections = ["home", "about", "specialties", "doctors", "testimonials"];
+    const sections = ["home", "about", "doctors", "testimonials"];
     
     sections.forEach((id) => {
       const el = document.getElementById(id);
@@ -574,14 +574,8 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
   return (
     <div className="flex flex-col gap-2">
       <NavLink to="/" onClick={closeMenu}>HOME</NavLink>
-      <NavLink to="/#about" onClick={closeMenu}>ABOUT US</NavLink>
+      <NavLink to="/about" onClick={closeMenu}>ABOUT US</NavLink>
       <Accordion type="single" collapsible>
-        <AccordionItem value="about" className="border-none">
-          <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">HOSPITAL INFO</AccordionTrigger>
-          <AccordionContent className="flex flex-col gap-1 pl-4">
-             <Link to="/about" onClick={closeMenu} activeProps={{ className: "text-[#003A8C]" }} className="py-2 font-medium text-sm transition-colors hover:text-[#003A8C]">Full Details</Link>
-          </AccordionContent>
-        </AccordionItem>
         <AccordionItem value="specialties" className="border-none">
           <AccordionTrigger className="text-[0.95rem] font-bold py-3 uppercase">SPECIALTIES</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-0 pl-2">
@@ -603,7 +597,7 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
                   className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-[#0f172a] transition-all hover:bg-[#EAF4FF] hover:text-[#003A8C] active:scale-[0.98]"
                 >
                   <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#EAF4FF] group-hover:bg-white text-[#003A8C]">
-                    <StarIcon className="size-4" />
+                    <s.icon className="size-4" />
                   </div>
                   <span>{s.name}</span>
                 </Link>
@@ -613,9 +607,9 @@ function MobileNav({ closeMenu }: { closeMenu: () => void }) {
         </AccordionItem>
         <NavLink to="/patient-services" onClick={closeMenu}>SERVICES</NavLink>
       </Accordion>
-      <NavLink to="/#doctors" onClick={closeMenu}>DOCTORS</NavLink>
+      <NavLink to="/doctors" onClick={closeMenu}>DOCTORS</NavLink>
       <NavLink to="/facilities" onClick={closeMenu}>FACILITIES</NavLink>
-      <NavLink to="/#testimonials" onClick={closeMenu}>TESTIMONIALS</NavLink>
+      <NavLink to="/testimonials" onClick={closeMenu}>TESTIMONIALS</NavLink>
       <NavLink to="/contact" onClick={closeMenu}>CONTACT</NavLink>
       <div className="mt-8 flex flex-col gap-4 pb-20">
          <Button asChild className="rounded-full bg-[#E83E8C] text-white">
