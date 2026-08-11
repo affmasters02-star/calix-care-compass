@@ -344,9 +344,9 @@ export const patientServices = [
 export const HOSPITAL = {
   name: "Calix Multispeciality Hospital",
   short: "Calix",
-  phone: "+91 98765 43210",
-  emergency: "+91 98765 43200",
+  phone: "+91 7670840475",
+  emergency: "+91 7670840475",
   email: "care@calixhospital.com",
-  address: "12 Grand Southern Trunk Road, Guduvancheri, Chennai 603202",
+  address: "Plot No.38, Sai Ram Colony, Pipeline Road, Manikonda, Puppalaguda, Hyderabad, 500089",
   hours: "OPD 8:00 AM – 8:00 PM · Emergency 24×7",
 };
