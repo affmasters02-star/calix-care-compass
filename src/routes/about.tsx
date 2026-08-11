@@ -179,7 +179,7 @@ function About() {
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {whyChoose.map((w, idx) => {
-             const Icon = [Stethoscope, Building2, HeartPulse, ShieldCheck, Activity, Users][idx % 6];
+             const Icon = [Stethoscope, Building2, HeartPulse, ShieldCheck, Activity, Users][idx % 6] || ShieldCheck;
              return (
               <div key={w.title} className="group flex flex-col rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-card transition-all duration-500 hover:-translate-y-2 hover:shadow-premium">
                 <div className="flex size-14 items-center justify-center rounded-2xl bg-primary-soft text-primary transition-colors group-hover:bg-primary group-hover:text-white">
