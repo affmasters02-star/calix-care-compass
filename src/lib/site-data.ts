@@ -4,6 +4,8 @@ export type Specialty = {
   tagline: string;
   description: string;
   highlights: string[];
+  conditions: string[];
+  diagnostics: string[];
 };
 
 export const specialties: Specialty[] = [
@@ -13,7 +15,9 @@ export const specialties: Specialty[] = [
     tagline: "Everyday care, expertly handled",
     description:
       "Diagnosis and management of fevers, infections, hypertension, thyroid disorders and complex multi-system illnesses for adults of all ages.",
-    highlights: ["Preventive health checks", "Infectious disease care", "Chronic illness management"],
+    highlights: ["Preventive health checks", "Infectious disease care", "Chronic illness management", "Adult vaccinations", "Travel medicine consultation"],
+    conditions: ["Hypertension", "Type 2 Diabetes", "Viral Fevers", "Thyroid Disorders", "Common Cold & Flu", "Anemia"],
+    diagnostics: ["Comprehensive Blood Panels", "Thyroid Function Tests", "Vitamin Screenings", "Digital X-Ray", "Urine Analysis"],
   },
   {
     slug: "diabetology",
@@ -21,7 +25,9 @@ export const specialties: Specialty[] = [
     tagline: "Living well with diabetes",
     description:
       "Structured diabetes care combining medical treatment, nutrition counselling, foot care and continuous glucose monitoring.",
-    highlights: ["Insulin optimisation", "Diabetic foot clinic", "Diet & lifestyle planning"],
+    highlights: ["Insulin optimisation", "Diabetic foot clinic", "Diet & lifestyle planning", "Continuous glucose monitoring", "Diabetes education"],
+    conditions: ["Type 1 Diabetes", "Type 2 Diabetes", "Gestational Diabetes", "Hypoglycemia", "Diabetic Neuropathy", "Metabolic Syndrome"],
+    diagnostics: ["HbA1c Testing", "Fasting & Post-Prandial Blood Sugar", "Oral Glucose Tolerance Test (OGTT)", "C-Peptide Test", "Microalbuminuria Screening"],
   },
   {
     slug: "nephrology",
@@ -29,7 +35,9 @@ export const specialties: Specialty[] = [
     tagline: "Complete kidney health support",
     description:
       "Evaluation and treatment of kidney disorders, hypertension-related kidney disease and dialysis support by experienced nephrologists.",
-    highlights: ["CKD management", "Dialysis services", "Electrolyte disorders"],
+    highlights: ["CKD management", "Dialysis services", "Electrolyte disorders", "Acute kidney injury care", "Kidney biopsy"],
+    conditions: ["Chronic Kidney Disease (CKD)", "Kidney Stones", "Glomerulonephritis", "Polycystic Kidney Disease", "Renal Failure", "Proteinuria"],
+    diagnostics: ["Serum Creatinine & GFR", "Renal Ultrasound", "Kidney Biopsy", "Electrolyte Panel", "24-Hour Urine Protein"],
   },
   {
     slug: "critical-care",
@@ -37,7 +45,9 @@ export const specialties: Specialty[] = [
     tagline: "Intensive care, round the clock",
     description:
       "Multi-disciplinary intensive care units with advanced ventilators, invasive monitoring and 24×7 intensivist cover.",
-    highlights: ["Medical & surgical ICU", "Ventilator support", "Sepsis care protocols"],
+    highlights: ["Medical & surgical ICU", "Ventilator support", "Sepsis care protocols", "Hemodynamic monitoring", "Post-operative recovery"],
+    conditions: ["Septic Shock", "Respiratory Failure", "Multi-organ Failure", "Severe Trauma", "Stroke & Coma", "Heart Failure"],
+    diagnostics: ["Arterial Blood Gas (ABG)", "Continuous Hemodynamic Monitoring", "Bedside Ultrasound/Echo", "Point-of-care Testing", "Microbiological Cultures"],
   },
   {
     slug: "urology",
@@ -45,7 +55,9 @@ export const specialties: Specialty[] = [
     tagline: "Advanced urological surgery",
     description:
       "Minimally invasive treatment for stones, prostate conditions and urinary tract disorders in men and women.",
-    highlights: ["Laser stone treatment", "Prostate care", "Endourology"],
+    highlights: ["Laser stone treatment", "Prostate care", "Endourology", "Laparoscopic urology", "Male infertility care"],
+    conditions: ["Kidney & Bladder Stones", "Benign Prostatic Hyperplasia (BPH)", "Urinary Tract Infections (UTI)", "Incontinence", "Urological Cancers", "Erectile Dysfunction"],
+    diagnostics: ["Uroflowmetry", "KUB Ultrasound", "Cystoscopy", "PSA Screening", "Intravenous Urogram (IVU)"],
   },
   {
     slug: "orthopedics",
@@ -53,7 +65,9 @@ export const specialties: Specialty[] = [
     tagline: "Move freely again",
     description:
       "Joint replacement, sports injury care, spine consultation and trauma management supported by structured physiotherapy.",
-    highlights: ["Knee & hip replacement", "Arthroscopy", "Fracture & trauma care"],
+    highlights: ["Knee & hip replacement", "Arthroscopy", "Fracture & trauma care", "Sports medicine", "Spine surgery"],
+    conditions: ["Osteoarthritis", "Fractures & Dislocations", "Ligament Tears (ACL/MCL)", "Slipped Disc", "Carpal Tunnel Syndrome", "Rheumatoid Arthritis"],
+    diagnostics: ["Digital X-Ray", "CT Scan", "MRI Advisory", "Bone Density (DEXA) Scan", "Diagnostic Arthroscopy"],
   },
   {
     slug: "obstetrics-gynecology",
@@ -61,7 +75,9 @@ export const specialties: Specialty[] = [
     tagline: "Care for every stage of womanhood",
     description:
       "Comprehensive maternity care, high-risk pregnancy management, gynaec surgery and adolescent to menopause wellness.",
-    highlights: ["Birthing suites", "High-risk pregnancy", "Laparoscopic gynaec surgery"],
+    highlights: ["Birthing suites", "High-risk pregnancy", "Laparoscopic gynaec surgery", "Infertility workup", "PCOS clinic"],
+    conditions: ["Pregnancy Management", "PCOS/PCOD", "Endometriosis", "Fibroids", "Menopausal Issues", "Pelvic Inflammatory Disease"],
+    diagnostics: ["Obstetric Ultrasound", "Follicular Tracking", "Pap Smear", "Colposcopy", "Mammogram Advisory"],
   },
   {
     slug: "gastroenterology",
@@ -69,7 +85,9 @@ export const specialties: Specialty[] = [
     tagline: "Digestive and liver expertise",
     description:
       "Endoscopic diagnosis and treatment for acidity, IBD, liver disease, pancreatitis and gastrointestinal bleeding.",
-    highlights: ["Diagnostic endoscopy", "Colonoscopy", "Liver clinic"],
+    highlights: ["Diagnostic endoscopy", "Colonoscopy", "Liver clinic", "ERCP", "Capsule endoscopy"],
+    conditions: ["GERD/Acidity", "Irritable Bowel Syndrome (IBS)", "Fatty Liver Disease", "Gastritis", "Inflammatory Bowel Disease (IBD)", "Gallstones"],
+    diagnostics: ["Upper GI Endoscopy", "Colonoscopy", "Liver Function Tests", "FibroScan Advisory", "Urea Breath Test"],
   },
   {
     slug: "neurology",
@@ -77,7 +95,9 @@ export const specialties: Specialty[] = [
     tagline: "Brain, nerve and spine care",
     description:
       "Evaluation and management of stroke, epilepsy, headache, movement disorders and neuromuscular conditions.",
-    highlights: ["Stroke pathway", "Epilepsy clinic", "Headache & migraine care"],
+    highlights: ["Stroke pathway", "Epilepsy clinic", "Headache & migraine care", "Electro-physiology", "Neuro-rehabilitation"],
+    conditions: ["Migraine & Tension Headaches", "Epilepsy & Seizures", "Stroke", "Parkinson's Disease", "Alzheimer's/Dementia", "Neuropathy"],
+    diagnostics: ["EEG (Electroencephalogram)", "NCV (Nerve Conduction Velocity)", "EMG (Electromyography)", "CT Brain", "MRI Advisory"],
   },
   {
     slug: "general-surgery",
@@ -85,7 +105,9 @@ export const specialties: Specialty[] = [
     tagline: "Precise, minimally invasive surgery",
     description:
       "Laparoscopic and open surgery for hernia, gallbladder, appendix, thyroid, breast and proctology conditions.",
-    highlights: ["Laparoscopic surgery", "Daycare procedures", "Proctology care"],
+    highlights: ["Laparoscopic surgery", "Daycare procedures", "Proctology care", "Laser surgery", "Wound care"],
+    conditions: ["Hernia", "Gallstones (Cholecystitis)", "Appendicitis", "Piles/Fissure/Fistula", "Breast Lumps", "Varicose Veins"],
+    diagnostics: ["Digital X-Ray", "Ultrasound Abdomen", "CT Scan Advisory", "Diagnostic Laparoscopy", "Biopsy & FNAC"],
   },
 ];
 
